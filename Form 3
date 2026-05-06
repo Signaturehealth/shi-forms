@@ -1,0 +1,517 @@
+<!-- FORM 3 — PHYSICIAN CLINICAL RECORD — Squarespace Code Block
+     Password protected. Access code: DRG2026 (hashed — not visible in source)
+     Webhook: https://dimithra.app.n8n.cloud/webhook/form3-physician -->
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#fcfbf7;--paper-alt:#f0ece4;--ink:#2a2420;--ink-sub:#6b6156;--ink-muted:#a8a095;--rule:#e0d8c8;--rule-soft:#e8e2d6;--accent:#b85c3e;--accent-dark:#8a3f26;--accent-light:#f0ddd2;}
+.shi-f *,.shi-f *::before,.shi-f *::after{box-sizing:border-box;margin:0;padding:0;}
+/* Lock */
+.shi-lock{position:fixed;inset:0;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:9999;padding:24px;}
+.shi-lbrand{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-style:italic;color:rgba(252,251,247,.6);margin-bottom:6px;text-align:center;}
+.shi-lcred{font-family:'Courier New',Courier,monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:#b85c3e;margin-bottom:48px;text-align:center;}
+.shi-lbox{max-width:320px;width:100%;text-align:center;}
+.shi-lbox h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:300;color:rgba(252,251,247,.85);margin-bottom:6px;}
+.shi-lbox p{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;color:rgba(252,251,247,.35);margin-bottom:32px;line-height:1.65;}
+.shi-lbox input[type=password]{width:100%;background:rgba(252,251,247,.05);border:none;border-bottom:1px solid rgba(224,216,200,.2);padding:12px 8px;font-family:'Courier New',Courier,monospace;font-size:20px;color:rgba(252,251,247,.7);text-align:center;letter-spacing:.3em;outline:none;margin-bottom:20px;transition:border-color .2s;}
+.shi-lbox input[type=password]:focus{border-bottom-color:#b85c3e;}
+.shi-lbtn{width:100%;background:#b85c3e;color:#fcfbf7;font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:14px;border:none;cursor:pointer;transition:background .2s;}
+.shi-lbtn:hover{background:#8a3f26;}
+.shi-lerr{font-family:'Courier New',Courier,monospace;font-size:9px;letter-spacing:.1em;color:#e87c5a;margin-top:14px;display:none;}
+.shi-main{display:none;}
+/* Form */
+.shi-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);transition:width .4s;z-index:9998;}
+.shi-f{background:var(--paper);color:var(--ink);font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.65;max-width:860px;margin:0 auto;padding:0 20px 80px;}
+.shi-hero{padding:52px 0 42px;text-align:center;border-bottom:.5px solid var(--rule);margin-bottom:44px;}
+.shi-eyebrow{font-family:'Courier New',Courier,monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px;}
+.shi-h1{font-family:'Cormorant Garamond','Palatino Linotype',Georgia,serif;font-size:40px;font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:14px;}
+.shi-lead{font-size:14px;color:var(--ink-sub);max-width:520px;margin:0 auto;line-height:1.75;}
+.shi-notice{background:var(--paper-alt);border-left:2px solid var(--rule);padding:15px 20px;margin-bottom:28px;font-size:13.5px;color:var(--ink-sub);line-height:1.75;}
+.shi-notice strong{color:var(--ink);font-weight:600;}
+.shi-notice.ac{border-left-color:var(--accent);background:var(--accent-light);}
+.shi-notice.wn{border-left-color:var(--accent-dark);background:#fdf0ec;color:var(--ink);}
+.shi-sec{margin-bottom:46px;}
+.shi-sec-hdr{display:flex;align-items:baseline;gap:10px;margin-bottom:22px;padding-bottom:9px;border-bottom:.5px solid var(--rule);}
+.shi-sn{font-family:'Cormorant Garamond',Georgia,serif;font-size:13px;font-style:italic;color:var(--accent);flex-shrink:0;}
+.shi-st{font-family:'Cormorant Garamond','Palatino Linotype',Georgia,serif;font-size:21px;font-weight:400;color:var(--ink);}
+.shi-ss{font-family:'Courier New',Courier,monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);margin-left:auto;}
+.shi-sub{font-family:'Courier New',Courier,monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:22px 0 12px;padding-bottom:5px;border-bottom:.5px solid var(--rule-soft);}
+.shi-g{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px;}
+.shi-g.c1{grid-template-columns:1fr;}.shi-g.c3{grid-template-columns:1fr 1fr 1fr;}
+@media(max-width:580px){.shi-g,.shi-g.c3{grid-template-columns:1fr;}}
+.shi-fld{display:flex;flex-direction:column;gap:5px;}
+.shi-fld label{font-family:'Courier New',Courier,monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-sub);}
+.shi-fld .h{font-size:12px;color:var(--ink-muted);margin-top:-2px;line-height:1.5;}
+.shi-fld input[type=text],.shi-fld input[type=number],.shi-fld input[type=date],.shi-fld textarea,.shi-fld select{background:var(--paper);border:none;border-bottom:1px solid var(--rule);padding:9px 0;font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;color:var(--ink);width:100%;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none;border-radius:0;}
+.shi-fld input:focus,.shi-fld textarea:focus,.shi-fld select:focus{border-bottom-color:var(--accent);}
+.shi-fld textarea{resize:vertical;min-height:76px;line-height:1.65;}
+.shi-fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23b85c3e' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;padding-right:22px;cursor:pointer;}
+.shi-og{margin-bottom:20px;}
+.shi-ol{font-family:'Courier New',Courier,monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-sub);display:block;margin-bottom:5px;}
+.shi-oh{font-size:12px;color:var(--ink-muted);display:block;margin-bottom:10px;line-height:1.5;}
+.shi-cr{display:flex;flex-wrap:wrap;gap:7px;}
+.shi-chip{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink);padding:8px 16px;border:1px solid var(--rule);background:var(--paper);cursor:pointer;transition:all .15s;user-select:none;line-height:1.3;}
+.shi-chip:hover{border-color:var(--accent);background:var(--accent-light);}.shi-chip:has(input:checked){border-color:var(--accent);background:var(--accent-light);color:var(--accent-dark);}
+.shi-chip input{width:13px;height:13px;accent-color:var(--accent);flex-shrink:0;cursor:pointer;}
+/* Tables */
+.shi-tbl{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:14px;}
+.shi-tbl th{font-family:'Courier New',Courier,monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-sub);padding:9px 10px;border-bottom:1px solid var(--rule);background:var(--paper-alt);text-align:left;}
+.shi-tbl td{border-bottom:.5px solid var(--rule-soft);padding:0;vertical-align:middle;}
+.shi-tbl td.lbl{font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:.06em;color:var(--ink-sub);padding:9px 10px;background:var(--paper-alt);white-space:nowrap;}
+.shi-tbl td input,.shi-tbl td select{border:none;background:transparent;padding:8px 10px;width:100%;font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;color:var(--ink);outline:none;appearance:none;}
+.shi-tbl td input:focus,.shi-tbl td select:focus{background:var(--accent-light);}
+.shi-tbl tr:nth-child(even) td:not(.lbl){background:rgba(240,236,228,.25);}
+/* ROS */
+.shi-ros{width:100%;border-collapse:collapse;margin-bottom:20px;}
+.shi-ros th{font-family:'Courier New',Courier,monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-sub);padding:9px 12px;border-bottom:1px solid var(--rule);background:var(--paper-alt);text-align:left;}
+.shi-ros td{border-bottom:.5px solid var(--rule-soft);padding:0;vertical-align:middle;}
+.shi-ros .s{width:72px;text-align:center;}
+.shi-ros .s select{border:none;background:transparent;padding:9px 4px;font-family:'Courier New',Courier,monospace;font-size:12px;color:var(--accent);text-align:center;width:100%;outline:none;cursor:pointer;appearance:none;}
+.shi-ros .fd{padding:10px 14px;font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;color:var(--ink-sub);}
+.shi-ros .n{width:150px;}
+.shi-ros .n input{border:none;background:transparent;padding:9px 10px;width:100%;font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;color:var(--ink-muted);font-style:italic;outline:none;}
+.shi-ros .n input:focus{background:var(--accent-light);}
+.shi-ros tr:nth-child(even) td{background:rgba(240,236,228,.2);}
+/* Submit */
+.shi-sw{margin-top:52px;padding-top:40px;border-top:1px solid var(--rule);text-align:center;}
+.shi-consent{font-size:12.5px;color:var(--ink-muted);line-height:1.8;max-width:560px;margin:0 auto 32px;}
+.shi-submit{background:var(--ink);color:var(--paper);font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:16px 52px;border:none;cursor:pointer;transition:all .25s;}
+.shi-submit:hover{background:var(--accent);}.shi-submit:disabled{opacity:.4;cursor:not-allowed;}
+.shi-ok{display:none;margin-top:32px;padding:36px;background:var(--paper-alt);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);text-align:center;}
+.shi-ok h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:8px;}
+.shi-ok p{font-size:14px;color:var(--ink-sub);}
+.shi-ft{border-top:1px solid var(--rule);padding:24px 0;margin-top:60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.shi-ft-l{font-family:'Cormorant Garamond',Georgia,serif;font-size:13px;font-style:italic;color:var(--ink-sub);}
+.shi-ft-r{font-family:'Courier New',Courier,monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);text-align:right;line-height:1.7;}
+.req{color:var(--accent);}
+</style>
+
+<!-- Lock Screen -->
+
+<div class="shi-lock" id="shi-lock">
+  <div class="shi-lbrand">Signature Health Intelligence</div>
+  <div class="shi-lcred">Physician Access Only · Dr. D. R. Gamalathge</div>
+  <div class="shi-lbox">
+    <svg width="72" height="48" viewBox="0 0 230 100" style="display:block;margin:0 auto 24px" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 82 L80 82 C90 82,96 58,102 104 C108 68,122 82,140 82 C165 82,190 68,224 36" fill="none" stroke="rgba(252,251,247,0.4)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="140" cy="82" r="5" fill="#b85c3e"/>
+    </svg>
+    <h2>Clinical Record Access</h2>
+    <p>Restricted to Dr. D. R. Gamalathge only.<br>Enter your access code to continue.</p>
+    <input type="password" id="shi-code" placeholder="· · · · · · · ·">
+    <button class="shi-lbtn" onclick="shiUnlock()">Access Clinical Record</button>
+    <div class="shi-lerr" id="shi-lerr">Incorrect access code. Please try again.</div>
+  </div>
+</div>
+
+<!-- Main Content -->
+
+<div class="shi-main" id="shi-main">
+<div class="shi-progress" id="shi-prog3"></div>
+<div class="shi-f">
+
+<div class="shi-hero">
+  <span class="shi-eyebrow">Physician Use Only · First Consultation · Strictly Confidential</span>
+  <div class="shi-h1">Clinical History &amp;<br>Consultation Record</div>
+  <p class="shi-lead">Completed by Dr. D. R. Gamalathge during the first onboarding consultation. Captures structured clinical history to identify patterns, cancer risk indicators, hormonal concerns, and inform the Signature Health Intelligence Report narrative.</p>
+</div>
+
+<div class="shi-notice wn"><strong>Physician use only.</strong> This document is not a patient form. All entries are submitted securely and filed to the patient's Drive folder by GHC Patient ID. Do not share without explicit patient consent.</div>
+
+<form id="shi-form3" novalidate>
+
+<!-- Metadata -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ —</span><span class="shi-st">Consultation Record</span></div>
+  <div class="shi-g c3">
+    <div class="shi-fld">
+      <label>GHC Patient ID <span class="req">*</span></label>
+      <div style="display:flex;align-items:center;gap:0;border-bottom:1px solid var(--rule);padding:9px 0;" id="pid-wrap">
+        <span style="font-family:'Courier New',Courier,monospace;font-size:15px;color:var(--ink);white-space:nowrap;letter-spacing:.04em;">GHC-</span>
+        <select name="pid_year" id="pid_year" onchange="shiUpdatePID()" style="border:none;background:transparent;font-family:'Courier New',Courier,monospace;font-size:15px;color:var(--accent);padding:0 6px 0 0;outline:none;cursor:pointer;appearance:none;-webkit-appearance:none;width:52px;">
+          <option>2024</option><option>2025</option><option selected>2026</option><option>2027</option><option>2028</option>
+        </select>
+        <span style="font-family:'Courier New',Courier,monospace;font-size:15px;color:var(--ink);">-</span>
+        <input type="text" name="pid_number" id="pid_number" onchange="shiUpdatePID()" oninput="shiUpdatePID()" maxlength="8" placeholder="0001" style="border:none;background:transparent;font-family:'Courier New',Courier,monospace;font-size:15px;color:var(--ink);outline:none;padding:0 0 0 2px;width:90px;letter-spacing:.08em;">
+        <input type="hidden" name="patient_id" id="patient_id_hidden" required>
+      </div>
+      <span class="h">Select year · Type patient number · e.g. GHC-2026-0001</span>
+    </div>
+    <div class="shi-fld"><label>Consultation Date <span class="req">*</span></label><input type="date" name="consult_date" id="consult_date" required></div>
+    <div class="shi-fld"><label>Package</label><select name="package"><option>Essential</option><option>Premium</option><option>Elite</option></select></div>
+  </div>
+  <div class="shi-g">
+    <div class="shi-fld"><label>Consultation type</label><select name="consult_type"><option>In-person</option><option>WhatsApp call</option><option>Video call</option></select></div>
+    <div class="shi-fld"><label>Duration (minutes)</label><input type="number" name="duration" min="10" max="120" placeholder="e.g. 30"></div>
+  </div>
+</div>
+
+<!-- §1 -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ 1</span><span class="shi-st">Patient Demographics</span></div>
+  <div class="shi-g">
+    <div class="shi-fld"><label>Full name <span class="req">*</span></label><input type="text" name="full_name" required></div>
+    <div class="shi-fld"><label>DOB / Age <span class="req">*</span></label><input type="text" name="dob_age" required placeholder="DD/MM/YYYY / Age"></div>
+    <div class="shi-fld"><label>Biological sex</label><select name="sex"><option>Male</option><option>Female</option><option>Other</option></select></div>
+    <div class="shi-fld"><label>Ethnicity</label><select name="ethnicity"><option>Sinhalese</option><option>Tamil</option><option>Moor</option><option>Burgher</option><option>Other</option></select></div>
+    <div class="shi-fld"><label>Occupation</label><input type="text" name="occupation"></div>
+    <div class="shi-fld"><label>Marital status</label><select name="marital"><option value="">Select</option><option>Single</option><option>Married</option><option>Divorced</option><option>Widowed</option></select></div>
+  </div>
+</div>
+
+<!-- §2 -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ 2</span><span class="shi-st">Presenting Concern &amp; HPC</span></div>
+  <div class="shi-g c1"><div class="shi-fld"><label>Chief complaint in patient's own words</label><textarea name="chief_complaint" rows="2"></textarea></div></div>
+  <div class="shi-g c1"><div class="shi-fld"><label>History of presenting complaint (HPC)</label><span class="h">Onset · Character · Duration · Progression · Associated symptoms · Relieving/aggravating factors · Previous episodes · Impact on function</span><textarea name="hpc" rows="5"></textarea></div></div>
+  <div class="shi-g c1"><div class="shi-fld"><label>What does the patient most want to understand from this assessment?</label><textarea name="patient_goal" rows="2"></textarea></div></div>
+</div>
+
+<!-- §3 -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ 3</span><span class="shi-st">Past Medical History (PMH)</span></div>
+  <div class="shi-sub">Cardiovascular &amp; Metabolic</div>
+  <div class="shi-og"><span class="shi-ol">Hypertension</span><div class="shi-cr">
+    <label class="shi-chip"><input type="radio" name="pmh_htn" value="Yes - controlled"> Yes — controlled</label>
+    <label class="shi-chip"><input type="radio" name="pmh_htn" value="Yes - uncontrolled"> Yes — uncontrolled</label>
+    <label class="shi-chip"><input type="radio" name="pmh_htn" value="No"> No</label>
+  </div></div>
+  <div class="shi-og"><span class="shi-ol">Diabetes mellitus</span><div class="shi-cr">
+    <label class="shi-chip"><input type="radio" name="pmh_dm" value="Type 1"> Type 1</label>
+    <label class="shi-chip"><input type="radio" name="pmh_dm" value="Type 2"> Type 2</label>
+    <label class="shi-chip"><input type="radio" name="pmh_dm" value="Pre-DM"> Pre-DM</label>
+    <label class="shi-chip"><input type="radio" name="pmh_dm" value="No"> No</label>
+  </div></div>
+  <div class="shi-og"><span class="shi-ol">Ischaemic heart disease / angina</span><div class="shi-cr">
+    <label class="shi-chip"><input type="radio" name="pmh_ihd" value="Yes"> Yes</label>
+    <label class="shi-chip"><input type="radio" name="pmh_ihd" value="No"> No</label>
+  </div></div>
+  <div class="shi-g">
+    <div class="shi-fld"><label>MI / heart attack — year</label><input type="text" name="pmh_mi" placeholder="Year or None"></div>
+    <div class="shi-fld"><label>Stroke or TIA — year</label><input type="text" name="pmh_stroke" placeholder="Year or None"></div>
+  </div>
+  <div class="shi-og"><span class="shi-ol">Atrial fibrillation</span><div class="shi-cr">
+    <label class="shi-chip"><input type="radio" name="pmh_af" value="Yes - anticoagulated"> Yes — anticoagulated</label>
+    <label class="shi-chip"><input type="radio" name="pmh_af" value="Yes - untreated"> Yes — untreated</label>
+    <label class="shi-chip"><input type="radio" name="pmh_af" value="No"> No</label>
+  </div></div>
+  <div class="shi-sub">Endocrine &amp; Hormonal</div>
+  <div class="shi-og"><span class="shi-ol">Hypothyroidism</span><div class="shi-cr">
+    <label class="shi-chip"><input type="radio" name="pmh_hypo" value="Yes - on treatment"> Yes — on treatment</label>
+    <label class="shi-chip"><input type="radio" name="pmh_hypo" value="Yes - untreated"> Yes — untreated</label>
+    <label class="shi-chip"><input type="radio" name="pmh_hypo" value="No"> No</label>
+  </div></div>
+  <div class="shi-og"><span class="shi-ol">PCOS (women)</span><div class="shi-cr">
+    <label class="shi-chip"><input type="radio" name="pmh_pcos" value="Yes"> Yes</label>
+    <label class="shi-chip"><input type="radio" name="pmh_pcos" value="No"> No</label>
+    <label class="shi-chip"><input type="radio" name="pmh_pcos" value="N/A"> N/A</label>
+  </div></div>
+  <div class="shi-sub">Other</div>
+  <div class="shi-og"><span class="shi-ol">CKD / kidney disease</span><div class="shi-cr">
+    <label class="shi-chip"><input type="radio" name="pmh_ckd" value="Yes"> Yes</label>
+    <label class="shi-chip"><input type="radio" name="pmh_ckd" value="No"> No</label>
+  </div></div>
+  <div class="shi-og"><span class="shi-ol">Obstructive sleep apnoea</span><div class="shi-cr">
+    <label class="shi-chip"><input type="radio" name="pmh_osa" value="Yes - on CPAP"> Yes — on CPAP</label>
+    <label class="shi-chip"><input type="radio" name="pmh_osa" value="Yes - untreated"> Yes — untreated</label>
+    <label class="shi-chip"><input type="radio" name="pmh_osa" value="No"> No</label>
+  </div></div>
+  <div class="shi-og"><span class="shi-ol">Any active cancer or cancer in remission</span><div class="shi-cr">
+    <label class="shi-chip"><input type="radio" name="pmh_cancer" value="Yes"> Yes</label>
+    <label class="shi-chip"><input type="radio" name="pmh_cancer" value="No"> No</label>
+  </div></div>
+  <div class="shi-g c1"><div class="shi-fld"><label>Additional conditions not listed above</label><textarea name="pmh_other" rows="2"></textarea></div></div>
+</div>
+
+<!-- §4 -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ 4</span><span class="shi-st">Surgical &amp; Hospitalisation History</span></div>
+  <table class="shi-tbl">
+    <tr><th style="width:38%">Procedure / Surgery</th><th style="width:10%">Year</th><th style="width:27%">Hospital / Surgeon</th><th>Notes / Complications</th></tr>
+    <tr><td><input type="text" name="s1p"></td><td><input type="text" name="s1y"></td><td><input type="text" name="s1h"></td><td><input type="text" name="s1n"></td></tr>
+    <tr><td><input type="text" name="s2p"></td><td><input type="text" name="s2y"></td><td><input type="text" name="s2h"></td><td><input type="text" name="s2n"></td></tr>
+    <tr><td><input type="text" name="s3p"></td><td><input type="text" name="s3y"></td><td><input type="text" name="s3h"></td><td><input type="text" name="s3n"></td></tr>
+    <tr><td><input type="text" name="s4p"></td><td><input type="text" name="s4y"></td><td><input type="text" name="s4h"></td><td><input type="text" name="s4n"></td></tr>
+    <tr><td><input type="text" name="s5p"></td><td><input type="text" name="s5y"></td><td><input type="text" name="s5h"></td><td><input type="text" name="s5n"></td></tr>
+  </table>
+</div>
+
+<!-- §5 -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ 5</span><span class="shi-st">Full Medication Reconciliation</span></div>
+  <div class="shi-notice">Document ALL medications — prescribed, OTC, herbal, Ayurvedic. Note any recent changes in the past 3 months.</div>
+  <table class="shi-tbl">
+    <tr><th>Medication name</th><th style="width:10%">Dose</th><th style="width:12%">Frequency</th><th style="width:10%">Duration</th><th style="width:15%">Indication</th><th style="width:11%">Prescriber</th></tr>
+    <tr><td><input type="text" name="m1n"></td><td><input type="text" name="m1d"></td><td><input type="text" name="m1f"></td><td><input type="text" name="m1du"></td><td><input type="text" name="m1i"></td><td><input type="text" name="m1p"></td></tr>
+    <tr><td><input type="text" name="m2n"></td><td><input type="text" name="m2d"></td><td><input type="text" name="m2f"></td><td><input type="text" name="m2du"></td><td><input type="text" name="m2i"></td><td><input type="text" name="m2p"></td></tr>
+    <tr><td><input type="text" name="m3n"></td><td><input type="text" name="m3d"></td><td><input type="text" name="m3f"></td><td><input type="text" name="m3du"></td><td><input type="text" name="m3i"></td><td><input type="text" name="m3p"></td></tr>
+    <tr><td><input type="text" name="m4n"></td><td><input type="text" name="m4d"></td><td><input type="text" name="m4f"></td><td><input type="text" name="m4du"></td><td><input type="text" name="m4i"></td><td><input type="text" name="m4p"></td></tr>
+    <tr><td><input type="text" name="m5n"></td><td><input type="text" name="m5d"></td><td><input type="text" name="m5f"></td><td><input type="text" name="m5du"></td><td><input type="text" name="m5i"></td><td><input type="text" name="m5p"></td></tr>
+    <tr><td><input type="text" name="m6n"></td><td><input type="text" name="m6d"></td><td><input type="text" name="m6f"></td><td><input type="text" name="m6du"></td><td><input type="text" name="m6i"></td><td><input type="text" name="m6p"></td></tr>
+    <tr><td><input type="text" name="m7n"></td><td><input type="text" name="m7d"></td><td><input type="text" name="m7f"></td><td><input type="text" name="m7du"></td><td><input type="text" name="m7i"></td><td><input type="text" name="m7p"></td></tr>
+    <tr><td><input type="text" name="m8n"></td><td><input type="text" name="m8d"></td><td><input type="text" name="m8f"></td><td><input type="text" name="m8du"></td><td><input type="text" name="m8i"></td><td><input type="text" name="m8p"></td></tr>
+  </table>
+</div>
+
+<!-- §6 -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ 6</span><span class="shi-st">Detailed Family History</span></div>
+  <div class="shi-notice ac"><strong>Cancer red flag patterns:</strong> 3+ relatives with same cancer · Diagnosis before age 50 · Multiple primary cancers in one person · Bilateral cancer · Male breast cancer · Known BRCA/Lynch in family</div>
+  <table class="shi-tbl">
+    <tr><th style="width:20%">Relative</th><th style="width:14%">Age / Age at death</th><th style="width:24%">Cause of death (if deceased)</th><th>Conditions / Cancer type &amp; age at diagnosis</th></tr>
+    <tr><td class="lbl">Father</td><td><input type="text" name="fh_fa_age"></td><td><input type="text" name="fh_fa_cod"></td><td><input type="text" name="fh_fa_cond"></td></tr>
+    <tr><td class="lbl">Mother</td><td><input type="text" name="fh_mo_age"></td><td><input type="text" name="fh_mo_cod"></td><td><input type="text" name="fh_mo_cond"></td></tr>
+    <tr><td class="lbl">Paternal grandfather</td><td><input type="text" name="fh_pgf_age"></td><td><input type="text" name="fh_pgf_cod"></td><td><input type="text" name="fh_pgf_cond"></td></tr>
+    <tr><td class="lbl">Paternal grandmother</td><td><input type="text" name="fh_pgm_age"></td><td><input type="text" name="fh_pgm_cod"></td><td><input type="text" name="fh_pgm_cond"></td></tr>
+    <tr><td class="lbl">Maternal grandfather</td><td><input type="text" name="fh_mgf_age"></td><td><input type="text" name="fh_mgf_cod"></td><td><input type="text" name="fh_mgf_cond"></td></tr>
+    <tr><td class="lbl">Maternal grandmother</td><td><input type="text" name="fh_mgm_age"></td><td><input type="text" name="fh_mgm_cod"></td><td><input type="text" name="fh_mgm_cond"></td></tr>
+    <tr><td class="lbl">Brother 1</td><td><input type="text" name="fh_br1_age"></td><td><input type="text" name="fh_br1_cod"></td><td><input type="text" name="fh_br1_cond"></td></tr>
+    <tr><td class="lbl">Sister 1</td><td><input type="text" name="fh_si1_age"></td><td><input type="text" name="fh_si1_cod"></td><td><input type="text" name="fh_si1_cond"></td></tr>
+    <tr><td class="lbl">Paternal aunt / uncle</td><td><input type="text" name="fh_pau1_age"></td><td><input type="text" name="fh_pau1_cod"></td><td><input type="text" name="fh_pau1_cond"></td></tr>
+    <tr><td class="lbl">Maternal aunt / uncle</td><td><input type="text" name="fh_mau1_age"></td><td><input type="text" name="fh_mau1_cod"></td><td><input type="text" name="fh_mau1_cond"></td></tr>
+  </table>
+  <div class="shi-g c1"><div class="shi-fld"><label>Hereditary cancer pattern notes</label><span class="h">Note if family history triggers BRCA, Lynch, FAP, MEN, or other hereditary syndrome consideration</span><textarea name="fh_notes" rows="2"></textarea></div></div>
+</div>
+
+<!-- §7 -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ 7</span><span class="shi-st">Social History</span></div>
+  <div class="shi-g">
+    <div class="shi-fld"><label>Smoking (pack years)</label><input type="text" name="sh_smoking" placeholder="Current / Ex / Never · Pack-years:"></div>
+    <div class="shi-fld"><label>Alcohol (units/week estimated)</label><input type="text" name="sh_alcohol"></div>
+    <div class="shi-fld"><label>Occupation &amp; work stress level</label><input type="text" name="sh_work" placeholder="Job title · Low / Moderate / High stress"></div>
+    <div class="shi-fld"><label>Sleep quality &amp; hours</label><input type="text" name="sh_sleep" placeholder="e.g. 6 hrs, poor quality"></div>
+    <div class="shi-fld"><label>Dietary pattern</label><input type="text" name="sh_diet" placeholder="Mixed / Vegetarian / Pattern notes"></div>
+    <div class="shi-fld"><label>Living situation</label><select name="sh_living"><option>With family</option><option>With partner</option><option>Alone</option><option>Other</option></select></div>
+  </div>
+  <div class="shi-g c1"><div class="shi-fld"><label>Psychosocial stressors</label><span class="h">Financial stress, bereavement, relationship issues, significant life events in past 2 years</span><textarea name="sh_stress" rows="2"></textarea></div></div>
+</div>
+
+<!-- §8 -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ 8</span><span class="shi-st">Obstetric &amp; Gynaecological History</span><span class="shi-ss">Female patients</span></div>
+  <div class="shi-g">
+    <div class="shi-fld"><label>Age at menarche</label><input type="text" name="ob_men"></div>
+    <div class="shi-fld"><label>LMP / menopausal status</label><input type="text" name="ob_lmp" placeholder="Date or Menopausal"></div>
+    <div class="shi-fld"><label>Cycle length &amp; regularity</label><input type="text" name="ob_cycle" placeholder="e.g. 28 days, regular"></div>
+    <div class="shi-fld"><label>Pregnancies (G/P/A)</label><input type="text" name="ob_gpa" placeholder="Gravida / Para / Abortus"></div>
+    <div class="shi-fld"><label>Pregnancy complications</label><input type="text" name="ob_comp" placeholder="GDM, pre-eclampsia, miscarriage, IUGR"></div>
+    <div class="shi-fld"><label>Contraception (current / past)</label><input type="text" name="ob_contra"></div>
+    <div class="shi-fld"><label>HRT (current / past)</label><input type="text" name="ob_hrt"></div>
+    <div class="shi-fld"><label>Last Pap smear — date &amp; result</label><input type="text" name="ob_pap"></div>
+    <div class="shi-fld"><label>Last mammogram — date &amp; result</label><input type="text" name="ob_mammo"></div>
+  </div>
+</div>
+
+<!-- §9 -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ 9</span><span class="shi-st">Review of Systems — Physician Directed</span></div>
+  <div class="shi-notice"><strong>Mark:</strong> P = Present &nbsp;·&nbsp; A = Absent &nbsp;·&nbsp; NS = Not screened &nbsp;·&nbsp; ? = Uncertain / needs follow-up.</div>
+  <div class="shi-sub">Cardiovascular</div>
+  <table class="shi-ros">
+    <tr><th class="s">Status</th><th>Finding</th><th class="n">Notes</th></tr>
+    <tr><td class="s"><select name="ros_cp"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Chest pain or tightness (exertional / at rest)</td><td class="n"><input type="text" name="ros_cp_n"></td></tr>
+    <tr><td class="s"><select name="ros_palp"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Palpitations (fast / irregular / missed beats)</td><td class="n"><input type="text" name="ros_palp_n"></td></tr>
+    <tr><td class="s"><select name="ros_doe"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Dyspnoea on exertion</td><td class="n"><input type="text" name="ros_doe_n"></td></tr>
+    <tr><td class="s"><select name="ros_oedema"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Ankle / leg swelling</td><td class="n"><input type="text" name="ros_oedema_n"></td></tr>
+    <tr><td class="s"><select name="ros_sync"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Syncope or pre-syncope</td><td class="n"><input type="text" name="ros_sync_n"></td></tr>
+  </table>
+  <div class="shi-sub">Gastrointestinal</div>
+  <table class="shi-ros">
+    <tr><th class="s">Status</th><th>Finding</th><th class="n">Notes</th></tr>
+    <tr><td class="s"><select name="ros_dysph"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Dysphagia / odynophagia</td><td class="n"><input type="text" name="ros_dysph_n"></td></tr>
+    <tr><td class="s"><select name="ros_bowel"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Change in bowel habit (&gt;4 weeks)</td><td class="n"><input type="text" name="ros_bowel_n"></td></tr>
+    <tr><td class="s"><select name="ros_prbleed"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Rectal bleeding / melaena</td><td class="n"><input type="text" name="ros_prbleed_n"></td></tr>
+    <tr><td class="s"><select name="ros_wloss"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Unexplained weight loss &gt;5 kg</td><td class="n"><input type="text" name="ros_wloss_n"></td></tr>
+  </table>
+  <div class="shi-sub">Neurological</div>
+  <table class="shi-ros">
+    <tr><th class="s">Status</th><th>Finding</th><th class="n">Notes</th></tr>
+    <tr><td class="s"><select name="ros_ha"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Headache (new pattern / character / frequency)</td><td class="n"><input type="text" name="ros_ha_n"></td></tr>
+    <tr><td class="s"><select name="ros_vis"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Visual disturbance (new)</td><td class="n"><input type="text" name="ros_vis_n"></td></tr>
+    <tr><td class="s"><select name="ros_weak"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Weakness / paralysis / sensory change</td><td class="n"><input type="text" name="ros_weak_n"></td></tr>
+    <tr><td class="s"><select name="ros_mem"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Memory or cognitive change</td><td class="n"><input type="text" name="ros_mem_n"></td></tr>
+  </table>
+  <div class="shi-sub">Endocrine &amp; Haematological</div>
+  <table class="shi-ros">
+    <tr><th class="s">Status</th><th>Finding</th><th class="n">Notes</th></tr>
+    <tr><td class="s"><select name="ros_poly"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Polydipsia / polyuria</td><td class="n"><input type="text" name="ros_poly_n"></td></tr>
+    <tr><td class="s"><select name="ros_temp"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Heat or cold intolerance</td><td class="n"><input type="text" name="ros_temp_n"></td></tr>
+    <tr><td class="s"><select name="ros_neck"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Neck swelling / goitre</td><td class="n"><input type="text" name="ros_neck_n"></td></tr>
+    <tr><td class="s"><select name="ros_lymph"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Lymphadenopathy</td><td class="n"><input type="text" name="ros_lymph_n"></td></tr>
+    <tr><td class="s"><select name="ros_nsweats"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Night sweats (drenching)</td><td class="n"><input type="text" name="ros_nsweats_n"></td></tr>
+    <tr><td class="s"><select name="ros_sleep"><option value="">—</option><option>P</option><option>A</option><option>NS</option><option>?</option></select></td><td class="fd">Sleep quality / snoring / witnessed apnoeas</td><td class="n"><input type="text" name="ros_sleep_n"></td></tr>
+  </table>
+  <div class="shi-g c1" style="margin-top:12px;"><div class="shi-fld"><label>Additional ROS notes</label><textarea name="ros_other" rows="2"></textarea></div></div>
+</div>
+
+<!-- §10 -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ 10</span><span class="shi-st">Cancer Risk — Targeted Clinical Questioning</span></div>
+  <div class="shi-notice wn">Directed questioning to surface undisclosed symptoms and assess whether tumour marker interpretation or referral is warranted.</div>
+  <table class="shi-tbl">
+    <tr><th style="width:130px">Domain</th><th>Directed Question</th><th style="width:160px">Answer / Notes</th></tr>
+    <tr><td class="lbl">Hereditary</td><td style="padding:9px 12px;font-size:14px;color:var(--ink-sub);">Any first-degree relative with cancer before age 50?</td><td><input type="text" name="cq1"></td></tr>
+    <tr><td class="lbl"></td><td style="padding:9px 12px;font-size:14px;color:var(--ink-sub);">Any relative with multiple primary cancers?</td><td><input type="text" name="cq2"></td></tr>
+    <tr><td class="lbl"></td><td style="padding:9px 12px;font-size:14px;color:var(--ink-sub);">Known BRCA1/2, Lynch, FAP, or MEN in family?</td><td><input type="text" name="cq3"></td></tr>
+    <tr><td class="lbl">Colorectal</td><td style="padding:9px 12px;font-size:14px;color:var(--ink-sub);">First-degree relative with CRC or colorectal polyps? Age?</td><td><input type="text" name="cq4"></td></tr>
+    <tr><td class="lbl"></td><td style="padding:9px 12px;font-size:14px;color:var(--ink-sub);">Prior colonoscopy? When and result?</td><td><input type="text" name="cq5"></td></tr>
+    <tr><td class="lbl">Breast / Ovary</td><td style="padding:9px 12px;font-size:14px;color:var(--ink-sub);">First-degree relative with breast or ovarian cancer? Age?</td><td><input type="text" name="cq6"></td></tr>
+    <tr><td class="lbl">Gastric</td><td style="padding:9px 12px;font-size:14px;color:var(--ink-sub);">Family history of gastric cancer? H. pylori status?</td><td><input type="text" name="cq7"></td></tr>
+    <tr><td class="lbl">Hepatocellular</td><td style="padding:9px 12px;font-size:14px;color:var(--ink-sub);">Hepatitis B or C carrier? Cirrhosis or significant NAFLD?</td><td><input type="text" name="cq8"></td></tr>
+    <tr><td class="lbl">Prostate (M)</td><td style="padding:9px 12px;font-size:14px;color:var(--ink-sub);">First-degree relative with prostate cancer? Prior PSA?</td><td><input type="text" name="cq9"></td></tr>
+    <tr><td class="lbl">Thyroid</td><td style="padding:9px 12px;font-size:14px;color:var(--ink-sub);">Prior neck irradiation? Family history of thyroid cancer or MEN?</td><td><input type="text" name="cq10"></td></tr>
+    <tr><td class="lbl">Haematological</td><td style="padding:9px 12px;font-size:14px;color:var(--ink-sub);">B symptoms present? (night sweats + weight loss + fatigue)</td><td><input type="text" name="cq11"></td></tr>
+  </table>
+</div>
+
+<!-- §11 -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ 11</span><span class="shi-st">Hormonal Axis — Physician Notes</span></div>
+  <div class="shi-sub">Thyroid Axis</div>
+  <div class="shi-g c1"><div class="shi-fld"><span class="h">TSH trend · Antibody history · Symptoms cross-referenced · Prior imaging · Dose adequacy if on levothyroxine</span><textarea name="h_thyroid" rows="2" placeholder="Physician notes…"></textarea></div></div>
+  <div class="shi-sub">Adrenal Axis</div>
+  <div class="shi-g c1"><div class="shi-fld"><span class="h">Cortisol timing · Steroid exposure · Cushing / Addison clinical features</span><textarea name="h_adrenal" rows="2" placeholder="Physician notes…"></textarea></div></div>
+  <div class="shi-sub">Reproductive Axis (Male)</div>
+  <div class="shi-g c1"><div class="shi-fld"><span class="h">Testosterone deficiency symptoms · Gonadotropin status · Prolactin indication</span><textarea name="h_male" rows="2" placeholder="Physician notes…"></textarea></div></div>
+  <div class="shi-sub">Reproductive Axis (Female)</div>
+  <div class="shi-g c1"><div class="shi-fld"><span class="h">Menstrual / menopausal mapping · PCOS features · Prolactin indication · HRT assessment</span><textarea name="h_female" rows="2" placeholder="Physician notes…"></textarea></div></div>
+  <div class="shi-sub">Metabolic / Insulin Axis</div>
+  <div class="shi-g c1"><div class="shi-fld"><span class="h">Insulin resistance markers · HOMA-IR indication · Visceral adiposity pattern · NAFLD association</span><textarea name="h_metabolic" rows="2" placeholder="Physician notes…"></textarea></div></div>
+</div>
+
+<!-- §12 -->
+
+<div class="shi-sec">
+  <div class="shi-sec-hdr"><span class="shi-sn">§ 12</span><span class="shi-st">Physical Examination Summary</span></div>
+  <div class="shi-g">
+    <div class="shi-fld"><label>BP — right arm, seated (mmHg)</label><input type="text" name="pe_bpr" placeholder="e.g. 134/82"></div>
+    <div class="shi-fld"><label>BP — left arm / standing</label><input type="text" name="pe_bpl" placeholder="If indicated"></div>
+    <div class="shi-fld"><label>Heart rate (bpm)</label><input type="text" name="pe_hr" placeholder="e.g. 76, regular"></div>
+    <div class="shi-fld"><label>SpO2 (%)</label><input type="text" name="pe_spo2" placeholder="e.g. 98%"></div>
+    <div class="shi-fld"><label>Height (cm)</label><input type="number" name="pe_ht"></div>
+    <div class="shi-fld"><label>Weight (kg)</label><input type="number" name="pe_wt"></div>
+    <div class="shi-fld"><label>BMI (kg/m²)</label><input type="text" name="pe_bmi"></div>
+    <div class="shi-fld"><label>Waist circumference (cm)</label><input type="number" name="pe_waist"></div>
+  </div>
+  <div class="shi-g c1"><div class="shi-fld"><label>Cardiovascular examination</label><span class="h">Heart sounds, murmurs, peripheral pulses, oedema, JVP</span><textarea name="pe_cvs" rows="2"></textarea></div></div>
+  <div class="shi-g c1"><div class="shi-fld"><label>Abdominal examination</label><span class="h">Organomegaly, tenderness, ascites, masses</span><textarea name="pe_abdo" rows="2"></textarea></div></div>
+  <div class="shi-g c1"><div class="shi-fld"><label>Neck / thyroid examination</label><span class="h">Goitre, nodules, lymphadenopathy</span><textarea name="pe_neck" rows="1"></textarea></div></div>
+  <div class="shi-g c1"><div class="shi-fld"><label>Skin / other relevant findings</label><span class="h">Acanthosis nigricans, xanthelasma, xanthomata, clubbing, skin lesions</span><textarea name="pe_skin" rows="1"></textarea></div></div>
+</div>
+
+<div class="shi-sw">
+  <p class="shi-consent">Submitting this record will file it securely to the patient's Drive folder and send a copy to dimithra@signaturehealthintel.com. This record is physician-authored and forms part of the clinical documentation for Signature Health Intelligence. All entries must be made by Dr. D. R. Gamalathge (MBBS), SLMC No. 36999.</p>
+  <button type="submit" class="shi-submit" id="shi-btn3">Save Clinical Record</button>
+  <div class="shi-ok" id="shi-ok3">
+    <h3>Record Saved</h3>
+    <p id="shi-ok3-msg">Clinical history submitted securely.</p>
+  </div>
+</div>
+
+</form>
+
+<div class="shi-ft">
+  <div class="shi-ft-l"><svg width="200" height="34" viewBox="0 0 320 52" xmlns="http://www.w3.org/2000/svg"><g transform="translate(0,10) scale(0.20)"><path d="M16 82 L80 82 C90 82,96 58,102 104 C108 68,122 82,140 82 C165 82,190 68,224 36" fill="none" stroke="#2a2420" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="140" cy="82" r="5" fill="#b85c3e"/></g><text x="46" y="26" font-family="'Cormorant Garamond',Georgia,serif" font-size="17" font-style="italic" fill="#2a2420">Dr. Dimithra Gamalathge</text><line x1="46" y1="32" x2="290" y2="32" stroke="#b85c3e" stroke-width="0.5" opacity="0.5"/><text x="46" y="44" font-family="'Courier New',Courier,monospace" font-size="8" fill="#a8a095" letter-spacing="2">MBBS · SLMC No. 36999</text></svg></div>
+  <div class="shi-ft-r">Physician Use Only · Strictly Confidential<br>Signature Health Intelligence<br>© Gamalathge Healthcare 2026</div>
+</div>
+
+</div>
+</div><!-- /shi-main -->
+
+<script>
+// ── Access code — hashed with Web Crypto (code never visible in source) ──
+// Access code is: DRG2026
+var HASH = '552bd889c992e5c87174f916facc69ce3f991326ae8bc8f004c37ba84b75b04a';
+
+async function sha256(str) {
+  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+}
+
+async function shiUnlock() {
+  var input = document.getElementById('shi-code').value;
+  var hash = await sha256(input);
+  if (hash === HASH) {
+    document.getElementById('shi-lock').style.display = 'none';
+    document.getElementById('shi-main').style.display = 'block';
+    // Auto-fill today's date
+    document.getElementById('consult_date').value = new Date().toISOString().split('T')[0];
+  } else {
+    document.getElementById('shi-lerr').style.display = 'block';
+    document.getElementById('shi-code').value = '';
+    document.getElementById('shi-code').focus();
+  }
+}
+
+document.getElementById('shi-code').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') shiUnlock();
+});
+
+// ── Patient ID builder — auto-pads to 4 digits ───────────────
+function shiUpdatePID() {
+  var yr = document.getElementById('pid_year').value;
+  var raw = document.getElementById('pid_number').value.trim();
+  var padded = raw ? raw.padStart(4, '0') : '';
+  document.getElementById('patient_id_hidden').value = raw ? ('GHC-' + yr + '-' + padded) : '';
+}
+
+// ── Progress bar ──────────────────────────────────────────────
+window.addEventListener('scroll', function() {
+  var p = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('shi-prog3').style.width = p + '%';
+});
+
+// ── Form submission ───────────────────────────────────────────
+document.getElementById('shi-form3').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('shi-btn3');
+
+  var pid = document.getElementById('patient_id_hidden').value;
+  if (!pid) {
+    alert('Please enter the GHC Patient ID before saving.');
+    document.getElementById('pid_number').focus();
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = 'Saving…';
+  var data = {};
+  new FormData(e.target).forEach(function(v, k) {
+    if (data[k]) { data[k] = Array.isArray(data[k]) ? data[k].concat(v) : [data[k], v]; } else { data[k] = v; }
+  });
+  data._form = 'Physician Clinical Record';
+  data._submitted = new Date().toISOString();
+  data._patient_id = pid;
+
+  try {
+    var res = await fetch('https://dimithra.app.n8n.cloud/webhook/form3-physician', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      e.target.style.opacity = '0.2'; e.target.style.pointerEvents = 'none';
+      document.getElementById('shi-ok3').style.display = 'block';
+      document.getElementById('shi-ok3-msg').innerHTML =
+        'Clinical record for <strong>' + pid + '</strong> filed to Drive and sent to dimithra@signaturehealthintel.com';
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    } else {
+      btn.disabled = false; btn.textContent = 'Save Clinical Record';
+      alert('Submission failed. Please retry.');
+    }
+  } catch(err) {
+    btn.disabled = false; btn.textContent = 'Save Clinical Record';
+    alert('Network error. Please try again.');
+  }
+});
+</script>
