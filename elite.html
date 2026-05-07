@@ -438,7 +438,7 @@ document.getElementById('shi-form2').addEventListener('submit',async function(e)
   e.preventDefault();var btn=document.getElementById('shi-btn2');btn.disabled=true;btn.textContent='Submitting…';
   var data={};new FormData(e.target).forEach(function(v,k){if(data[k]){data[k]=Array.isArray(data[k])?data[k].concat(v):[data[k],v];}else{data[k]=v;}});
   data._form='Elite Intake';data._submitted=new Date().toISOString();
-  try{var res=await fetch('https://dimithra.app.n8n.cloud/webhook/form2-elite',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+  try{var res=await fetch('https://dimithra.app.n8n.cloud/webhook/form-inkate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     if(res.ok){e.target.style.opacity='0.2';e.target.style.pointerEvents='none';document.getElementById('shi-ok2').style.display='block';window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});}
     else{btn.disabled=false;btn.textContent='Submit Elite Patient Intake';alert('Submission failed. Please try again.');}
   }catch(err){btn.disabled=false;btn.textContent='Submit Elite Patient Intake';alert('Network error. Please try again.');}
