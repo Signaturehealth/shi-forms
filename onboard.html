@@ -767,6 +767,7 @@
 
     try {
       const res = await fetch(WEBHOOK_URL, {
+        mode: 'cors',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -774,7 +775,8 @@
 
       if (!res.ok) throw new Error('HTTP ' + res.status);
 
-      const data = await res.json();
+      let data = {};
+      try { data = await res.json(); } catch(e) { data = { ghcId: null, formUrl: null }; }
 
       // Extract GHC ID and form URL from response
       // Workflow 2 responds with patient data including ghc_id and form_url
