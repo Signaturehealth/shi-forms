@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>New Patient — SHI Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Serif+4:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #1a1512;
+    --ink2:     #2e2822;
+    --ink3:     #4a4138;
+    --ink4:     #6b6156;
+    --terra:    #b85c3e;
+    --terra2:   #8c3a20;
+    --paper:    #fffefa;
+    --paper2:   #f5f1e8;
+    --border:   #d4cabb;
+    --border2:  #c4baaa;
+    --green:    #3d6b4a;
+    --green-bg: #f0f6f2;
+  }
+
+  html, body {
+    min-height: 100vh;
+    background: var(--paper2);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: var(--ink);
+    padding: 18px 24px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .header-brand {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: #f5f1e8;
+    line-height: 1.2;
+  }
+
+  .header-cred {
+    font-family: 'Courier New', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    color: #6b6156;
+    margin-top: 3px;
+    text-transform: uppercase;
+  }
+
+  .header-badge {
+    font-family: 'Courier New', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.18em;
+    color: var(--terra);
+    text-transform: uppercase;
+    background: rgba(184,92,62,0.12);
+    padding: 4px 10px;
+    border: 1px solid rgba(184,92,62,0.3);
+  }
+
+  /* ── MAIN CONTAINER ── */
+  .main {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 28px 20px 80px;
+  }
+
+  /* ── PAGE TITLE ── */
+  .page-title-block {
+    margin-bottom: 28px;
+  }
+
+  .page-eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.26em;
+    color: var(--terra);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .page-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.9rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  .page-subtitle {
+    font-size: 0.875rem;
+    color: var(--ink4);
+    margin-top: 8px;
+    line-height: 1.65;
+  }
+
+  /* ── FORM CARD ── */
+  .form-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--terra);
+    padding: 28px 24px;
+    margin-bottom: 20px;
+  }
+
+  /* ── FIELD ── */
+  .field {
+    margin-bottom: 20px;
+  }
+
+  .field:last-child { margin-bottom: 0; }
+
+  .field-label {
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    color: var(--ink3);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .field-label .req { color: var(--terra); margin-left: 3px; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select {
+    width: 100%;
+    background: var(--paper);
+    border: 1px solid var(--border2);
+    border-radius: 0;
+    padding: 14px 16px;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    appearance: none;
+    transition: border-color 0.2s;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  input:focus, select:focus {
+    border-color: var(--terra);
+    box-shadow: 0 0 0 2px rgba(184,92,62,0.09);
+    background: white;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234a4138' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-color: var(--paper);
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  input.invalid, select.invalid { border-color: var(--terra); }
+
+  .field-error {
+    font-size: 0.7rem;
+    color: var(--terra);
+    margin-top: 5px;
+    display: none;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── PACKAGE CARDS ── */
+  .package-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pkg-card {
+    border: 1px solid var(--border2);
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--paper);
+    position: relative;
+  }
+
+  .pkg-card:hover { border-color: var(--terra); background: rgba(184,92,62,0.02); }
+
+  .pkg-card.selected {
+    border-color: var(--terra);
+    background: rgba(184,92,62,0.04);
+  }
+
+  .pkg-card.selected::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--terra);
+  }
+
+  .pkg-card input[type="radio"] {
+    position: absolute; opacity: 0; width: 0; height: 0;
+  }
+
+  .pkg-radio-dot {
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--border2);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: all 0.15s;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .pkg-card.selected .pkg-radio-dot {
+    border-color: var(--terra);
+    background: var(--terra);
+  }
+
+  .pkg-card.selected .pkg-radio-dot::after {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: white;
+  }
+
+  .pkg-info { flex: 1; }
+
+  .pkg-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+
+  .pkg-desc {
+    font-size: 0.8rem;
+    color: var(--ink4);
+    margin-top: 3px;
+    line-height: 1.5;
+  }
+
+  .pkg-price {
+    font-family: 'Courier New', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--terra);
+    text-align: right;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .field-error-pkg {
+    font-size: 0.7rem;
+    color: var(--terra);
+    margin-top: 6px;
+    display: none;
+    font-family: 'Courier New', monospace;
+  }
+
+  /* ── SUBMIT BUTTON ── */
+  .submit-btn {
+    width: 100%;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    padding: 18px 24px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .submit-btn:hover { background: var(--terra); }
+  .submit-btn:disabled { background: var(--border); cursor: not-allowed; }
+
+  /* ── RESULT CARD ── */
+  .result-card {
+    display: none;
+    background: white;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--green);
+    padding: 28px 24px;
+    margin-top: 20px;
+  }
+
+  .result-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .result-check {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--green-bg);
+    border: 1.5px solid var(--green);
+    color: var(--green);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .result-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  .result-subtitle {
+    font-size: 0.8rem;
+    color: var(--ink4);
+    margin-top: 3px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── GHC ID DISPLAY ── */
+  .ghc-display {
+    background: var(--paper2);
+    border: 1px solid var(--border2);
+    border-left: 3px solid var(--terra);
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+
+  .ghc-display-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: var(--ink4);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .ghc-display-id {
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .ghc-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    background: transparent;
+    border: 1px solid var(--border2);
+    padding: 8px 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    color: var(--ink3);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+  }
+
+  .ghc-copy-btn:hover { border-color: var(--terra); color: var(--terra); }
+  .ghc-copy-btn.copied { border-color: var(--green); color: var(--green); }
+
+  /* ── RESULT DETAILS ── */
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+
+  .result-row:last-child { border-bottom: none; }
+
+  .result-row-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    color: var(--ink4);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .result-row-value {
+    font-size: 0.9rem;
+    color: var(--ink);
+    text-align: right;
+  }
+
+  /* ── FORM LINK SECTION ── */
+  .form-link-section {
+    margin-top: 20px;
+    background: var(--paper2);
+    border: 1px solid var(--border);
+    padding: 18px;
+  }
+
+  .form-link-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: var(--terra);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .form-link-text {
+    font-size: 0.8rem;
+    color: var(--ink3);
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .form-link-url {
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: var(--ink3);
+    word-break: break-all;
+    background: white;
+    border: 1px solid var(--border2);
+    padding: 10px 12px;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .link-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .link-copy-btn:hover { background: var(--terra); }
+  .link-copy-btn.copied { background: var(--green); }
+
+  /* ── NEW PATIENT RESET ── */
+  .reset-btn {
+    width: 100%;
+    background: transparent;
+    color: var(--ink4);
+    border: 1px solid var(--border2);
+    padding: 14px 24px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-top: 14px;
+  }
+
+  .reset-btn:hover { border-color: var(--terra); color: var(--terra); }
+
+  /* ── ERROR CARD ── */
+  .error-card {
+    display: none;
+    background: #fff5f3;
+    border: 1px solid #f0c0b0;
+    border-left: 3px solid var(--terra);
+    padding: 16px 18px;
+    margin-top: 16px;
+  }
+
+  .error-card-title {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    color: var(--terra2);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .error-card-body {
+    font-size: 0.875rem;
+    color: var(--ink3);
+    line-height: 1.65;
+  }
+
+  /* ── SECURITY NOTE ── */
+  .security-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    background: var(--paper2);
+    border: 1px solid var(--border);
+    margin-top: 20px;
+  }
+
+  .security-note-icon {
+    font-size: 0.85rem;
+    color: var(--ink4);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .security-note-text {
+    font-size: 0.78rem;
+    color: var(--ink4);
+    line-height: 1.6;
+  }
+
+  /* ── MOBILE FINE-TUNE ── */
+  @media (max-width: 420px) {
+    .page-header { padding: 14px 16px; }
+    .main { padding: 22px 16px 60px; }
+    .form-card { padding: 22px 18px; }
+    .page-title { font-size: 1.65rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="page-header">
+  <div class="header-logo">
+    <svg width="38" height="30" viewBox="0 0 130 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 72 L46 72 C54 72, 58 50, 64 88 C70 55, 80 72, 94 72 C110 72, 124 58, 138 36"
+        fill="none" stroke="#f5f1e8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="94" cy="72" r="5" fill="#b85c3e"/>
+    </svg>
+    <div>
+      <div class="header-brand">Signature Health Intelligence</div>
+      <div class="header-cred">Dr. D. R. Gamalathge &middot; SLMC 36999</div>
+    </div>
+  </div>
+  <div class="header-badge">Physician Access</div>
+</header>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="page-title-block">
+    <div class="page-eyebrow">New Patient</div>
+    <div class="page-title">Onboard a patient</div>
+    <div class="page-subtitle">Generates a GHC ID, creates the Drive folder, adds the patient to the CRM, and sends you the intake form link — all in one tap.</div>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card" id="form-card">
+    <div class="field">
+      <label class="field-label" for="f-name">Full name <span class="req">*</span></label>
+      <input type="text" id="f-name" name="patient_name" placeholder="e.g. Dilshan Sirisena" autocomplete="name">
+      <div class="field-error" id="err-name">Patient name is required.</div>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="f-phone">WhatsApp number <span class="req">*</span></label>
+      <input type="tel" id="f-phone" name="patient_phone" placeholder="+94 77 123 4567" autocomplete="tel">
+      <div class="field-error" id="err-phone">WhatsApp number is required.</div>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="f-email">Email address</label>
+      <input type="email" id="f-email" name="patient_email" placeholder="patient@email.com" autocomplete="email">
+      <div class="field-error" id="err-email">Please enter a valid email address.</div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Package <span class="req">*</span></label>
+      <div class="package-grid">
+
+        <div class="pkg-card" id="pkg-essential" onclick="selectPackage('Essential')">
+          <input type="radio" name="package" value="Essential">
+          <div class="pkg-radio-dot"></div>
+          <div class="pkg-info">
+            <div class="pkg-name">Essential</div>
+            <div class="pkg-desc">8 investigations · At-home collection · Core report</div>
+          </div>
+          <div class="pkg-price">LKR 49,000</div>
+        </div>
+
+        <div class="pkg-card" id="pkg-premium" onclick="selectPackage('Premium')">
+          <input type="radio" name="package" value="Premium">
+          <div class="pkg-radio-dot"></div>
+          <div class="pkg-info">
+            <div class="pkg-name">Premium <span style="font-size:0.68rem;color:var(--terra);font-family:'Courier New',monospace;letter-spacing:0.1em">· Most popular</span></div>
+            <div class="pkg-desc">14+ investigations · Full CVD risk · Final consultation</div>
+          </div>
+          <div class="pkg-price">LKR 69,000</div>
+        </div>
+
+        <div class="pkg-card" id="pkg-elite" onclick="selectPackage('Elite')">
+          <input type="radio" name="package" value="Elite">
+          <div class="pkg-radio-dot"></div>
+          <div class="pkg-info">
+            <div class="pkg-name">Elite</div>
+            <div class="pkg-desc">24 investigations · Hormonal + tumour markers · 30d direct access</div>
+          </div>
+          <div class="pkg-price">LKR 95,000</div>
+        </div>
+
+      </div>
+      <div class="field-error-pkg" id="err-package">Please select a package.</div>
+    </div>
+
+    <button class="submit-btn" id="submit-btn" onclick="submitForm()">
+      <span id="btn-text">Onboard patient</span>
+      <span id="btn-arrow">→</span>
+    </button>
+
+    <div class="error-card" id="error-card">
+      <div class="error-card-title">Onboarding failed</div>
+      <div class="error-card-body" id="error-msg">Something went wrong. Please check your connection and try again.</div>
+    </div>
+  </div>
+
+  <!-- SECURITY NOTE -->
+  <div class="security-note">
+    <span class="security-note-icon">🔒</span>
+    <div class="security-note-text">This page is for physician use only. Patient data is transmitted directly to your n8n instance and stored in your Google Drive and Sheets — no third parties involved.</div>
+  </div>
+
+  <!-- RESULT CARD -->
+  <div class="result-card" id="result-card">
+
+    <div class="result-header">
+      <div class="result-check">✓</div>
+      <div>
+        <div class="result-title">Patient onboarded</div>
+        <div class="result-subtitle" id="result-ts"></div>
+      </div>
+    </div>
+
+    <!-- GHC ID -->
+    <div class="ghc-display">
+      <div class="ghc-display-label">GHC Patient ID</div>
+      <div class="ghc-display-id" id="result-ghc-id">—</div>
+      <button class="ghc-copy-btn" id="ghc-copy-btn" onclick="copyGhcId()">
+        <span id="ghc-copy-text">Copy ID</span>
+      </button>
+    </div>
+
+    <!-- Details -->
+    <div id="result-details"></div>
+
+    <!-- Form link -->
+    <div class="form-link-section">
+      <div class="form-link-label">Intake form link — send via WhatsApp</div>
+      <div class="form-link-text">Copy this link and paste into WhatsApp to send to the patient. The GHC ID is pre-filled.</div>
+      <div class="form-link-url" id="result-form-url">—</div>
+      <button class="link-copy-btn" id="link-copy-btn" onclick="copyFormLink()">
+        <span id="link-copy-text">Copy link</span>
+      </button>
+    </div>
+
+    <button class="reset-btn" onclick="resetForm()">+ Onboard another patient</button>
+  </div>
+
+</div><!-- /main -->
+
+<script>
+  const WEBHOOK_URL = 'https://dimithra.app.n8n.cloud/webhook/shi-onboarding';
+
+  let selectedPackage = '';
+  let resultGhcId = '';
+  let resultFormUrl = '';
+
+  function selectPackage(pkg) {
+    selectedPackage = pkg;
+    ['essential','premium','elite'].forEach(p => {
+      document.getElementById('pkg-' + p).classList.remove('selected');
+    });
+    document.getElementById('pkg-' + pkg.toLowerCase()).classList.add('selected');
+    document.getElementById('err-package').style.display = 'none';
+  }
+
+  async function submitForm() {
+    // Validate
+    let valid = true;
+
+    const name = document.getElementById('f-name').value.trim();
+    if (!name) {
+      document.getElementById('err-name').style.display = 'block';
+      document.getElementById('f-name').classList.add('invalid');
+      valid = false;
+    } else {
+      document.getElementById('err-name').style.display = 'none';
+      document.getElementById('f-name').classList.remove('invalid');
+    }
+
+    const phone = document.getElementById('f-phone').value.trim();
+    if (!phone) {
+      document.getElementById('err-phone').style.display = 'block';
+      document.getElementById('f-phone').classList.add('invalid');
+      valid = false;
+    } else {
+      document.getElementById('err-phone').style.display = 'none';
+      document.getElementById('f-phone').classList.remove('invalid');
+    }
+
+    const email = document.getElementById('f-email').value.trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      document.getElementById('err-email').style.display = 'block';
+      document.getElementById('f-email').classList.add('invalid');
+      valid = false;
+    } else {
+      document.getElementById('err-email').style.display = 'none';
+      document.getElementById('f-email').classList.remove('invalid');
+    }
+
+    if (!selectedPackage) {
+      document.getElementById('err-package').style.display = 'block';
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    // Submit
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    document.getElementById('btn-text').textContent = 'Onboarding…';
+    document.getElementById('btn-arrow').textContent = '⟳';
+    document.getElementById('error-card').style.display = 'none';
+
+    const payload = {
+      patient_name:  name,
+      patient_phone: phone,
+      patient_email: email,
+      package:       selectedPackage
+    };
+
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+
+      const data = await res.json();
+
+      // Extract GHC ID and form URL from response
+      // Workflow 2 responds with patient data including ghc_id and form_url
+      const ghcId   = data.ghc_id   || data.ghcId   || data.patient_id || data.ghc_patient_id || 'GHC-2026-????';
+      const formUrl = data.form_url || data.formUrl || data.intake_form_url || '';
+
+      resultGhcId   = ghcId;
+      resultFormUrl = formUrl || buildFormUrl(ghcId, name, selectedPackage);
+
+      showResult({
+        ghcId,
+        name,
+        phone,
+        email,
+        package: selectedPackage,
+        formUrl: resultFormUrl
+      });
+
+    } catch (err) {
+      btn.disabled = false;
+      document.getElementById('btn-text').textContent = 'Onboard patient';
+      document.getElementById('btn-arrow').textContent = '→';
+      document.getElementById('error-card').style.display = 'block';
+      document.getElementById('error-msg').textContent =
+        'Failed to reach the onboarding webhook. Check your n8n instance is running and Workflow 2 is active. (' + err.message + ')';
+    }
+  }
+
+  function buildFormUrl(ghcId, name, pkg) {
+    const base = pkg === 'Elite'
+      ? 'https://forms.signaturehealthintel.com/elite.html'
+      : 'https://forms.signaturehealthintel.com/essential-premium.html';
+    return base + '?ghc=' + encodeURIComponent(ghcId);
+  }
+
+  function showResult(d) {
+    document.getElementById('form-card').style.display = 'none';
+
+    const now = new Date().toLocaleString('en-GB', {
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+
+    document.getElementById('result-ts').textContent = now;
+    document.getElementById('result-ghc-id').textContent = d.ghcId;
+    document.getElementById('result-form-url').textContent = d.formUrl;
+
+    const rows = [
+      { label: 'Patient', value: d.name },
+      { label: 'Phone', value: d.phone },
+      { label: 'Email', value: d.email || '—' },
+      { label: 'Package', value: d.package },
+      { label: 'Status', value: 'Awaiting Intake' }
+    ];
+
+    document.getElementById('result-details').innerHTML = rows.map(r =>
+      '<div class="result-row"><span class="result-row-label">' + r.label + '</span><span class="result-row-value">' + r.value + '</span></div>'
+    ).join('');
+
+    document.getElementById('result-card').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function copyGhcId() {
+    if (!resultGhcId) return;
+    navigator.clipboard.writeText(resultGhcId).then(() => {
+      const btn = document.getElementById('ghc-copy-btn');
+      document.getElementById('ghc-copy-text').textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        document.getElementById('ghc-copy-text').textContent = 'Copy ID';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+
+  function copyFormLink() {
+    if (!resultFormUrl) return;
+    navigator.clipboard.writeText(resultFormUrl).then(() => {
+      const btn = document.getElementById('link-copy-btn');
+      document.getElementById('link-copy-text').textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        document.getElementById('link-copy-text').textContent = 'Copy link';
+        btn.classList.remove('copied');
+      }, 2500);
+    });
+  }
+
+  function resetForm() {
+    document.getElementById('result-card').style.display = 'none';
+    document.getElementById('form-card').style.display = 'block';
+    document.getElementById('f-name').value = '';
+    document.getElementById('f-phone').value = '';
+    document.getElementById('f-email').value = '';
+    selectedPackage = '';
+    resultGhcId = '';
+    resultFormUrl = '';
+    ['essential','premium','elite'].forEach(p => {
+      document.getElementById('pkg-' + p).classList.remove('selected');
+    });
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = false;
+    document.getElementById('btn-text').textContent = 'Onboard patient';
+    document.getElementById('btn-arrow').textContent = '→';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
