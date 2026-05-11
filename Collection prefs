@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Collection Preferences — Signature Health Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Serif+4:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #1a1512;
+    --ink2:     #2e2822;
+    --ink3:     #4a4138;
+    --ink4:     #6b6156;
+    --terra:    #b85c3e;
+    --terra2:   #8c3a20;
+    --paper:    #fffefa;
+    --paper2:   #f5f1e8;
+    --paper3:   #ede8da;
+    --border:   #d4cabb;
+    --border2:  #c4baaa;
+    --success:  #3d6b4a;
+    --warn-bg:  #fef8f0;
+    --warn-bdr: #e8c97a;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: var(--paper2);
+    border-bottom: 1px solid var(--border2);
+    padding: 22px 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  /* ── LOGO SVG ── */
+  .logo-lockup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-divider {
+    width: 1px;
+    height: 44px;
+    background: var(--border2);
+  }
+
+  .logo-text-block {}
+
+  .logo-brand {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .logo-cred {
+    font-family: 'Courier New', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+    color: var(--ink4);
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+
+  .doc-label {
+    text-align: right;
+  }
+
+  .doc-title {
+    font-family: 'Courier New', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    color: var(--terra);
+    text-transform: uppercase;
+  }
+
+  .doc-ghc {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: var(--ink4);
+    margin-top: 5px;
+  }
+
+  /* ── INTRO BAND ── */
+  .intro-band {
+    background: white;
+    border-bottom: 2px solid var(--terra);
+    padding: 32px 40px 28px;
+  }
+
+  .intro-eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.26em;
+    color: var(--terra);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .intro-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2.1rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+
+  .intro-sub {
+    font-size: 0.95rem;
+    color: var(--ink3);
+    margin-top: 12px;
+    line-height: 1.7;
+    max-width: 580px;
+    font-weight: 300;
+  }
+
+  /* ── FORM BODY ── */
+  .form-body {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  /* ── PATIENT CARD ── */
+  .patient-card {
+    background: var(--paper2);
+    border: 1px solid var(--border2);
+    border-left: 3px solid var(--terra);
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 0;
+  }
+
+  .patient-field {
+    flex: 1;
+    padding: 0 20px 0 0;
+    border-right: 1px solid var(--border);
+    margin-right: 20px;
+  }
+
+  .patient-field:last-child {
+    border-right: none;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  .patient-field-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: var(--ink4);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .patient-field-value {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-num {
+    font-family: 'Courier New', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--terra);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+  }
+
+  /* ── FIELD ── */
+  .field {
+    margin-bottom: 22px;
+  }
+
+  .field-label {
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    color: var(--ink3);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .field-label .req { color: var(--terra); margin-left: 3px; }
+
+  .field-hint {
+    font-size: 0.875rem;
+    color: var(--ink3);
+    margin-bottom: 10px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  textarea,
+  select {
+    width: 100%;
+    background: white;
+    border: 1px solid var(--border2);
+    border-radius: 0;
+    padding: 12px 14px;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    appearance: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--terra);
+    box-shadow: 0 0 0 2px rgba(184,92,62,0.09);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 88px;
+    line-height: 1.65;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234a4138' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+    color: var(--ink);
+  }
+
+  /* ── DATE CARDS ── */
+  .date-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .date-option {
+    border: 1px solid var(--border2);
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    position: relative;
+    background: white;
+  }
+
+  .date-option:hover { border-color: var(--terra); background: rgba(184,92,62,0.02); }
+
+  .date-option input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+
+  .date-option.selected {
+    border-color: var(--terra);
+    background: rgba(184,92,62,0.04);
+  }
+
+  .date-option.selected::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--terra);
+  }
+
+  .date-option-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    color: var(--terra);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* ── TIME CHIPS ── */
+  .time-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .time-chip {
+    padding: 9px 18px;
+    border: 1px solid var(--border2);
+    background: white;
+    font-family: 'Courier New', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--ink3);
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .time-chip:hover { border-color: var(--terra); color: var(--terra2); }
+
+  .time-chip.active {
+    background: var(--terra);
+    border-color: var(--terra);
+    color: white;
+  }
+
+  /* ── FASTING DISCLAIMER ── */
+  .fasting-disclaimer {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-bdr);
+    border-left: 3px solid #c8a030;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+
+  .fasting-disclaimer-title {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: #7a5c10;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .fasting-disclaimer-body {
+    font-size: 0.9rem;
+    color: var(--ink2);
+    line-height: 1.72;
+    font-weight: 300;
+  }
+
+  .fasting-disclaimer-body strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .fasting-checklist {
+    margin-top: 10px;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .fasting-checklist li {
+    font-size: 0.875rem;
+    color: var(--ink3);
+    padding: 3px 0;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .fasting-checklist li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--terra);
+    font-size: 1.1rem;
+    top: 0px;
+  }
+
+  /* ── HOME COLLECTION NOTICE ── */
+  .home-collection-notice {
+    background: var(--paper2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--terra);
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .hcn-icon {
+    color: var(--terra);
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .hcn-text {
+    font-size: 0.875rem;
+    color: var(--ink3);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .hcn-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ── SUBMIT ── */
+  .submit-section {
+    margin-top: 44px;
+    border-top: 1px solid var(--border);
+    padding-top: 30px;
+  }
+
+  .consent-text {
+    font-size: 0.8rem;
+    color: var(--ink4);
+    line-height: 1.75;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    padding: 16px 38px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .submit-btn:hover { background: var(--terra); }
+  .submit-btn:disabled { background: var(--border); cursor: not-allowed; }
+
+  /* ── SUCCESS ── */
+  .success-screen {
+    display: none;
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 0 40px;
+    text-align: center;
+  }
+
+  .success-mark {
+    width: 58px; height: 58px;
+    border: 1.5px solid var(--success);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    color: var(--success);
+    font-size: 1.4rem;
+  }
+
+  .success-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.85rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .success-body {
+    font-size: 0.925rem;
+    color: var(--ink3);
+    line-height: 1.8;
+  }
+
+  /* ── ERROR ── */
+  .field-error {
+    font-size: 0.72rem;
+    color: var(--terra);
+    margin-top: 5px;
+    display: none;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  input.invalid, textarea.invalid, select.invalid { border-color: var(--terra); }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--paper2);
+  }
+
+  .footer-sig {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink4);
+  }
+
+  .footer-meta {
+    font-family: 'Courier New', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    color: var(--ink4);
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .page-header { padding: 16px 20px; flex-wrap: wrap; gap: 14px; }
+    .intro-band { padding: 24px 20px 20px; }
+    .form-body { padding: 28px 20px 60px; }
+    .date-grid { grid-template-columns: 1fr; }
+    .patient-card { flex-direction: column; gap: 16px; }
+    .patient-field { border-right: none; margin-right: 0; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 14px; margin-bottom: 0; }
+    .patient-field:last-child { border-bottom: none; padding-bottom: 0; }
+    .page-footer { flex-direction: column; gap: 10px; text-align: center; }
+    .footer-meta { text-align: center; }
+    .logo-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="page-header">
+  <div class="logo-lockup">
+    <!-- Inflection / Horizon Pulse symbol -->
+    <svg width="52" height="40" viewBox="0 0 130 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 72 L46 72 C54 72, 58 50, 64 88 C70 55, 80 72, 94 72 C110 72, 124 58, 138 36"
+        fill="none" stroke="#2a2420" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="94" cy="72" r="4.5" fill="#b85c3e"/>
+    </svg>
+    <div class="logo-divider"></div>
+    <div class="logo-text-block">
+      <div class="logo-brand">Signature Health Intelligence</div>
+      <div class="logo-cred">Dr. D. R. Gamalathge &middot; MBBS &middot; SLMC No. 36999</div>
+    </div>
+  </div>
+  <div class="doc-label">
+    <div class="doc-title">Collection Preferences</div>
+    <div class="doc-ghc" id="header-ghc-id"></div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<div class="intro-band">
+  <div class="intro-eyebrow">Sample Collection</div>
+  <div class="intro-title">Arrange your home collection</div>
+  <div class="intro-sub">Your physician-ordered laboratory panel is ready. Please confirm your preferred dates, time window, and collection address so Dr. Gamalathge can coordinate with Asiri Laboratories on your behalf.</div>
+</div>
+
+<!-- MAIN FORM -->
+<div class="form-body">
+
+  <!-- PATIENT CARD -->
+  <div class="patient-card">
+    <div class="patient-field">
+      <div class="patient-field-label">Patient</div>
+      <div class="patient-field-value" id="card-patient-name">—</div>
+    </div>
+    <div class="patient-field">
+      <div class="patient-field-label">GHC ID</div>
+      <div class="patient-field-value" id="card-ghc-id" style="font-family:'Courier New',monospace;font-size:0.88rem;letter-spacing:0.08em;">—</div>
+    </div>
+    <div class="patient-field">
+      <div class="patient-field-label">Package</div>
+      <div class="patient-field-value" id="card-package">—</div>
+    </div>
+  </div>
+
+  <form id="prefs-form" novalidate>
+    <input type="hidden" id="f-ghc-id" name="ghc_patient_id">
+    <input type="hidden" id="f-patient-name" name="patient_name">
+    <input type="hidden" id="f-package" name="patient_package">
+
+    <!-- HOME COLLECTION NOTICE -->
+    <div class="home-collection-notice">
+      <span class="hcn-icon">⌂</span>
+      <div class="hcn-text"><strong>Home collection included.</strong> A qualified Asiri phlebotomist will attend your chosen location. This is included as standard across all three packages — Essential, Premium, and Elite.</div>
+    </div>
+
+    <!-- SECTION 1 — PREFERRED DATES -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <span class="section-title">Preferred collection dates</span>
+      </div>
+      <p class="field-hint">Please provide up to two preferred dates. Dr. Gamalathge's office will confirm one with you via WhatsApp within 24 hours.</p>
+
+      <div class="date-grid">
+        <div class="date-option" id="date-card-1" onclick="selectDate(1)">
+          <input type="radio" name="date_choice" value="1" id="radio-date-1">
+          <div class="date-option-label">First preference</div>
+          <input type="date" id="f-date-1" name="preferred_date_1" onclick="event.stopPropagation()" style="margin-top:4px">
+        </div>
+        <div class="date-option" id="date-card-2" onclick="selectDate(2)">
+          <input type="radio" name="date_choice" value="2" id="radio-date-2">
+          <div class="date-option-label">Second preference</div>
+          <input type="date" id="f-date-2" name="preferred_date_2" onclick="event.stopPropagation()" style="margin-top:4px">
+        </div>
+      </div>
+      <div class="field-error" id="err-dates">Please enter at least one preferred date.</div>
+    </div>
+
+    <!-- SECTION 2 — TIME WINDOW -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <span class="section-title">Preferred time window <span style="color:var(--terra)">*</span></span>
+      </div>
+      <p class="field-hint">Select your preferred arrival window for the phlebotomist. Morning slots are recommended — see the fasting note below.</p>
+      <div class="time-chips" id="time-chips">
+        <div class="time-chip" onclick="selectTime(this, '7:00 AM – 8:00 AM')">7:00 – 8:00 AM</div>
+        <div class="time-chip" onclick="selectTime(this, '8:00 AM – 9:00 AM')">8:00 – 9:00 AM</div>
+        <div class="time-chip" onclick="selectTime(this, '9:00 AM – 10:00 AM')">9:00 – 10:00 AM</div>
+        <div class="time-chip" onclick="selectTime(this, '10:00 AM – 11:00 AM')">10:00 – 11:00 AM</div>
+        <div class="time-chip" onclick="selectTime(this, 'Afternoon (12:00 – 3:00 PM)')">Afternoon 12 – 3 PM</div>
+        <div class="time-chip" onclick="selectTime(this, 'Flexible — any time')">Flexible</div>
+      </div>
+      <input type="hidden" id="f-time-window" name="preferred_time_window">
+      <div class="field-error" id="err-time">Please select a preferred time window.</div>
+    </div>
+
+    <!-- SECTION 3 — FASTING -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <span class="section-title">Fasting requirement</span>
+      </div>
+
+      <div class="fasting-disclaimer">
+        <div class="fasting-disclaimer-title">⚠ Important — Please read before confirming</div>
+        <div class="fasting-disclaimer-body">
+          Your panel includes a <strong>Fasting Blood Sugar (FBS)</strong> and a <strong>Full Lipid Profile</strong>, both of which require a strict overnight fast for accurate results. Please ensure you fast for <strong>10 to 12 hours</strong> before your collection appointment.
+        </div>
+        <ul class="fasting-checklist">
+          <li>No food or drink except plain water from the night before</li>
+          <li>Morning medication may be taken with a small sip of water — check with Dr. Gamalathge if unsure</li>
+          <li>Avoid strenuous exercise the evening before collection</li>
+          <li>Do not smoke or chew betel in the 12 hours before collection</li>
+          <li>Morning slots (7:00 – 10:00 AM) are strongly recommended for comfort</li>
+        </ul>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="f-fasting">Confirm fasting status <span class="req">*</span></label>
+        <select id="f-fasting" name="fasting_confirmed">
+          <option value="">Select…</option>
+          <option value="Yes — I understand and will fast for 10–12 hours before collection">Yes — I understand and will fast for 10–12 hours</option>
+          <option value="I need guidance on fasting before confirming">I need guidance on fasting before confirming</option>
+          <option value="Not applicable — non-fasting panel (as discussed with Dr. Gamalathge)">Not applicable — non-fasting panel (as discussed)</option>
+        </select>
+        <div class="field-error" id="err-fasting">Please confirm your fasting status.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 4 — COLLECTION ADDRESS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <span class="section-title">Collection address <span style="color:var(--terra);font-size:0.95rem">*</span></span>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="f-address">Full address <span class="req">*</span></label>
+        <p class="field-hint">Include floor or apartment number. This is where the phlebotomist will attend.</p>
+        <textarea id="f-address" name="collection_address" rows="3" placeholder="e.g. 14/2, Flower Road, Colombo 3&#10;Apartment 5B, third floor, opposite the park"></textarea>
+        <div class="field-error" id="err-address">Please enter your collection address.</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="f-location-type">Location type</label>
+        <select id="f-location-type" name="location_type">
+          <option value="">Select…</option>
+          <option value="Home">Home</option>
+          <option value="Workplace / Office">Workplace / Office</option>
+          <option value="Hotel">Hotel</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="f-access-notes">Access notes</label>
+        <p class="field-hint">Gate codes, security desk procedures, parking instructions — anything that helps the phlebotomist reach you smoothly.</p>
+        <textarea id="f-access-notes" name="access_notes" rows="2" placeholder="e.g. Ring the bell at Gate 2. Visitor parking available in the basement. Ask for Apartment 5B."></textarea>
+      </div>
+    </div>
+
+    <!-- SECTION 5 — ADDITIONAL NOTES -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <span class="section-title">Additional notes</span>
+      </div>
+      <div class="field">
+        <label class="field-label" for="f-notes">Anything else to communicate</label>
+        <p class="field-hint">Special requirements, mobility considerations, needle phobia, or anything else for the phlebotomist or Dr. Gamalathge.</p>
+        <textarea id="f-notes" name="additional_notes" rows="3" placeholder="Optional — leave blank if none"></textarea>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-section">
+      <p class="consent-text">By submitting this form, I confirm the information is accurate and consent to these collection logistics being shared with Asiri Laboratories solely for the purpose of arranging my physician-ordered sample collection under the care of Dr. D. R. Gamalathge (MBBS), SLMC No. 36999.</p>
+      <button type="submit" class="submit-btn" id="submit-btn">
+        <span id="btn-text">Confirm collection preferences</span>
+        <span>→</span>
+      </button>
+    </div>
+  </form>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="success-screen">
+    <div class="success-mark">✓</div>
+    <div class="success-title">Preferences received</div>
+    <div class="success-body">
+      Your collection preferences have been received and forwarded to Dr. Gamalathge's office.<br><br>
+      You will receive a WhatsApp confirmation with your confirmed collection date and time within 24 hours.<br><br>
+      <span style="font-style:italic;font-size:0.875rem;color:var(--ink4)">Please remember to fast for 10–12 hours before your confirmed collection appointment.</span>
+    </div>
+  </div>
+
+</div><!-- /form-body -->
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="footer-sig">Dr. Dimithra Gamalathge</div>
+  <div class="footer-meta">
+    Signature Health Intelligence<br>
+    signaturehealthintel.com
+  </div>
+</footer>
+
+<script>
+  // ── URL PARAMS ──
+  (function() {
+    const p = new URLSearchParams(window.location.search);
+    const ghc  = p.get('ghc')  || '';
+    const name = p.get('name') || '';
+    const pkg  = p.get('pkg')  || '';
+    document.getElementById('f-ghc-id').value      = ghc;
+    document.getElementById('f-patient-name').value = name;
+    document.getElementById('f-package').value      = pkg;
+    document.getElementById('card-ghc-id').textContent      = ghc  || 'GHC-2026-XXXX';
+    document.getElementById('card-patient-name').textContent = name || 'Patient';
+    document.getElementById('card-package').textContent      = pkg  || '—';
+    document.getElementById('header-ghc-id').textContent    = ghc;
+  })();
+
+  // ── DATE CARDS ──
+  function selectDate(n) {
+    document.querySelectorAll('.date-option').forEach(c => c.classList.remove('selected'));
+    document.getElementById('date-card-' + n).classList.add('selected');
+    document.getElementById('radio-date-' + n).checked = true;
+  }
+
+  // ── TIME CHIPS ──
+  function selectTime(el, val) {
+    document.querySelectorAll('.time-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('f-time-window').value = val;
+    document.getElementById('err-time').style.display = 'none';
+  }
+
+  // ── SUBMIT ──
+  document.getElementById('prefs-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    let valid = true;
+
+    const date1 = document.getElementById('f-date-1').value;
+    const date2 = document.getElementById('f-date-2').value;
+    if (!date1 && !date2) {
+      document.getElementById('err-dates').style.display = 'block';
+      valid = false;
+    } else {
+      document.getElementById('err-dates').style.display = 'none';
+    }
+
+    if (!document.getElementById('f-time-window').value) {
+      document.getElementById('err-time').style.display = 'block';
+      valid = false;
+    }
+
+    const address = document.getElementById('f-address').value.trim();
+    if (!address) {
+      document.getElementById('err-address').style.display = 'block';
+      document.getElementById('f-address').classList.add('invalid');
+      valid = false;
+    } else {
+      document.getElementById('err-address').style.display = 'none';
+      document.getElementById('f-address').classList.remove('invalid');
+    }
+
+    const fasting = document.getElementById('f-fasting').value;
+    if (!fasting) {
+      document.getElementById('err-fasting').style.display = 'block';
+      document.getElementById('f-fasting').classList.add('invalid');
+      valid = false;
+    } else {
+      document.getElementById('err-fasting').style.display = 'none';
+      document.getElementById('f-fasting').classList.remove('invalid');
+    }
+
+    if (!valid) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    document.getElementById('btn-text').textContent = 'Submitting…';
+
+    const payload = {
+      ghc_patient_id:        document.getElementById('f-ghc-id').value,
+      patient_name:          document.getElementById('f-patient-name').value,
+      patient_package:       document.getElementById('f-package').value,
+      preferred_date_1:      date1,
+      preferred_date_2:      date2,
+      preferred_time_window: document.getElementById('f-time-window').value,
+      collection_address:    address,
+      location_type:         document.getElementById('f-location-type').value,
+      access_notes:          document.getElementById('f-access-notes').value.trim(),
+      fasting_confirmed:     fasting,
+      additional_notes:      document.getElementById('f-notes').value.trim(),
+      submitted_at:          new Date().toISOString()
+    };
+
+    try {
+      const res = await fetch('https://dimithra.app.n8n.cloud/webhook/collection-prefs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok || res.status === 200) {
+        document.getElementById('prefs-form').style.display = 'none';
+        document.getElementById('success-screen').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error('Status ' + res.status);
+      }
+    } catch (err) {
+      btn.disabled = false;
+      document.getElementById('btn-text').textContent = 'Confirm collection preferences';
+      alert('Something went wrong — please try again or contact Dr. Gamalathge directly via WhatsApp.');
+    }
+  });
+</script>
+</body>
+</html>
