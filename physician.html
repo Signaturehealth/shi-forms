@@ -7,492 +7,151 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111009; --ink2: #1e1b16; --ink3: #2e2a22; --ink4: #4a4438; --ink5: #6b6358;
+  --terra: #b85c3e; --terra2: #8c3a20;
+  --paper: #fdfcf8; --paper2: #faf8f3; --paper3: #f2ede0;
+  --border: #e0ddd4; --border2: #d0cbbf;
+  --gold: #c8a030; --green: #3a6647; --green-bg: #eef4f0;
+  --prefill: #f0f7ee;
+}
+html { font-size: 16px; }
+body { background: #fff; color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; min-height: 100vh; -webkit-font-smoothing: antialiased; }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* HEADER */
+.page-header { background: white; padding: 18px 36px 16px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--terra); box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+.header-logo { display: flex; align-items: center; gap: 14px; }
+.header-brand { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; font-weight: 400; letter-spacing: 0.04em; color: var(--ink); line-height: 1.2; }
+.header-cred { font-family: 'Courier New', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--ink4); margin-top: 3px; text-transform: uppercase; }
+.header-right { text-align: right; }
+.header-form-label { font-family: 'Courier New', monospace; font-size: 0.58rem; letter-spacing: 0.22em; color: var(--terra); text-transform: uppercase; }
 
-  :root {
-    --ink:      #111009;
-    --ink2:     #1e1b16;
-    --ink3:     #2e2a22;
-    --ink4:     #4a4438;
-    --ink5:     #6b6358;
-    --terra:    #b85c3e;
-    --terra2:   #8c3a20;
-    --paper:    #fdfcf8;
-    --paper2:   #faf8f3;
-    --paper3:   #f2ede0;
-    --border:   #e0ddd4;
-    --border2:  #d0cbbf;
-    --gold:     #c8a030;
-    --green:    #3a6647;
-    --green-bg: #eef4f0;
-  }
+/* HERO */
+.hero-band { background: #fff; border-bottom: 1px solid #e8e2d6; padding: 32px 36px 24px; }
+.hero-eyebrow { font-family: 'Courier New', monospace; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--terra); text-transform: uppercase; margin-bottom: 8px; }
+.hero-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.2rem; font-weight: 400; color: var(--ink); line-height: 1.1; margin-bottom: 10px; }
+.hero-desc { font-size: 0.975rem; color: var(--ink3); line-height: 1.75; max-width: 600px; }
+.terra-rule { width: 48px; height: 2px; background: var(--terra); margin: 14px 0 0; opacity: 0.7; }
 
-  html { font-size: 16px; }
+/* PREFILL NOTICE */
+.prefill-notice { background: var(--prefill); border: 1px solid #b8ddb0; border-left: 3px solid var(--green); padding: 12px 18px; margin-bottom: 28px; font-size: 0.88rem; color: #2a4a30; line-height: 1.6; display: none; }
+.prefill-notice strong { color: #1e3a25; }
 
-  body {
-    background: #ffffff;
-    color: var(--ink);
-    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-    font-weight: 400;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-  }
+/* BODY */
+.form-body { max-width: 740px; margin: 0 auto; padding: 36px 36px 80px; background: #fff; }
 
-  /* ── HEADER ── */
-  .page-header {
-    background: white;
-    padding: 20px 36px 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 2px solid var(--terra);
-    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-  }
+/* PHYSICIAN BADGE */
+.physician-badge { display: inline-block; background: var(--terra); color: white; font-family: 'Courier New', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 5px 12px; margin-bottom: 24px; }
 
-  .header-logo {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
+/* GHC TAG */
+.ghc-tag { font-family: 'Courier New', monospace; font-size: 0.7rem; letter-spacing: 0.14em; color: var(--terra); margin-bottom: 28px; padding: 10px 14px; background: var(--paper2); border-left: 3px solid var(--terra); display: none; }
 
-  .header-brand {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.15rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-    line-height: 1.2;
-  }
+/* SECTION */
+.form-section { margin-bottom: 40px; }
+.section-header { display: flex; align-items: baseline; gap: 14px; padding-bottom: 10px; border-bottom: 1.5px solid var(--border); margin-bottom: 22px; }
+.section-num { font-family: 'Courier New', monospace; font-size: 0.65rem; letter-spacing: 0.22em; color: var(--terra); flex-shrink: 0; }
+.section-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.25rem; font-weight: 400; color: var(--ink); letter-spacing: 0.02em; }
 
-  .header-cred {
-    font-family: 'Courier New', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.2em;
-    color: var(--ink4);
-    margin-top: 3px;
-    text-transform: uppercase;
-  }
+/* PREFILLED FIELD INDICATOR */
+.prefilled-indicator { font-family: 'Courier New', monospace; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--green); text-transform: uppercase; margin-left: 6px; display: none; }
+.has-prefill .prefilled-indicator { display: inline; }
 
-  .header-right {
-    text-align: right;
-  }
+/* FIELDS */
+.field { margin-bottom: 22px; }
+.field-label { display: block; font-family: 'Courier New', monospace; font-size: 0.68rem; letter-spacing: 0.16em; color: var(--ink3); text-transform: uppercase; margin-bottom: 7px; font-weight: 700; }
+.field-label .req { color: var(--terra); margin-left: 2px; }
+.field-hint { font-size: 0.88rem; color: var(--ink5); margin-bottom: 8px; line-height: 1.6; font-style: italic; }
+.from-phi { font-family: 'Courier New', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--green); text-transform: uppercase; margin-bottom: 6px; }
 
-  .header-form-label {
-    font-family: 'Courier New', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.22em;
-    color: var(--terra);
-    text-transform: uppercase;
-  }
+input[type="text"], input[type="date"], input[type="number"], input[type="email"],
+input[type="tel"], textarea, select {
+  width: 100%; background: white; border: 1.5px solid var(--border2); border-radius: 0;
+  padding: 12px 14px; font-family: 'Source Serif 4', Georgia, serif; font-size: 1rem;
+  color: var(--ink); outline: none; appearance: none; -webkit-appearance: none;
+  transition: border-color 0.18s, box-shadow 0.18s; line-height: 1.5;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--terra); box-shadow: 0 0 0 3px rgba(184,92,62,0.1); }
+input::placeholder, textarea::placeholder { color: #9e9587; font-style: italic; }
+textarea { resize: vertical; min-height: 80px; line-height: 1.65; }
+select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%232e2a22' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
 
-  /* ── HERO BAND ── */
-  .hero-band {
-    background: #ffffff;
-    border-bottom: 1px solid #e8e2d6;
-    padding: 36px 36px 28px;
-  }
+/* Pre-filled input style */
+input.prefilled, select.prefilled, textarea.prefilled {
+  background: var(--prefill);
+  border-color: #b8ddb0;
+  color: var(--ink);
+}
 
-  .hero-eyebrow {
-    font-family: 'Courier New', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    color: var(--terra);
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-  .hero-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 2.2rem;
-    font-weight: 400;
-    color: var(--ink);
-    line-height: 1.1;
-    letter-spacing: 0.01em;
-    margin-bottom: 12px;
-  }
+/* RADIO */
+.radio-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+.radio-chip { position: relative; }
+.radio-chip input[type="radio"], .radio-chip input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+.radio-chip label { display: inline-block; padding: 9px 16px; border: 1.5px solid var(--border2); background: white; font-size: 0.93rem; color: var(--ink3); cursor: pointer; transition: all 0.15s; }
+.radio-chip input:checked + label { border-color: var(--terra); background: rgba(184,92,62,0.04); color: var(--ink); }
+.radio-chip label:hover { border-color: var(--terra); color: var(--ink); }
 
-  .hero-desc {
-    font-size: 1rem;
-    color: var(--ink3);
-    line-height: 1.75;
-    max-width: 600px;
-  }
+/* PHI SUMMARY CARD */
+.phi-summary { background: var(--prefill); border: 1px solid #b8ddb0; border-left: 3px solid var(--green); padding: 16px 18px; margin-bottom: 28px; display: none; }
+.phi-summary-title { font-family: 'Courier New', monospace; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--green); text-transform: uppercase; margin-bottom: 12px; }
+.phi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+.phi-item { font-size: 0.88rem; line-height: 1.5; }
+.phi-item .phi-label { font-family: 'Courier New', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--ink5); text-transform: uppercase; display: block; margin-bottom: 1px; }
+.phi-item .phi-val { color: var(--ink2); font-weight: 400; }
 
-  .terra-rule {
-    width: 48px;
-    height: 2px;
-    background: var(--terra);
-    margin: 16px 0 0;
-    opacity: 0.7;
-  }
+/* VITALS GRID */
+.vitals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 
-  /* ── BODY ── */
-  .form-body {
-    max-width: 740px;
-    margin: 0 auto;
-    padding: 40px 36px 80px;
-    background: #ffffff;
-  }
+/* ROS */
+.ros-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+.ros-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border: 1.5px solid var(--border); background: white; cursor: pointer; transition: border-color 0.15s; }
+.ros-item input[type="radio"] { width: 15px; height: 15px; cursor: pointer; accent-color: var(--terra); flex-shrink: 0; }
+.ros-item label { font-size: 0.9rem; color: var(--ink3); cursor: pointer; line-height: 1.3; }
+.ros-item.present { border-color: #c44; background: #fff5f4; }
+.ros-item.absent { border-color: var(--green); background: var(--green-bg); }
 
-  /* ── PRIVACY NOTICE ── */
-  .privacy-notice {
-    background: white;
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    padding: 14px 18px;
-    margin-bottom: 36px;
-    font-size: 0.9rem;
-    color: var(--ink4);
-    line-height: 1.65;
-  }
+/* CVD BOX */
+.cvd-box { background: var(--paper2); border: 1px solid var(--border); border-left: 3px solid var(--terra); padding: 18px; margin-bottom: 22px; }
+.cvd-box-title { font-family: 'Courier New', monospace; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--terra); text-transform: uppercase; margin-bottom: 14px; }
 
-  .privacy-notice strong { color: var(--ink2); font-weight: 600; }
+/* CLINICAL NOTE */
+.clinical-note { background: white; border: 1px solid var(--border); border-left: 3px solid var(--terra); padding: 12px 16px; margin-bottom: 18px; font-size: 0.9rem; color: var(--ink3); line-height: 1.7; }
 
-  /* ── SECTION ── */
-  .form-section {
-    margin-bottom: 44px;
-    background: #ffffff;
-  }
+/* SUBMIT */
+.submit-section { margin-top: 44px; border-top: 1px solid var(--border); padding-top: 28px; }
+.consent-block { background: white; border: 1px solid var(--border); padding: 16px 18px; margin-bottom: 22px; font-size: 0.88rem; color: var(--ink4); line-height: 1.75; }
+.submit-btn { display: inline-flex; align-items: center; gap: 14px; background: var(--terra); color: var(--paper); border: none; padding: 16px 44px; font-family: 'Courier New', monospace; font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; width: 100%; justify-content: center; }
+.submit-btn:hover { background: #8c3a20; }
+.submit-btn:disabled { background: var(--border); cursor: not-allowed; }
 
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    padding-bottom: 12px;
-    border-bottom: 1.5px solid var(--border);
-    margin-bottom: 24px;
-  }
+/* SUCCESS */
+.success-screen { display: none; max-width: 500px; margin: 80px auto; padding: 0 36px; text-align: center; }
+.success-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--green-bg); border: 2px solid var(--green); color: var(--green); font-size: 1.6rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
+.success-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; font-weight: 400; color: var(--ink); margin-bottom: 14px; }
+.success-body { font-size: 0.975rem; color: var(--ink4); line-height: 1.8; }
 
-  .section-num {
-    font-family: 'Courier New', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.22em;
-    color: var(--terra);
-    flex-shrink: 0;
-  }
+/* FOOTER */
+.page-footer { border-top: 1px solid var(--border); padding: 18px 36px; display: flex; align-items: center; justify-content: space-between; background: white; }
+.footer-sig { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; font-style: italic; color: var(--ink4); }
+.footer-meta { font-family: 'Courier New', monospace; font-size: 0.58rem; letter-spacing: 0.18em; color: var(--ink5); text-align: right; text-transform: uppercase; line-height: 1.8; }
 
-  .section-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.25rem;
-    font-weight: 400;
-    color: var(--ink);
-    letter-spacing: 0.02em;
-  }
-
-  /* ── FIELD ── */
-  .field {
-    margin-bottom: 24px;
-  }
-
-  .field-label {
-    display: block;
-    font-family: 'Courier New', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
-    color: var(--ink3);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    font-weight: 700;
-  }
-
-  .field-label .req { color: var(--terra); margin-left: 2px; }
-
-  .field-hint {
-    font-size: 0.9rem;
-    color: var(--ink5);
-    margin-bottom: 10px;
-    line-height: 1.6;
-    font-style: italic;
-  }
-
-  input[type="text"],
-  input[type="date"],
-  input[type="number"],
-  input[type="email"],
-  input[type="tel"],
-  textarea,
-  select {
-    width: 100%;
-    background: white;
-    border: 1.5px solid var(--border2);
-    border-radius: 0;
-    padding: 13px 16px;
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--ink);
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    transition: border-color 0.18s, box-shadow 0.18s;
-    line-height: 1.5;
-  }
-
-  input:focus, textarea:focus, select:focus {
-    border-color: var(--terra);
-    box-shadow: 0 0 0 3px rgba(184,92,62,0.1);
-  }
-
-  input::placeholder, textarea::placeholder {
-    color: #9e9587;
-    font-style: italic;
-  }
-
-  textarea {
-    resize: vertical;
-    min-height: 88px;
-    line-height: 1.65;
-  }
-
-  select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%232e2a22' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: 44px;
-    cursor: pointer;
-  }
-
-  select option { color: var(--ink); }
-
-  input.invalid, textarea.invalid, select.invalid {
-    border-color: var(--terra);
-    background: #fff8f6;
-  }
-
-  .field-error {
-    font-size: 0.78rem;
-    color: var(--terra2);
-    margin-top: 5px;
-    display: none;
-    font-family: 'Courier New', monospace;
-    letter-spacing: 0.04em;
-  }
-
-  /* ── TWO-COL GRID ── */
-  .field-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-  }
-
-  /* ── RADIO GROUP ── */
-  .radio-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 2px;
-  }
-
-  .radio-chip {
-    position: relative;
-  }
-
-  .radio-chip input[type="radio"],
-  .radio-chip input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    width: 0; height: 0;
-  }
-
-  .radio-chip label {
-    display: inline-block;
-    padding: 10px 18px;
-    border: 1.5px solid var(--border2);
-    background: white;
-    font-size: 0.95rem;
-    color: var(--ink3);
-    cursor: pointer;
-    transition: all 0.15s;
-    line-height: 1.3;
-    font-family: 'Source Serif 4', Georgia, serif;
-  }
-
-  .radio-chip input:checked + label {
-    border-color: var(--terra);
-    background: rgba(184,92,62,0.04);
-    color: var(--ink);
-  }
-
-  .radio-chip label:hover {
-    border-color: var(--terra);
-    color: var(--ink);
-  }
-
-  /* ── CLINICAL NOTE BOX ── */
-  .clinical-note {
-    background: white;
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--terra);
-    padding: 14px 18px;
-    margin-bottom: 20px;
-    font-size: 0.92rem;
-    color: var(--ink3);
-    line-height: 1.7;
-  }
-
-  .clinical-note strong { color: var(--ink); font-weight: 600; }
-
-  /* ── SUBMIT ── */
-  .submit-section {
-    margin-top: 48px;
-    border-top: 1px solid var(--border);
-    padding-top: 32px;
-  }
-
-  .consent-block {
-    background: white;
-    border: 1px solid var(--border);
-    padding: 18px 20px;
-    margin-bottom: 24px;
-    font-size: 0.9rem;
-    color: var(--ink4);
-    line-height: 1.75;
-  }
-
-  .submit-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    background: var(--terra);
-    color: var(--paper);
-    border: none;
-    padding: 17px 44px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .submit-btn:hover { background: #8c3a20; }
-  .submit-btn:disabled { background: var(--border); cursor: not-allowed; }
-
-  /* ── SUCCESS ── */
-  .success-screen {
-    display: none;
-    max-width: 500px;
-    margin: 80px auto;
-    padding: 0 36px;
-    text-align: center;
-  }
-
-  .success-icon {
-    width: 64px; height: 64px;
-    border-radius: 50%;
-    background: var(--green-bg);
-    border: 2px solid var(--green);
-    color: var(--green);
-    font-size: 1.6rem;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 24px;
-  }
-
-  .success-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 2rem;
-    font-weight: 400;
-    color: var(--ink);
-    margin-bottom: 16px;
-  }
-
-  .success-body {
-    font-size: 0.975rem;
-    color: var(--ink4);
-    line-height: 1.8;
-  }
-
-  /* ── FOOTER ── */
-  .page-footer {
-    border-top: 1px solid var(--border);
-    padding: 20px 36px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: white;
-  }
-
-  .footer-sig {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--ink4);
-  }
-
-  .footer-meta {
-    font-family: 'Courier New', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.18em;
-    color: var(--ink5);
-    text-align: right;
-    text-transform: uppercase;
-    line-height: 1.8;
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 600px) {
-    .page-header { padding: 14px 20px; flex-wrap: wrap; gap: 12px; }
-    .hero-band { padding: 24px 20px 20px; }
-    .hero-title { font-size: 1.75rem; }
-    .form-body { padding: 28px 20px 60px; }
-    .field-row { grid-template-columns: 1fr; }
-    .page-footer { flex-direction: column; gap: 10px; text-align: center; }
-    .footer-meta { text-align: center; }
-  }
-
-
-  .ros-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 8px;
-  }
-  .ros-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 14px;
-    border: 1.5px solid var(--border);
-    background: white;
-    cursor: pointer;
-    transition: border-color 0.15s;
-  }
-  .ros-item:hover { border-color: var(--border2); }
-  .ros-item input[type="radio"] { width: 16px; height: 16px; cursor: pointer; accent-color: var(--terra); flex-shrink: 0; }
-  .ros-item label { font-size: 0.95rem; color: var(--ink3); cursor: pointer; line-height: 1.3; }
-  .ros-item input:checked ~ label { color: var(--ink); font-weight: 500; }
-  .ros-item.present { border-color: #c44; background: #fff5f4; }
-  .ros-item.absent { border-color: var(--green); background: var(--green-bg); }
-  .physician-badge {
-    display: inline-block;
-    background: var(--terra);
-    color: white;
-    font-family: 'Courier New', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    margin-bottom: 24px;
-  }
-  .vitals-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-  }
-  @media (max-width: 600px) {
-    .ros-grid { grid-template-columns: 1fr; }
-    .vitals-grid { grid-template-columns: 1fr 1fr; }
-  }
-
+@media (max-width: 600px) {
+  .page-header { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+  .hero-band { padding: 22px 18px 18px; }
+  .hero-title { font-size: 1.75rem; }
+  .form-body { padding: 24px 18px 60px; }
+  .field-row { grid-template-columns: 1fr; }
+  .vitals-grid { grid-template-columns: 1fr 1fr; }
+  .ros-grid { grid-template-columns: 1fr; }
+  .phi-grid { grid-template-columns: 1fr; }
+  .page-footer { flex-direction: column; gap: 10px; text-align: center; }
+}
 </style>
 </head>
 <body>
+
 <header class="page-header">
   <div class="header-logo">
     <svg width="48" height="36" viewBox="0 0 130 100" xmlns="http://www.w3.org/2000/svg">
@@ -506,30 +165,44 @@
     </div>
   </div>
   <div class="header-right">
-    <div class="header-form-label">Physician Clinical Record · Confidential</div>
+    <div class="header-form-label">Physician Clinical Record &middot; Confidential</div>
   </div>
 </header>
+
 <div class="hero-band">
   <div class="hero-eyebrow">Physician Examination — Confidential</div>
   <div class="hero-title">Clinical Examination Record</div>
-  <div class="hero-desc">Completed by Dr. D. R. Gamalathge (MBBS), SLMC No. 36999, at the time of the vitals consultation. This record feeds directly into the patient's clinical report.</div>
+  <div class="hero-desc">Completed by Dr. D. R. Gamalathge (MBBS), SLMC No. 36999, at the time of the vitals consultation.</div>
   <div class="terra-rule"></div>
 </div>
-<div class="form-body">
 
-<div class="physician-badge">Physician Use Only — Dr. D. R. Gamalathge</div>
+<div class="form-body">
+  <div class="physician-badge">Physician Use Only — Dr. D. R. Gamalathge</div>
+  <div class="ghc-tag" id="ghc-tag"></div>
+
+  <!-- PHI SUMMARY CARD — shown when data is pre-filled -->
+  <div class="phi-summary" id="phi-summary">
+    <div class="phi-summary-title">&#10003; Pre-filled from Patient PHI Form</div>
+    <div class="phi-grid" id="phi-grid"></div>
+  </div>
+
+  <div class="prefill-notice" id="prefill-notice">
+    <strong>PHI data loaded.</strong> Fields marked in green are pre-filled from the patient's intake form. Review and correct if needed before submitting.
+  </div>
 
 <form id="physician-form" novalidate>
   <input type="hidden" id="ghc_patient_id" name="ghc_patient_id">
 
   <!-- 01 PATIENT REFERENCE -->
   <div class="form-section">
-    <div class="section-header"><span class="section-num">01</span><span class="section-title">Patient Reference</span></div>
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Patient Reference</span>
+    </div>
     <div class="field-row">
-      <div class="field">
-        <label class="field-label" for="patient_name">Patient name <span class="req">*</span></label>
+      <div class="field" id="field-patient_name">
+        <label class="field-label" for="patient_name">Patient name <span class="req">*</span> <span class="prefilled-indicator">&#10003; from PHI</span></label>
         <input type="text" id="patient_name" name="patient_name" placeholder="Full name">
-        <div class="field-error" id="err-patient_name">Patient name is required.</div>
       </div>
       <div class="field">
         <label class="field-label" for="examination_date">Examination date <span class="req">*</span></label>
@@ -537,21 +210,21 @@
       </div>
     </div>
     <div class="field-row">
-      <div class="field">
-        <label class="field-label" for="patient_age">Age</label>
+      <div class="field" id="field-patient_age">
+        <label class="field-label" for="patient_age">Age <span class="prefilled-indicator">&#10003; from PHI</span></label>
         <input type="number" id="patient_age" name="patient_age" placeholder="Years">
       </div>
-      <div class="field">
-        <label class="field-label">Biological sex</label>
-        <div class="radio-group">
+      <div class="field" id="field-patient_sex">
+        <label class="field-label">Biological sex <span class="prefilled-indicator">&#10003; from PHI</span></label>
+        <div class="radio-group" id="sex-group">
           <div class="radio-chip"><input type="radio" name="patient_sex" id="sex-m" value="Male"><label for="sex-m">Male</label></div>
           <div class="radio-chip"><input type="radio" name="patient_sex" id="sex-f" value="Female"><label for="sex-f">Female</label></div>
         </div>
       </div>
     </div>
     <div class="field-row">
-      <div class="field">
-        <label class="field-label" for="package_tier">Package</label>
+      <div class="field" id="field-package_tier">
+        <label class="field-label" for="package_tier">Package <span class="prefilled-indicator">&#10003; from PHI</span></label>
         <select id="package_tier" name="package_tier">
           <option value="">Select…</option>
           <option value="Essential">Essential</option>
@@ -561,7 +234,7 @@
       </div>
       <div class="field">
         <label class="field-label" for="examination_location">Examination location</label>
-        <input type="text" id="examination_location" name="examination_location" placeholder="e.g. GHC Clinic, Mirihana">
+        <input type="text" id="examination_location" name="examination_location" placeholder="e.g. GHC Clinic, Mirihana" value="Dr Gamalathge Healthcare Centre, Mirihana, Nugegoda">
       </div>
     </div>
   </div>
@@ -569,36 +242,34 @@
   <!-- 02 VITALS -->
   <div class="form-section">
     <div class="section-header"><span class="section-num">02</span><span class="section-title">Vitals &amp; Measurements</span></div>
+    <div class="clinical-note">Record all vitals at time of consultation. BP after 5 min seated rest.</div>
     <div class="vitals-grid">
       <div class="field">
         <label class="field-label" for="bp_systolic">BP Systolic (mmHg) <span class="req">*</span></label>
         <input type="number" id="bp_systolic" name="bp_systolic" placeholder="e.g. 128">
-        <div class="field-error" id="err-bp_systolic">Required.</div>
       </div>
       <div class="field">
         <label class="field-label" for="bp_diastolic">BP Diastolic (mmHg) <span class="req">*</span></label>
         <input type="number" id="bp_diastolic" name="bp_diastolic" placeholder="e.g. 82">
-        <div class="field-error" id="err-bp_diastolic">Required.</div>
       </div>
       <div class="field">
         <label class="field-label" for="heart_rate">Heart rate (bpm) <span class="req">*</span></label>
         <input type="number" id="heart_rate" name="heart_rate" placeholder="e.g. 76">
-        <div class="field-error" id="err-heart_rate">Required.</div>
       </div>
-      <div class="field">
-        <label class="field-label" for="height_measured">Height (cm)</label>
+      <div class="field" id="field-height_measured">
+        <label class="field-label" for="height_measured">Height (cm) <span class="prefilled-indicator">&#10003; from PHI</span></label>
         <input type="number" id="height_measured" name="height_measured" placeholder="e.g. 168">
       </div>
-      <div class="field">
-        <label class="field-label" for="weight_measured">Weight (kg)</label>
+      <div class="field" id="field-weight_measured">
+        <label class="field-label" for="weight_measured">Weight (kg) <span class="prefilled-indicator">&#10003; from PHI</span></label>
         <input type="number" id="weight_measured" name="weight_measured" placeholder="e.g. 72">
       </div>
       <div class="field">
         <label class="field-label" for="bmi_calculated">BMI (calculated)</label>
-        <input type="text" id="bmi_calculated" name="bmi_calculated" placeholder="Auto or enter" readonly style="background:var(--paper2)">
+        <input type="text" id="bmi_calculated" name="bmi_calculated" placeholder="Auto" readonly style="background:var(--paper2)">
       </div>
-      <div class="field">
-        <label class="field-label" for="waist_measured">Waist circ. (cm)</label>
+      <div class="field" id="field-waist_measured">
+        <label class="field-label" for="waist_measured">Waist circ. (cm) <span class="prefilled-indicator">&#10003; from PHI</span></label>
         <input type="number" id="waist_measured" name="waist_measured" placeholder="e.g. 88">
       </div>
       <div class="field">
@@ -610,7 +281,6 @@
         <input type="number" id="temperature" name="temperature" placeholder="e.g. 36.8" step="0.1">
       </div>
     </div>
-
     <div class="field" style="margin-top:8px">
       <label class="field-label" for="bp_repeat">Repeat BP (if initial elevated)</label>
       <input type="text" id="bp_repeat" name="bp_repeat" placeholder="e.g. 124 / 80 mmHg (5 min rest)">
@@ -624,13 +294,19 @@
     </div>
     <div class="field">
       <label class="field-label" for="vitals_notes">Vitals notes</label>
-      <textarea id="vitals_notes" name="vitals_notes" rows="2" placeholder="Any relevant observations about the vitals recording..."></textarea>
+      <textarea id="vitals_notes" name="vitals_notes" rows="2" placeholder="Any relevant observations…"></textarea>
     </div>
   </div>
 
-  <!-- 03 GENERAL APPEARANCE -->
+  <!-- 03 PHI SUMMARY FOR REFERENCE -->
+  <div class="form-section" id="phi-ref-section" style="display:none">
+    <div class="section-header"><span class="section-num">03</span><span class="section-title">PHI Reference — Key Risk Factors</span></div>
+    <div class="clinical-note" id="phi-ref-content" style="font-size:0.9rem;line-height:1.8"></div>
+  </div>
+
+  <!-- 04 GENERAL APPEARANCE -->
   <div class="form-section">
-    <div class="section-header"><span class="section-num">03</span><span class="section-title">General Appearance &amp; Examination</span></div>
+    <div class="section-header"><span class="section-num">04</span><span class="section-title">General Appearance &amp; Examination</span></div>
     <div class="field">
       <label class="field-label">General appearance</label>
       <div class="radio-group">
@@ -650,56 +326,56 @@
     </div>
     <div class="field">
       <label class="field-label" for="skin_findings">Skin / nail findings</label>
-      <input type="text" id="skin_findings" name="skin_findings" placeholder="e.g. Acanthosis nigricans neck, xanthelasma, nail clubbing — or none">
+      <input type="text" id="skin_findings" name="skin_findings" placeholder="e.g. Acanthosis nigricans neck, xanthelasma — or none">
     </div>
     <div class="field">
       <label class="field-label" for="thyroid_examination">Thyroid examination</label>
-      <input type="text" id="thyroid_examination" name="thyroid_examination" placeholder="e.g. No goitre, firm non-tender enlargement, bruit present — or normal">
+      <input type="text" id="thyroid_examination" name="thyroid_examination" placeholder="e.g. No goitre — or describe">
     </div>
     <div class="field">
       <label class="field-label" for="lymph_nodes">Lymph nodes</label>
       <input type="text" id="lymph_nodes" name="lymph_nodes" placeholder="e.g. No palpable lymphadenopathy — or describe">
     </div>
     <div class="field">
-      <label class="field-label" for="abdominal_examination">Abdominal examination</label>
-      <textarea id="abdominal_examination" name="abdominal_examination" rows="2" placeholder="e.g. Soft, non-tender, no organomegaly, bowel sounds normal — or describe findings"></textarea>
+      <label class="field-label" for="cardiovascular_examination">Cardiovascular examination</label>
+      <textarea id="cardiovascular_examination" name="cardiovascular_examination" rows="2" placeholder="e.g. HS I+II+0, no murmurs, JVP not raised, peripheral pulses intact"></textarea>
     </div>
     <div class="field">
-      <label class="field-label" for="cardiovascular_examination">Cardiovascular examination</label>
-      <textarea id="cardiovascular_examination" name="cardiovascular_examination" rows="2" placeholder="e.g. HS I+II+0, no murmurs, JVP not raised, peripheral pulses intact — or describe findings"></textarea>
+      <label class="field-label" for="abdominal_examination">Abdominal examination</label>
+      <textarea id="abdominal_examination" name="abdominal_examination" rows="2" placeholder="e.g. Soft, non-tender, no organomegaly, bowel sounds normal"></textarea>
     </div>
     <div class="field">
       <label class="field-label" for="respiratory_examination">Respiratory examination</label>
-      <input type="text" id="respiratory_examination" name="respiratory_examination" placeholder="e.g. Clear bilaterally, no wheeze or crackles — or describe findings">
+      <input type="text" id="respiratory_examination" name="respiratory_examination" placeholder="e.g. Clear bilaterally, no wheeze or crackles">
     </div>
   </div>
 
-  <!-- 04 REVIEW OF SYSTEMS -->
+  <!-- 05 REVIEW OF SYSTEMS -->
   <div class="form-section">
-    <div class="section-header"><span class="section-num">04</span><span class="section-title">Review of Systems</span></div>
-    <p class="field-hint" style="margin-bottom:16px">Select Present (P) or Absent (A) for each symptom cluster. Leave blank if not assessed.</p>
+    <div class="section-header"><span class="section-num">05</span><span class="section-title">Review of Systems</span></div>
+    <p class="field-hint" style="margin-bottom:14px">Select Present (P) or Absent (A) for each symptom cluster.</p>
 
     <div class="field">
       <label class="field-label">Cardiovascular</label>
       <div class="ros-grid">
         <div class="ros-item" id="ros-chest_pain-wrap">
           <input type="radio" name="ros_chest_pain" id="ros-cp-p" value="Present" onchange="setRos('chest_pain','present')">
-          <input type="radio" name="ros_chest_pain" id="ros-cp-a" value="Absent" onchange="setRos('chest_pain','absent')" style="margin-left:8px">
+          <input type="radio" name="ros_chest_pain" id="ros-cp-a" value="Absent" onchange="setRos('chest_pain','absent')" style="margin-left:6px">
           <label for="ros-cp-p">Chest pain / tightness</label>
         </div>
         <div class="ros-item" id="ros-dyspnoea-wrap">
           <input type="radio" name="ros_dyspnoea" id="ros-dys-p" value="Present" onchange="setRos('dyspnoea','present')">
-          <input type="radio" name="ros_dyspnoea" id="ros-dys-a" value="Absent" onchange="setRos('dyspnoea','absent')" style="margin-left:8px">
+          <input type="radio" name="ros_dyspnoea" id="ros-dys-a" value="Absent" onchange="setRos('dyspnoea','absent')" style="margin-left:6px">
           <label for="ros-dys-p">Dyspnoea on exertion</label>
         </div>
         <div class="ros-item" id="ros-palpitations-wrap">
           <input type="radio" name="ros_palpitations" id="ros-pal-p" value="Present" onchange="setRos('palpitations','present')">
-          <input type="radio" name="ros_palpitations" id="ros-pal-a" value="Absent" onchange="setRos('palpitations','absent')" style="margin-left:8px">
+          <input type="radio" name="ros_palpitations" id="ros-pal-a" value="Absent" onchange="setRos('palpitations','absent')" style="margin-left:6px">
           <label for="ros-pal-p">Palpitations</label>
         </div>
         <div class="ros-item" id="ros-syncope-wrap">
           <input type="radio" name="ros_syncope" id="ros-syn-p" value="Present" onchange="setRos('syncope','present')">
-          <input type="radio" name="ros_syncope" id="ros-syn-a" value="Absent" onchange="setRos('syncope','absent')" style="margin-left:8px">
+          <input type="radio" name="ros_syncope" id="ros-syn-a" value="Absent" onchange="setRos('syncope','absent')" style="margin-left:6px">
           <label for="ros-syn-p">Syncope / presyncope</label>
         </div>
       </div>
@@ -710,22 +386,22 @@
       <div class="ros-grid">
         <div class="ros-item" id="ros-polydipsia-wrap">
           <input type="radio" name="ros_polydipsia" id="ros-pd-p" value="Present" onchange="setRos('polydipsia','present')">
-          <input type="radio" name="ros_polydipsia" id="ros-pd-a" value="Absent" onchange="setRos('polydipsia','absent')" style="margin-left:8px">
+          <input type="radio" name="ros_polydipsia" id="ros-pd-a" value="Absent" onchange="setRos('polydipsia','absent')" style="margin-left:6px">
           <label for="ros-pd-p">Polyuria / polydipsia</label>
         </div>
         <div class="ros-item" id="ros-weight_change-wrap">
           <input type="radio" name="ros_weight_change" id="ros-wc-p" value="Present" onchange="setRos('weight_change','present')">
-          <input type="radio" name="ros_weight_change" id="ros-wc-a" value="Absent" onchange="setRos('weight_change','absent')" style="margin-left:8px">
+          <input type="radio" name="ros_weight_change" id="ros-wc-a" value="Absent" onchange="setRos('weight_change','absent')" style="margin-left:6px">
           <label for="ros-wc-p">Unexplained weight change</label>
         </div>
         <div class="ros-item" id="ros-fatigue-wrap">
           <input type="radio" name="ros_fatigue" id="ros-fat-p" value="Present" onchange="setRos('fatigue','present')">
-          <input type="radio" name="ros_fatigue" id="ros-fat-a" value="Absent" onchange="setRos('fatigue','absent')" style="margin-left:8px">
+          <input type="radio" name="ros_fatigue" id="ros-fat-a" value="Absent" onchange="setRos('fatigue','absent')" style="margin-left:6px">
           <label for="ros-fat-p">Persistent fatigue</label>
         </div>
         <div class="ros-item" id="ros-heat_cold-wrap">
           <input type="radio" name="ros_heat_cold" id="ros-hc-p" value="Present" onchange="setRos('heat_cold','present')">
-          <input type="radio" name="ros_heat_cold" id="ros-hc-a" value="Absent" onchange="setRos('heat_cold','absent')" style="margin-left:8px">
+          <input type="radio" name="ros_heat_cold" id="ros-hc-a" value="Absent" onchange="setRos('heat_cold','absent')" style="margin-left:6px">
           <label for="ros-hc-p">Heat / cold intolerance</label>
         </div>
       </div>
@@ -736,12 +412,12 @@
       <div class="ros-grid">
         <div class="ros-item" id="ros-gi-wrap">
           <input type="radio" name="ros_gi" id="ros-gi-p" value="Present" onchange="setRos('gi','present')">
-          <input type="radio" name="ros_gi" id="ros-gi-a" value="Absent" onchange="setRos('gi','absent')" style="margin-left:8px">
+          <input type="radio" name="ros_gi" id="ros-gi-a" value="Absent" onchange="setRos('gi','absent')" style="margin-left:6px">
           <label for="ros-gi-p">GI symptoms (nausea, pain, bloating)</label>
         </div>
         <div class="ros-item" id="ros-jaundice-wrap">
           <input type="radio" name="ros_jaundice" id="ros-jau-p" value="Present" onchange="setRos('jaundice','present')">
-          <input type="radio" name="ros_jaundice" id="ros-jau-a" value="Absent" onchange="setRos('jaundice','absent')" style="margin-left:8px">
+          <input type="radio" name="ros_jaundice" id="ros-jau-a" value="Absent" onchange="setRos('jaundice','absent')" style="margin-left:6px">
           <label for="ros-jau-p">Jaundice / dark urine</label>
         </div>
       </div>
@@ -752,43 +428,75 @@
       <div class="ros-grid">
         <div class="ros-item" id="ros-renal-wrap">
           <input type="radio" name="ros_renal" id="ros-ren-p" value="Present" onchange="setRos('renal','present')">
-          <input type="radio" name="ros_renal" id="ros-ren-a" value="Absent" onchange="setRos('renal','absent')" style="margin-left:8px">
+          <input type="radio" name="ros_renal" id="ros-ren-a" value="Absent" onchange="setRos('renal','absent')" style="margin-left:6px">
           <label for="ros-ren-p">Dysuria / haematuria / frequency</label>
         </div>
         <div class="ros-item" id="ros-nocturia-wrap">
           <input type="radio" name="ros_nocturia" id="ros-noc-p" value="Present" onchange="setRos('nocturia','present')">
-          <input type="radio" name="ros_nocturia" id="ros-noc-a" value="Absent" onchange="setRos('nocturia','absent')" style="margin-left:8px">
+          <input type="radio" name="ros_nocturia" id="ros-noc-a" value="Absent" onchange="setRos('nocturia','absent')" style="margin-left:6px">
           <label for="ros-noc-p">Nocturia (&gt;2×/night)</label>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 05 CLINICAL IMPRESSION -->
+  <!-- 06 CLINICAL IMPRESSION -->
   <div class="form-section">
-    <div class="section-header"><span class="section-num">05</span><span class="section-title">Clinical Impression &amp; Notes</span></div>
+    <div class="section-header"><span class="section-num">06</span><span class="section-title">Clinical Impression &amp; Notes</span></div>
 
     <div class="field">
       <label class="field-label" for="clinical_impression">Clinical impression</label>
-      <p class="field-hint">Preliminary clinical assessment before lab results are reviewed</p>
-      <textarea id="clinical_impression" name="clinical_impression" rows="4" placeholder="e.g. 44-year-old male with central obesity, mildly elevated BP, strong family history of premature CVD. High pre-test probability of dyslipidaemia and insulin resistance. Targeting full CVD risk stratification and metabolic panel..."></textarea>
+      <p class="field-hint">Preliminary assessment before lab results are reviewed</p>
+      <textarea id="clinical_impression" name="clinical_impression" rows="4" placeholder="e.g. 44M, central obesity, mildly elevated BP, strong family Hx premature CVD. High pre-test probability of dyslipidaemia and insulin resistance…"></textarea>
     </div>
-
     <div class="field">
       <label class="field-label" for="additional_history">Additional history taken at examination</label>
-      <textarea id="additional_history" name="additional_history" rows="3" placeholder="Any history that supplements the PHI form — new medications, recent illness, updated symptoms..."></textarea>
+      <textarea id="additional_history" name="additional_history" rows="3" placeholder="Any history supplementing the PHI form — new medications, recent illness, updated symptoms…"></textarea>
     </div>
-
     <div class="field">
       <label class="field-label" for="physician_notes">Physician notes</label>
-      <textarea id="physician_notes" name="physician_notes" rows="3" placeholder="Any other clinical observations, concerns, or instructions for report interpretation..."></textarea>
+      <textarea id="physician_notes" name="physician_notes" rows="3" placeholder="Any other clinical observations, concerns, or instructions for report interpretation…"></textarea>
     </div>
-
     <div class="field">
-      <label class="field-label" for="red_flags_noted">Red flags noted at examination</label>
+      <label class="field-label">Red flags noted at examination</label>
       <div class="radio-group">
         <div class="radio-chip"><input type="radio" name="red_flags_noted" id="rf-none" value="None"><label for="rf-none">None</label></div>
         <div class="radio-chip"><input type="radio" name="red_flags_noted" id="rf-yes" value="Yes — see notes"><label for="rf-yes">Yes — see notes</label></div>
+      </div>
+    </div>
+
+    <!-- CVD RISK BOX -->
+    <div class="cvd-box">
+      <div class="cvd-box-title">CVD Risk Calculation &middot; WHO SEAR-B South Asian Model &middot; 1.4× Multiplier</div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="cvd_risk_percent">Calculated 10-yr Risk (%)</label>
+          <input type="text" id="cvd_risk_percent" name="cvd_risk_percent" placeholder="e.g. 14.2">
+        </div>
+        <div class="field">
+          <label class="field-label" for="cvd_risk_category">Risk category</label>
+          <select id="cvd_risk_category" name="cvd_risk_category">
+            <option value="">Select…</option>
+            <option>Low (&lt;10%)</option>
+            <option>Moderate (10–20%)</option>
+            <option>High (&gt;20%)</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="statin_correction">Statin correction applied (ESC-EAS)</label>
+          <select id="statin_correction" name="statin_correction">
+            <option value="">Select…</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>N/A — not on statin</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label" for="cvd_total_chol">Total cholesterol (mmol/L)</label>
+          <input type="text" id="cvd_total_chol" name="cvd_total_chol" placeholder="From lab results">
+        </div>
       </div>
     </div>
   </div>
@@ -809,153 +517,255 @@
   <div class="success-icon">✓</div>
   <div class="success-title">Clinical record submitted</div>
   <div class="success-body">
-    The physician examination record has been received and filed.<br><br>
-    The patient's status has been updated to <em>Awaiting Lab Results</em>.<br><br>
+    Physician examination record received and filed.<br><br>
+    Patient status updated to <em>Awaiting Lab Results</em>.<br><br>
     <em style="font-size:0.875rem;color:var(--ink5)">GHC ID: <span id="confirmed-ghc"></span></em>
   </div>
 </div>
 
-</div>
+</div><!-- /form-body -->
+
 <footer class="page-footer">
   <div class="footer-sig">Dr. Dimithra Gamalathge</div>
   <div class="footer-meta">Signature Health Intelligence<br>signaturehealthintel.com</div>
 </footer>
+
 <script>
+// ── URL PARAMETER PRE-FILL ──────────────────────────────────────────────────
+(function() {
+  const p = new URLSearchParams(window.location.search);
 
-  // ── URL PARAMS ──
-  (function() {
-    const p = new URLSearchParams(window.location.search);
-    const ghc = p.get('ghc') || '';
-    document.getElementById('ghc_patient_id').value = ghc;
-    if (ghc) {
-      const tag = document.createElement('div');
-      tag.style.cssText = 'font-family:Courier New,monospace;font-size:0.7rem;letter-spacing:0.14em;color:var(--terra);margin-bottom:28px;padding:10px 14px;background:var(--paper2);border-left:3px solid var(--terra);display:inline-block';
-      tag.textContent = 'GHC ID: ' + ghc;
-      document.getElementById('physician-form').insertBefore(tag, document.getElementById('physician-form').firstChild);
-    }
-    // Set today's date
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('examination_date').value = today;
-  })();
-
-  // ── BMI AUTO CALC ──
-  function calcBmi() {
-    const h = parseFloat(document.getElementById('height_measured').value);
-    const w = parseFloat(document.getElementById('weight_measured').value);
-    if (h > 0 && w > 0) {
-      document.getElementById('bmi_calculated').value = (w / Math.pow(h/100, 2)).toFixed(1) + ' kg/m²';
-    }
-  }
-  document.getElementById('height_measured').addEventListener('input', calcBmi);
-  document.getElementById('weight_measured').addEventListener('input', calcBmi);
-
-  // ── ROS COLOURING ──
-  function setRos(system, state) {
-    const wrap = document.getElementById('ros-' + system + '-wrap');
-    if (!wrap) return;
-    wrap.classList.remove('present','absent');
-    if (state === 'present') wrap.classList.add('present');
-    if (state === 'absent') wrap.classList.add('absent');
+  // Always set GHC ID
+  const ghc = p.get('ghc') || '';
+  document.getElementById('ghc_patient_id').value = ghc;
+  if (ghc) {
+    const tag = document.getElementById('ghc-tag');
+    tag.textContent = 'GHC ID: ' + ghc;
+    tag.style.display = 'inline-block';
   }
 
-  // ── SUBMIT ──
-  document.getElementById('physician-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    let valid = true;
+  // Set today's date
+  document.getElementById('examination_date').value = new Date().toISOString().split('T')[0];
 
-    const required = [
-      { id: 'patient_name', err: 'err-patient_name' },
-      { id: 'bp_systolic', err: 'err-bp_systolic' },
-      { id: 'bp_diastolic', err: 'err-bp_diastolic' },
-      { id: 'heart_rate', err: 'err-heart_rate' },
-    ];
+  // Pre-fill map: url_param → { fieldId, type }
+  const fields = {
+    name:     { id: 'patient_name',    type: 'text' },
+    age:      { id: 'patient_age',     type: 'text' },
+    sex:      { id: 'patient_sex',     type: 'radio' },
+    pkg:      { id: 'package_tier',    type: 'select' },
+    height:   { id: 'height_measured', type: 'text' },
+    weight:   { id: 'weight_measured', type: 'text' },
+    waist:    { id: 'waist_measured',  type: 'text' },
+  };
 
-    required.forEach(f => {
-      const el = document.getElementById(f.id);
-      const empty = !el.value.trim();
-      if (empty) el.classList.add('invalid'); else el.classList.remove('invalid');
-      document.getElementById(f.err).style.display = empty ? 'block' : 'none';
-      if (empty) valid = false;
-    });
+  let anyPrefilled = false;
+  const phiSummaryItems = [];
 
-    if (!valid) { window.scrollTo({top:0,behavior:'smooth'}); return; }
+  Object.entries(fields).forEach(([param, config]) => {
+    const val = p.get(param);
+    if (!val) return;
+    anyPrefilled = true;
 
-    const btn = document.getElementById('submit-btn');
-    btn.disabled = true;
-    document.getElementById('btn-text').textContent = 'Submitting…';
-    document.getElementById('btn-arrow').textContent = '⟳';
-
-    const getRos = (name) => (document.querySelector('input[name="' + name + '"]:checked') || {}).value || '';
-
-    const payload = {
-      ghc_patient_id:           document.getElementById('ghc_patient_id').value,
-      patient_name:             document.getElementById('patient_name').value.trim(),
-      examination_date:         document.getElementById('examination_date').value,
-      patient_age:              document.getElementById('patient_age').value,
-      patient_sex:              (document.querySelector('input[name="patient_sex"]:checked') || {}).value || '',
-      package_tier:             document.getElementById('package_tier').value,
-      examination_location:     document.getElementById('examination_location').value.trim(),
-      bp_systolic:              document.getElementById('bp_systolic').value,
-      bp_diastolic:             document.getElementById('bp_diastolic').value,
-      heart_rate:               document.getElementById('heart_rate').value,
-      height_measured:          document.getElementById('height_measured').value,
-      weight_measured:          document.getElementById('weight_measured').value,
-      bmi_calculated:           document.getElementById('bmi_calculated').value,
-      waist_measured:           document.getElementById('waist_measured').value,
-      oxygen_saturation:        document.getElementById('oxygen_saturation').value,
-      temperature:              document.getElementById('temperature').value,
-      bp_repeat:                document.getElementById('bp_repeat').value.trim(),
-      bp_arm:                   (document.querySelector('input[name="bp_arm"]:checked') || {}).value || '',
-      vitals_notes:             document.getElementById('vitals_notes').value.trim(),
-      general_appearance:       (document.querySelector('input[name="general_appearance"]:checked') || {}).value || '',
-      peripheral_oedema:        (document.querySelector('input[name="peripheral_oedema"]:checked') || {}).value || '',
-      skin_findings:            document.getElementById('skin_findings').value.trim(),
-      thyroid_examination:      document.getElementById('thyroid_examination').value.trim(),
-      lymph_nodes:              document.getElementById('lymph_nodes').value.trim(),
-      abdominal_examination:    document.getElementById('abdominal_examination').value.trim(),
-      cardiovascular_examination: document.getElementById('cardiovascular_examination').value.trim(),
-      respiratory_examination:  document.getElementById('respiratory_examination').value.trim(),
-      ros_chest_pain:           getRos('ros_chest_pain'),
-      ros_dyspnoea:             getRos('ros_dyspnoea'),
-      ros_palpitations:         getRos('ros_palpitations'),
-      ros_syncope:              getRos('ros_syncope'),
-      ros_polydipsia:           getRos('ros_polydipsia'),
-      ros_weight_change:        getRos('ros_weight_change'),
-      ros_fatigue:              getRos('ros_fatigue'),
-      ros_heat_cold:            getRos('ros_heat_cold'),
-      ros_gi:                   getRos('ros_gi'),
-      ros_jaundice:             getRos('ros_jaundice'),
-      ros_renal:                getRos('ros_renal'),
-      ros_nocturia:             getRos('ros_nocturia'),
-      clinical_impression:      document.getElementById('clinical_impression').value.trim(),
-      additional_history:       document.getElementById('additional_history').value.trim(),
-      physician_notes:          document.getElementById('physician_notes').value.trim(),
-      red_flags_noted:          (document.querySelector('input[name="red_flags_noted"]:checked') || {}).value || '',
-      submitted_at:             new Date().toISOString(),
-    };
-
-    try {
-      const res = await fetch('https://dimithra.app.n8n.cloud/webhook/form3-physician', {
-        method: 'POST', mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (res.ok || res.status === 200) {
-        document.getElementById('physician-form').style.display = 'none';
-        document.getElementById('success-screen').style.display = 'block';
-        document.getElementById('confirmed-ghc').textContent = payload.ghc_patient_id || 'Received';
-        window.scrollTo({top:0,behavior:'smooth'});
-      } else {
-        throw new Error('HTTP ' + res.status);
+    if (config.type === 'radio') {
+      const radio = document.querySelector(`input[name="${config.id}"][value="${val}"]`);
+      if (radio) {
+        radio.checked = true;
+        // Show prefilled indicator on parent field
+        const fieldEl = document.getElementById('field-patient_sex');
+        if (fieldEl) fieldEl.classList.add('has-prefill');
       }
-    } catch(err) {
-      btn.disabled = false;
-      document.getElementById('btn-text').textContent = 'Submit Clinical Record';
-      document.getElementById('btn-arrow').textContent = '→';
-      alert('Submission failed. Please try again. (' + err.message + ')');
+    } else if (config.type === 'select') {
+      const sel = document.getElementById(config.id);
+      if (sel) {
+        sel.value = val;
+        sel.classList.add('prefilled');
+        const fieldEl = document.getElementById('field-package_tier');
+        if (fieldEl) fieldEl.classList.add('has-prefill');
+      }
+    } else {
+      const el = document.getElementById(config.id);
+      if (el) {
+        el.value = val;
+        el.classList.add('prefilled');
+        // Mark parent field
+        const fieldEl = document.getElementById('field-' + config.id);
+        if (fieldEl) fieldEl.classList.add('has-prefill');
+      }
     }
   });
 
+  // Build PHI reference section from extra params
+  const phi = {
+    bp:       p.get('bp'),
+    bp_med:   p.get('bp_med'),
+    diabetes: p.get('diabetes'),
+    hba1c:    p.get('hba1c'),
+    smoking:  p.get('smoking'),
+    statin:   p.get('statin'),
+    fhx_cvd:  p.get('fhx_cvd'),
+    ckd:      p.get('ckd'),
+    conditions: p.get('conditions'),
+    medications: p.get('medications'),
+  };
+
+  const phiLines = [];
+  if (phi.bp)         phiLines.push({ label: 'Reported BP', val: phi.bp + ' mmHg' });
+  if (phi.bp_med)     phiLines.push({ label: 'BP Medication', val: phi.bp_med });
+  if (phi.diabetes)   phiLines.push({ label: 'Diabetes', val: phi.diabetes });
+  if (phi.hba1c)      phiLines.push({ label: 'HbA1c', val: phi.hba1c });
+  if (phi.smoking)    phiLines.push({ label: 'Smoking', val: phi.smoking });
+  if (phi.statin)     phiLines.push({ label: 'Statin', val: phi.statin });
+  if (phi.fhx_cvd)    phiLines.push({ label: 'Family Hx CVD', val: phi.fhx_cvd });
+  if (phi.ckd)        phiLines.push({ label: 'Known CKD', val: phi.ckd });
+  if (phi.conditions) phiLines.push({ label: 'Conditions', val: decodeURIComponent(phi.conditions) });
+  if (phi.medications)phiLines.push({ label: 'Medications', val: decodeURIComponent(phi.medications) });
+
+  if (phiLines.length > 0) {
+    anyPrefilled = true;
+    const refSection = document.getElementById('phi-ref-section');
+    const refContent = document.getElementById('phi-ref-content');
+    refSection.style.display = 'block';
+    refContent.innerHTML = phiLines.map(l =>
+      `<strong style="font-family:'Courier New',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--ink4);text-transform:uppercase">${l.label}:</strong> ${l.val}`
+    ).join('<br>');
+
+    // Also populate PHI summary card
+    const grid = document.getElementById('phi-grid');
+    grid.innerHTML = phiLines.map(l =>
+      `<div class="phi-item"><span class="phi-label">${l.label}</span><span class="phi-val">${l.val}</span></div>`
+    ).join('');
+    document.getElementById('phi-summary').style.display = 'block';
+  }
+
+  if (anyPrefilled) {
+    document.getElementById('prefill-notice').style.display = 'block';
+  }
+
+  // Trigger BMI if height/weight pre-filled
+  calcBmi();
+})();
+
+// ── BMI AUTO CALC ───────────────────────────────────────────────────────────
+function calcBmi() {
+  const h = parseFloat(document.getElementById('height_measured').value);
+  const w = parseFloat(document.getElementById('weight_measured').value);
+  if (h > 0 && w > 0) {
+    const bmi = (w / Math.pow(h/100, 2)).toFixed(1);
+    document.getElementById('bmi_calculated').value = bmi + ' kg/m²';
+  }
+}
+document.getElementById('height_measured').addEventListener('input', calcBmi);
+document.getElementById('weight_measured').addEventListener('input', calcBmi);
+
+// ── ROS COLOURING ───────────────────────────────────────────────────────────
+function setRos(system, state) {
+  const wrap = document.getElementById('ros-' + system + '-wrap');
+  if (!wrap) return;
+  wrap.classList.remove('present', 'absent');
+  if (state === 'present') wrap.classList.add('present');
+  if (state === 'absent')  wrap.classList.add('absent');
+}
+
+// ── SUBMIT ──────────────────────────────────────────────────────────────────
+document.getElementById('physician-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  let valid = true;
+
+  const required = [
+    { id: 'patient_name' },
+    { id: 'bp_systolic' },
+    { id: 'bp_diastolic' },
+    { id: 'heart_rate' },
+  ];
+
+  required.forEach(f => {
+    const el = document.getElementById(f.id);
+    const empty = !el.value.trim();
+    el.style.borderColor = empty ? 'var(--terra)' : '';
+    if (empty) valid = false;
+  });
+
+  if (!valid) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  document.getElementById('btn-text').textContent = 'Submitting…';
+  document.getElementById('btn-arrow').textContent = '⟳';
+
+  const getRos = name => (document.querySelector(`input[name="${name}"]:checked`) || {}).value || '';
+
+  const payload = {
+    ghc_patient_id:               document.getElementById('ghc_patient_id').value,
+    patient_name:                  document.getElementById('patient_name').value.trim(),
+    examination_date:              document.getElementById('examination_date').value,
+    patient_age:                   document.getElementById('patient_age').value,
+    patient_sex:                   (document.querySelector('input[name="patient_sex"]:checked') || {}).value || '',
+    package_tier:                  document.getElementById('package_tier').value,
+    examination_location:          document.getElementById('examination_location').value.trim(),
+    bp_systolic:                   document.getElementById('bp_systolic').value,
+    bp_diastolic:                  document.getElementById('bp_diastolic').value,
+    heart_rate:                    document.getElementById('heart_rate').value,
+    height_measured:               document.getElementById('height_measured').value,
+    weight_measured:               document.getElementById('weight_measured').value,
+    bmi_calculated:                document.getElementById('bmi_calculated').value,
+    waist_measured:                document.getElementById('waist_measured').value,
+    oxygen_saturation:             document.getElementById('oxygen_saturation').value,
+    temperature:                   document.getElementById('temperature').value,
+    bp_repeat:                     document.getElementById('bp_repeat').value.trim(),
+    bp_arm:                        (document.querySelector('input[name="bp_arm"]:checked') || {}).value || '',
+    vitals_notes:                  document.getElementById('vitals_notes').value.trim(),
+    general_appearance:            (document.querySelector('input[name="general_appearance"]:checked') || {}).value || '',
+    peripheral_oedema:             (document.querySelector('input[name="peripheral_oedema"]:checked') || {}).value || '',
+    skin_findings:                 document.getElementById('skin_findings').value.trim(),
+    thyroid_examination:           document.getElementById('thyroid_examination').value.trim(),
+    lymph_nodes:                   document.getElementById('lymph_nodes').value.trim(),
+    abdominal_examination:         document.getElementById('abdominal_examination').value.trim(),
+    cardiovascular_examination:    document.getElementById('cardiovascular_examination').value.trim(),
+    respiratory_examination:       document.getElementById('respiratory_examination').value.trim(),
+    ros_chest_pain:                getRos('ros_chest_pain'),
+    ros_dyspnoea:                  getRos('ros_dyspnoea'),
+    ros_palpitations:              getRos('ros_palpitations'),
+    ros_syncope:                   getRos('ros_syncope'),
+    ros_polydipsia:                getRos('ros_polydipsia'),
+    ros_weight_change:             getRos('ros_weight_change'),
+    ros_fatigue:                   getRos('ros_fatigue'),
+    ros_heat_cold:                 getRos('ros_heat_cold'),
+    ros_gi:                        getRos('ros_gi'),
+    ros_jaundice:                  getRos('ros_jaundice'),
+    ros_renal:                     getRos('ros_renal'),
+    ros_nocturia:                  getRos('ros_nocturia'),
+    clinical_impression:           document.getElementById('clinical_impression').value.trim(),
+    additional_history:            document.getElementById('additional_history').value.trim(),
+    physician_notes:               document.getElementById('physician_notes').value.trim(),
+    red_flags_noted:               (document.querySelector('input[name="red_flags_noted"]:checked') || {}).value || '',
+    cvd_risk_percent:              document.getElementById('cvd_risk_percent').value.trim(),
+    cvd_risk_category:             document.getElementById('cvd_risk_category').value,
+    statin_correction:             document.getElementById('statin_correction').value,
+    cvd_total_chol:                document.getElementById('cvd_total_chol').value.trim(),
+    submitted_at:                  new Date().toISOString(),
+  };
+
+  try {
+    const res = await fetch('https://dimithra.app.n8n.cloud/webhook/form3-physician', {
+      method: 'POST', mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (res.ok || res.status === 200) {
+      document.getElementById('physician-form').style.display = 'none';
+      document.getElementById('success-screen').style.display = 'block';
+      document.getElementById('confirmed-ghc').textContent = payload.ghc_patient_id || 'Received';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      throw new Error('HTTP ' + res.status);
+    }
+  } catch(err) {
+    btn.disabled = false;
+    document.getElementById('btn-text').textContent = 'Submit Clinical Record';
+    document.getElementById('btn-arrow').textContent = '→';
+    alert('Submission failed. Please try again. (' + err.message + ')');
+  }
+});
 </script>
 </body>
 </html>
