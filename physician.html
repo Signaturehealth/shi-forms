@@ -132,6 +132,27 @@ input.prefilled, select.prefilled, textarea.prefilled {
 .success-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; font-weight: 400; color: var(--ink); margin-bottom: 14px; }
 .success-body { font-size: 0.975rem; color: var(--ink4); line-height: 1.8; }
 
+/* PSYCHOSOCIAL / FUNCTIONAL */
+.clinical-note { background: white; border: 1px solid var(--border); border-left: 3px solid var(--terra); padding: 12px 16px; margin-bottom: 16px; font-size: 0.88rem; color: var(--ink3); line-height: 1.7; }
+.scale-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.scale-chip { position: relative; }
+.scale-chip input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+.scale-chip label { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1.5px solid var(--border2); font-family: 'Courier New', monospace; font-size: 0.8rem; color: var(--ink4); cursor: pointer; transition: all 0.15s; }
+.scale-chip input:checked + label { border-color: var(--terra); background: rgba(184,92,62,0.08); color: var(--ink); font-weight: 700; }
+
+/* ELITE SECTIONS */
+.elite-only { display: none; }
+.elite-only.visible { display: block; }
+.elite-banner { background: var(--ink); color: white; padding: 10px 16px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.elite-banner-label { font-family: 'Courier New', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); }
+.elite-banner-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; font-weight: 400; }
+.symptom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+.symptom-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1.5px solid var(--border); background: white; cursor: pointer; }
+.symptom-item input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--terra); flex-shrink: 0; cursor: pointer; }
+.symptom-item label { font-size: 0.9rem; color: var(--ink3); cursor: pointer; line-height: 1.3; }
+.symptom-item:has(input:checked) { border-color: var(--terra); background: rgba(184,92,62,0.04); }
+.symptom-item:has(input:checked) label { color: var(--ink); }
+
 /* FOOTER */
 .page-footer { border-top: 1px solid var(--border); padding: 18px 36px; display: flex; align-items: center; justify-content: space-between; background: white; }
 .footer-sig { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; font-style: italic; color: var(--ink4); }
@@ -465,39 +486,274 @@ input.prefilled, select.prefilled, textarea.prefilled {
       </div>
     </div>
 
-    <!-- CVD RISK BOX -->
-    <div class="cvd-box">
-      <div class="cvd-box-title">CVD Risk Calculation &middot; WHO SEAR-B South Asian Model &middot; 1.4× Multiplier</div>
+  </div><!-- /section 06 -->
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       § 07  PSYCHOSOCIAL & FUNCTIONAL — ALL TIERS (ESC 2021 Class IIa)
+       ═══════════════════════════════════════════════════════════════════ -->
+  <div class="form-section">
+    <div class="section-header"><span class="section-num">07</span><span class="section-title">Psychosocial &amp; Functional Assessment</span></div>
+    <div class="clinical-note"><strong>ESC 2021 Class IIa:</strong> Psychosocial stress, depression, anxiety, and sleep are independent cardiovascular risk factors. Assess at every preventive consultation.</div>
+
+    <div class="field">
+      <label class="field-label">Sleep duration (hours per night)</label>
+      <div class="radio-group">
+        <div class="radio-chip"><input type="radio" name="sleep_hours" id="sl-lt5" value="<5 hours"><label for="sl-lt5">&lt;5 hrs</label></div>
+        <div class="radio-chip"><input type="radio" name="sleep_hours" id="sl-5to6" value="5–6 hours"><label for="sl-5to6">5–6 hrs</label></div>
+        <div class="radio-chip"><input type="radio" name="sleep_hours" id="sl-6to7" value="6–7 hours"><label for="sl-6to7">6–7 hrs</label></div>
+        <div class="radio-chip"><input type="radio" name="sleep_hours" id="sl-7to8" value="7–8 hours"><label for="sl-7to8">7–8 hrs</label></div>
+        <div class="radio-chip"><input type="radio" name="sleep_hours" id="sl-gt8" value=">8 hours"><label for="sl-gt8">&gt;8 hrs</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label">Sleep quality</label>
+      <div class="radio-group">
+        <div class="radio-chip"><input type="radio" name="sleep_quality" id="sq-good" value="Good"><label for="sq-good">Good</label></div>
+        <div class="radio-chip"><input type="radio" name="sleep_quality" id="sq-fair" value="Fair"><label for="sq-fair">Fair</label></div>
+        <div class="radio-chip"><input type="radio" name="sleep_quality" id="sq-poor" value="Poor"><label for="sq-poor">Poor</label></div>
+        <div class="radio-chip"><input type="radio" name="sleep_quality" id="sq-insomnia" value="Insomnia"><label for="sq-insomnia">Insomnia</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label">Work stress level <span style="font-family:'Courier New',monospace;font-size:0.6rem;color:var(--ink5);font-weight:400">(1 = none · 5 = severe)</span></label>
+      <div class="scale-row">
+        <div class="scale-chip"><input type="radio" name="stress_work" id="sw1" value="1"><label for="sw1">1</label></div>
+        <div class="scale-chip"><input type="radio" name="stress_work" id="sw2" value="2"><label for="sw2">2</label></div>
+        <div class="scale-chip"><input type="radio" name="stress_work" id="sw3" value="3"><label for="sw3">3</label></div>
+        <div class="scale-chip"><input type="radio" name="stress_work" id="sw4" value="4"><label for="sw4">4</label></div>
+        <div class="scale-chip"><input type="radio" name="stress_work" id="sw5" value="5"><label for="sw5">5</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label">Life / personal stress level <span style="font-family:'Courier New',monospace;font-size:0.6rem;color:var(--ink5);font-weight:400">(1 = none · 5 = severe)</span></label>
+      <div class="scale-row">
+        <div class="scale-chip"><input type="radio" name="stress_life" id="sl1" value="1"><label for="sl1">1</label></div>
+        <div class="scale-chip"><input type="radio" name="stress_life" id="sl2" value="2"><label for="sl2">2</label></div>
+        <div class="scale-chip"><input type="radio" name="stress_life" id="sl3" value="3"><label for="sl3">3</label></div>
+        <div class="scale-chip"><input type="radio" name="stress_life" id="sl4" value="4"><label for="sl4">4</label></div>
+        <div class="scale-chip"><input type="radio" name="stress_life" id="sl5" value="5"><label for="sl5">5</label></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label">Depressive symptoms</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="depression_screen" id="dep-none" value="None"><label for="dep-none">None</label></div>
+          <div class="radio-chip"><input type="radio" name="depression_screen" id="dep-mild" value="Mild"><label for="dep-mild">Mild</label></div>
+          <div class="radio-chip"><input type="radio" name="depression_screen" id="dep-mod" value="Moderate"><label for="dep-mod">Moderate</label></div>
+          <div class="radio-chip"><input type="radio" name="depression_screen" id="dep-sev" value="Significant"><label for="dep-sev">Significant</label></div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Anxiety symptoms</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="anxiety_screen" id="anx-none" value="None"><label for="anx-none">None</label></div>
+          <div class="radio-chip"><input type="radio" name="anxiety_screen" id="anx-mild" value="Mild"><label for="anx-mild">Mild</label></div>
+          <div class="radio-chip"><input type="radio" name="anxiety_screen" id="anx-mod" value="Moderate"><label for="anx-mod">Moderate</label></div>
+          <div class="radio-chip"><input type="radio" name="anxiety_screen" id="anx-sev" value="Significant"><label for="anx-sev">Significant</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Functional capacity — can climb 2 flights of stairs without stopping?</label>
+      <div class="radio-group">
+        <div class="radio-chip"><input type="radio" name="functional_capacity" id="fc-yes" value="Yes — no symptoms"><label for="fc-yes">Yes, no symptoms</label></div>
+        <div class="radio-chip"><input type="radio" name="functional_capacity" id="fc-yes-dysp" value="Yes — with dyspnoea"><label for="fc-yes-dysp">Yes, with dyspnoea</label></div>
+        <div class="radio-chip"><input type="radio" name="functional_capacity" id="fc-no" value="No"><label for="fc-no">No</label></div>
+        <div class="radio-chip"><input type="radio" name="functional_capacity" id="fc-unknown" value="Not assessed"><label for="fc-unknown">Not assessed</label></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label" for="occupation_type">Occupation type</label>
+        <select id="occupation_type" name="occupation_type">
+          <option value="">Select…</option>
+          <option>Sedentary / desk-based</option>
+          <option>Moderate activity</option>
+          <option>Heavy manual labour</option>
+          <option>Retired</option>
+          <option>Not working</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label">Significant life event in last 6 months?</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="recent_life_event" id="rle-no" value="None"><label for="rle-no">None</label></div>
+          <div class="radio-chip"><input type="radio" name="recent_life_event" id="rle-yes" value="Yes — see notes"><label for="rle-yes">Yes — see notes</label></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ELITE ONLY — Parts B · C · D
+       Hidden unless package = Elite
+       ═══════════════════════════════════════════════════════════════════ -->
+
+  <!-- PART B — HORMONAL HEALTH -->
+  <div class="form-section elite-only" id="elite-part-b">
+    <div class="elite-banner">
+      <div>
+        <div class="elite-banner-label">Elite Package · Part B</div>
+        <div class="elite-banner-title">Hormonal Health Assessment</div>
+      </div>
+    </div>
+
+    <!-- FEMALE -->
+    <div id="hormonal-female">
+      <div class="field">
+        <label class="field-label">Menopausal status</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="menopausal_status" id="ms-pre" value="Pre-menopausal"><label for="ms-pre">Pre-menopausal</label></div>
+          <div class="radio-chip"><input type="radio" name="menopausal_status" id="ms-peri" value="Peri-menopausal"><label for="ms-peri">Peri-menopausal</label></div>
+          <div class="radio-chip"><input type="radio" name="menopausal_status" id="ms-post" value="Post-menopausal"><label for="ms-post">Post-menopausal</label></div>
+          <div class="radio-chip"><input type="radio" name="menopausal_status" id="ms-na" value="N/A (Male)"><label for="ms-na">N/A</label></div>
+        </div>
+      </div>
       <div class="field-row">
         <div class="field">
-          <label class="field-label" for="cvd_risk_percent">Calculated 10-yr Risk (%)</label>
-          <input type="text" id="cvd_risk_percent" name="cvd_risk_percent" placeholder="e.g. 14.2">
+          <label class="field-label" for="lmp">Last menstrual period (LMP)</label>
+          <input type="text" id="lmp" name="lmp" placeholder="e.g. April 2026 / not applicable">
         </div>
         <div class="field">
-          <label class="field-label" for="cvd_risk_category">Risk category</label>
-          <select id="cvd_risk_category" name="cvd_risk_category">
+          <label class="field-label" for="cycle_regularity">Cycle regularity</label>
+          <select id="cycle_regularity" name="cycle_regularity">
             <option value="">Select…</option>
-            <option>Low (&lt;10%)</option>
-            <option>Moderate (10–20%)</option>
-            <option>High (&gt;20%)</option>
+            <option>Regular (26–32 days)</option>
+            <option>Irregular</option>
+            <option>Oligomenorrhoea</option>
+            <option>Amenorrhoea</option>
+            <option>N/A (Male / Post-menopausal)</option>
           </select>
         </div>
       </div>
       <div class="field-row">
         <div class="field">
-          <label class="field-label" for="statin_correction">Statin correction applied (ESC-EAS)</label>
-          <select id="statin_correction" name="statin_correction">
-            <option value="">Select…</option>
-            <option>Yes</option>
-            <option>No</option>
-            <option>N/A — not on statin</option>
-          </select>
+          <label class="field-label" for="contraceptive_use">Contraceptive use</label>
+          <input type="text" id="contraceptive_use" name="contraceptive_use" placeholder="e.g. OCP, IUD, implant, none">
         </div>
         <div class="field">
-          <label class="field-label" for="cvd_total_chol">Total cholesterol (mmol/L)</label>
-          <input type="text" id="cvd_total_chol" name="cvd_total_chol" placeholder="From lab results">
+          <label class="field-label" for="hrt_use">HRT / hormone therapy</label>
+          <input type="text" id="hrt_use" name="hrt_use" placeholder="e.g. Yes — oestradiol patch 3 yrs / No">
         </div>
       </div>
+      <div class="field">
+        <label class="field-label">History of PCOS</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="pcos_history" id="pcos-yes" value="Yes"><label for="pcos-yes">Yes</label></div>
+          <div class="radio-chip"><input type="radio" name="pcos_history" id="pcos-no" value="No"><label for="pcos-no">No</label></div>
+          <div class="radio-chip"><input type="radio" name="pcos_history" id="pcos-ns" value="Not sure"><label for="pcos-ns">Not sure</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MALE -->
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label">Libido / testosterone symptoms (males)</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="testosterone_symptoms" id="ts-none" value="None"><label for="ts-none">None</label></div>
+          <div class="radio-chip"><input type="radio" name="testosterone_symptoms" id="ts-low-libido" value="Reduced libido"><label for="ts-low-libido">Reduced libido</label></div>
+          <div class="radio-chip"><input type="radio" name="testosterone_symptoms" id="ts-ed" value="Erectile dysfunction"><label for="ts-ed">Erectile dysfunction</label></div>
+          <div class="radio-chip"><input type="radio" name="testosterone_symptoms" id="ts-na" value="N/A (Female)"><label for="ts-na">N/A</label></div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Hair loss pattern</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="hair_loss" id="hl-none" value="None / Normal"><label for="hl-none">None</label></div>
+          <div class="radio-chip"><input type="radio" name="hair_loss" id="hl-male" value="Male-pattern"><label for="hl-male">Male-pattern</label></div>
+          <div class="radio-chip"><input type="radio" name="hair_loss" id="hl-diffuse" value="Diffuse"><label for="hl-diffuse">Diffuse</label></div>
+          <div class="radio-chip"><input type="radio" name="hair_loss" id="hl-frontal" value="Frontal / temporal"><label for="hl-frontal">Frontal</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Mood symptoms (beyond anxiety/depression above)</label>
+      <div class="radio-group">
+        <div class="radio-chip"><input type="radio" name="mood_symptoms" id="mood-none" value="None"><label for="mood-none">None</label></div>
+        <div class="radio-chip"><input type="radio" name="mood_symptoms" id="mood-irritable" value="Irritability"><label for="mood-irritable">Irritability</label></div>
+        <div class="radio-chip"><input type="radio" name="mood_symptoms" id="mood-labile" value="Mood lability"><label for="mood-labile">Lability</label></div>
+        <div class="radio-chip"><input type="radio" name="mood_symptoms" id="mood-low" value="Low motivation / fatigue"><label for="mood-low">Low motivation</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label" for="hormonal_notes">Additional hormonal history</label>
+      <textarea id="hormonal_notes" name="hormonal_notes" rows="2" placeholder="Any other relevant hormonal history, treatments, or concerns…"></textarea>
+    </div>
+  </div>
+
+  <!-- PART C — CANCER RISK SCREEN -->
+  <div class="form-section elite-only" id="elite-part-c">
+    <div class="elite-banner">
+      <div>
+        <div class="elite-banner-label">Elite Package · Part C</div>
+        <div class="elite-banner-title">Cancer Risk Screen</div>
+      </div>
+    </div>
+    <div class="clinical-note">Tick any red flag symptoms present at the time of consultation. Each requires follow-up; do not speculate in the report — refer to specialist for any positive findings.</div>
+
+    <div class="field">
+      <label class="field-label">Personal history of malignancy</label>
+      <div class="radio-group">
+        <div class="radio-chip"><input type="radio" name="personal_malignancy" id="pm-none" value="None"><label for="pm-none">None</label></div>
+        <div class="radio-chip"><input type="radio" name="personal_malignancy" id="pm-yes" value="Yes — see below"><label for="pm-yes">Yes — see below</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label" for="malignancy_details">Malignancy details (type, year, treatment)</label>
+      <input type="text" id="malignancy_details" name="malignancy_details" placeholder="e.g. Breast CA 2019 — lumpectomy + radiotherapy — in remission / N/A">
+    </div>
+    <div class="field">
+      <label class="field-label" for="family_cancer_history">Family history of cancer (first-degree relatives)</label>
+      <input type="text" id="family_cancer_history" name="family_cancer_history" placeholder="e.g. Mother — breast CA age 54 · Father — colorectal CA age 61 / None">
+    </div>
+
+    <div class="field">
+      <label class="field-label">Red flag symptoms — tick all that are present</label>
+      <div class="symptom-grid">
+        <label class="symptom-item"><input type="checkbox" name="rf_weight_loss" value="Yes"> <label>Unexplained weight loss &gt;5 kg / 3 months</label></label>
+        <label class="symptom-item"><input type="checkbox" name="rf_persistent_cough" value="Yes"> <label>Persistent cough / haemoptysis</label></label>
+        <label class="symptom-item"><input type="checkbox" name="rf_bowel_change" value="Yes"> <label>Change in bowel habit &gt;4 weeks</label></label>
+        <label class="symptom-item"><input type="checkbox" name="rf_haematuria" value="Yes"> <label>Haematuria (without confirmed UTI)</label></label>
+        <label class="symptom-item"><input type="checkbox" name="rf_pmb" value="Yes"> <label>Post-menopausal bleeding</label></label>
+        <label class="symptom-item"><input type="checkbox" name="rf_breast_change" value="Yes"> <label>Breast changes / nipple discharge</label></label>
+        <label class="symptom-item"><input type="checkbox" name="rf_abdo_mass" value="Yes"> <label>Abdominal mass / distension</label></label>
+        <label class="symptom-item"><input type="checkbox" name="rf_dysphagia" value="Yes"> <label>Dysphagia / odynophagia</label></label>
+        <label class="symptom-item"><input type="checkbox" name="rf_night_sweats" value="Yes"> <label>Night sweats (unexplained)</label></label>
+        <label class="symptom-item"><input type="checkbox" name="rf_lymphadenopathy" value="Yes"> <label>Unexplained lymphadenopathy</label></label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label" for="cancer_screen_notes">Cancer screen notes</label>
+      <textarea id="cancer_screen_notes" name="cancer_screen_notes" rows="2" placeholder="Any additional context, duration of symptoms, or clinical notes on red flags…"></textarea>
+    </div>
+  </div>
+
+  <!-- PART D — DISEASE FORECASTING CONTEXT -->
+  <div class="form-section elite-only" id="elite-part-d">
+    <div class="elite-banner">
+      <div>
+        <div class="elite-banner-label">Elite Package · Part D</div>
+        <div class="elite-banner-title">Disease Forecasting Context</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="occupational_exposures">Occupational / environmental exposures</label>
+      <input type="text" id="occupational_exposures" name="occupational_exposures" placeholder="e.g. High pollution commute, chemical exposure at work, night shifts / None">
+    </div>
+    <div class="field">
+      <label class="field-label" for="patient_health_goals">What does the patient most want to understand from this assessment?</label>
+      <textarea id="patient_health_goals" name="patient_health_goals" rows="2" placeholder="e.g. Concerned about heart disease given father's history. Wants to understand cancer risk before turning 50."></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label" for="forecasting_notes">Physician forecasting notes</label>
+      <textarea id="forecasting_notes" name="forecasting_notes" rows="3" placeholder="Clinician's assessment of trajectory — multi-system patterns, highest-priority modifiable risks, 10-year forecast commentary…"></textarea>
     </div>
   </div>
 
@@ -643,6 +899,12 @@ input.prefilled, select.prefilled, textarea.prefilled {
 
   // Trigger BMI if height/weight pre-filled
   calcBmi();
+
+  // Show Elite sections if package is Elite
+  const pkg = p.get('pkg') || '';
+  if (pkg === 'Elite') {
+    document.querySelectorAll('.elite-only').forEach(el => el.classList.add('visible'));
+  }
 })();
 
 // ── BMI AUTO CALC ───────────────────────────────────────────────────────────
@@ -738,10 +1000,46 @@ document.getElementById('physician-form').addEventListener('submit', async funct
     additional_history:            document.getElementById('additional_history').value.trim(),
     physician_notes:               document.getElementById('physician_notes').value.trim(),
     red_flags_noted:               (document.querySelector('input[name="red_flags_noted"]:checked') || {}).value || '',
-    cvd_risk_percent:              document.getElementById('cvd_risk_percent').value.trim(),
-    cvd_risk_category:             document.getElementById('cvd_risk_category').value,
-    statin_correction:             document.getElementById('statin_correction').value,
-    cvd_total_chol:                document.getElementById('cvd_total_chol').value.trim(),
+    // § 07 Psychosocial & Functional
+    sleep_hours:                   (document.querySelector('input[name="sleep_hours"]:checked')||{}).value||'',
+    sleep_quality:                 (document.querySelector('input[name="sleep_quality"]:checked')||{}).value||'',
+    stress_work:                   (document.querySelector('input[name="stress_work"]:checked')||{}).value||'',
+    stress_life:                   (document.querySelector('input[name="stress_life"]:checked')||{}).value||'',
+    depression_screen:             (document.querySelector('input[name="depression_screen"]:checked')||{}).value||'',
+    anxiety_screen:                (document.querySelector('input[name="anxiety_screen"]:checked')||{}).value||'',
+    functional_capacity:           (document.querySelector('input[name="functional_capacity"]:checked')||{}).value||'',
+    occupation_type:               document.getElementById('occupation_type').value,
+    recent_life_event:             (document.querySelector('input[name="recent_life_event"]:checked')||{}).value||'',
+    // Elite Part B — Hormonal
+    menopausal_status:             (document.querySelector('input[name="menopausal_status"]:checked')||{}).value||'',
+    lmp:                           document.getElementById('lmp')?.value.trim()||'',
+    cycle_regularity:              document.getElementById('cycle_regularity')?.value||'',
+    contraceptive_use:             document.getElementById('contraceptive_use')?.value.trim()||'',
+    hrt_use:                       document.getElementById('hrt_use')?.value.trim()||'',
+    pcos_history:                  (document.querySelector('input[name="pcos_history"]:checked')||{}).value||'',
+    testosterone_symptoms:         (document.querySelector('input[name="testosterone_symptoms"]:checked')||{}).value||'',
+    hair_loss:                     (document.querySelector('input[name="hair_loss"]:checked')||{}).value||'',
+    mood_symptoms:                 (document.querySelector('input[name="mood_symptoms"]:checked')||{}).value||'',
+    hormonal_notes:                document.getElementById('hormonal_notes')?.value.trim()||'',
+    // Elite Part C — Cancer
+    personal_malignancy:           (document.querySelector('input[name="personal_malignancy"]:checked')||{}).value||'',
+    malignancy_details:            document.getElementById('malignancy_details')?.value.trim()||'',
+    family_cancer_history:         document.getElementById('family_cancer_history')?.value.trim()||'',
+    rf_weight_loss:                document.querySelector('input[name="rf_weight_loss"]:checked')?'Present':'Absent',
+    rf_persistent_cough:           document.querySelector('input[name="rf_persistent_cough"]:checked')?'Present':'Absent',
+    rf_bowel_change:               document.querySelector('input[name="rf_bowel_change"]:checked')?'Present':'Absent',
+    rf_haematuria:                 document.querySelector('input[name="rf_haematuria"]:checked')?'Present':'Absent',
+    rf_pmb:                        document.querySelector('input[name="rf_pmb"]:checked')?'Present':'Absent',
+    rf_breast_change:              document.querySelector('input[name="rf_breast_change"]:checked')?'Present':'Absent',
+    rf_abdo_mass:                  document.querySelector('input[name="rf_abdo_mass"]:checked')?'Present':'Absent',
+    rf_dysphagia:                  document.querySelector('input[name="rf_dysphagia"]:checked')?'Present':'Absent',
+    rf_night_sweats:               document.querySelector('input[name="rf_night_sweats"]:checked')?'Present':'Absent',
+    rf_lymphadenopathy:            document.querySelector('input[name="rf_lymphadenopathy"]:checked')?'Present':'Absent',
+    cancer_screen_notes:           document.getElementById('cancer_screen_notes')?.value.trim()||'',
+    // Elite Part D — Forecasting
+    occupational_exposures:        document.getElementById('occupational_exposures')?.value.trim()||'',
+    patient_health_goals:          document.getElementById('patient_health_goals')?.value.trim()||'',
+    forecasting_notes:             document.getElementById('forecasting_notes')?.value.trim()||'',
     submitted_at:                  new Date().toISOString(),
   };
 
