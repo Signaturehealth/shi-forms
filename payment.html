@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Payment Confirmation — Signature Health Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111009; --ink2: #1e1b16; --ink3: #2e2a22; --ink4: #4a4438; --ink5: #6b6358;
+  --terra: #b85c3e; --terra2: #8c3a20;
+  --paper: #fdfcf8; --paper2: #faf8f3; --paper3: #f2ede0;
+  --border: #e0ddd4; --border2: #d0cbbf;
+  --green: #3a6647; --green-bg: #eef4f0; --green-border: #b8ddb0;
+  --gold: #c8a030;
+  --essential: #4a7a9b; --premium: #6b8f71; --elite: #8c6d3f;
+}
+html { font-size: 16px; }
+body { background: #fff; color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+.page-header { background: white; padding: 18px 36px 16px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--terra); box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+.header-logo { display: flex; align-items: center; gap: 14px; }
+.header-brand { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; font-weight: 400; letter-spacing: 0.04em; color: var(--ink); line-height: 1.2; }
+.header-cred { font-family: 'Courier New', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--ink4); margin-top: 3px; text-transform: uppercase; }
+.header-right { font-family: 'Courier New', monospace; font-size: 0.58rem; letter-spacing: 0.22em; color: var(--terra); text-transform: uppercase; }
+
+.hero-band { background: #fff; border-bottom: 1px solid #e8e2d6; padding: 32px 36px 24px; }
+.hero-eyebrow { font-family: 'Courier New', monospace; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--terra); text-transform: uppercase; margin-bottom: 8px; }
+.hero-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.2rem; font-weight: 400; color: var(--ink); line-height: 1.1; margin-bottom: 10px; }
+.hero-desc { font-size: 0.975rem; color: var(--ink3); line-height: 1.75; max-width: 560px; }
+.terra-rule { width: 48px; height: 2px; background: var(--terra); margin: 14px 0 0; opacity: 0.7; }
+
+.form-body { max-width: 680px; margin: 0 auto; padding: 40px 36px 80px; }
+
+/* Patient lookup */
+.lookup-section { background: var(--paper3); border: 1px solid var(--border); border-left: 3px solid var(--terra); padding: 20px; margin-bottom: 32px; }
+.lookup-title { font-family: 'Courier New', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--terra); text-transform: uppercase; margin-bottom: 14px; }
+.lookup-row { display: flex; gap: 12px; align-items: flex-end; }
+.lookup-input-wrap { flex: 1; }
+.lookup-btn { background: var(--ink); color: white; border: none; padding: 13px 22px; font-family: 'Courier New', monospace; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; flex-shrink: 0; }
+.lookup-btn:hover { background: var(--terra); }
+.lookup-btn:disabled { background: var(--border); cursor: not-allowed; }
+
+/* Patient card */
+.patient-card { background: var(--green-bg); border: 1px solid var(--green-border); border-left: 3px solid var(--green); padding: 14px 16px; margin-bottom: 28px; display: none; }
+.patient-card-title { font-family: 'Courier New', monospace; font-size: 0.6rem; letter-spacing: 0.18em; color: var(--green); text-transform: uppercase; margin-bottom: 10px; }
+.patient-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+.pc-item { font-size: 0.88rem; }
+.pc-label { font-family: 'Courier New', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--ink5); text-transform: uppercase; display: block; margin-bottom: 1px; }
+.pc-val { color: var(--ink2); }
+.not-found { background: #fff8f6; border: 1px solid #f0c0b0; border-left: 3px solid var(--terra); padding: 12px 16px; margin-bottom: 20px; font-size: 0.9rem; color: var(--terra2); display: none; }
+
+/* Form sections */
+.form-section { margin-bottom: 36px; }
+.section-header { display: flex; align-items: baseline; gap: 14px; padding-bottom: 10px; border-bottom: 1.5px solid var(--border); margin-bottom: 20px; }
+.section-num { font-family: 'Courier New', monospace; font-size: 0.65rem; letter-spacing: 0.22em; color: var(--terra); }
+.section-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.25rem; font-weight: 400; color: var(--ink); }
+
+.field { margin-bottom: 20px; }
+.field-label { display: block; font-family: 'Courier New', monospace; font-size: 0.68rem; letter-spacing: 0.16em; color: var(--ink3); text-transform: uppercase; margin-bottom: 7px; font-weight: 700; }
+.field-label .req { color: var(--terra); margin-left: 2px; }
+.field-hint { font-size: 0.87rem; color: var(--ink5); margin-bottom: 8px; line-height: 1.6; font-style: italic; }
+
+input[type="text"], input[type="date"], input[type="number"], select, textarea {
+  width: 100%; background: white; border: 1.5px solid var(--border2); padding: 12px 14px;
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 1rem; color: var(--ink);
+  outline: none; appearance: none; -webkit-appearance: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--terra); box-shadow: 0 0 0 3px rgba(184,92,62,0.1); }
+input::placeholder, textarea::placeholder { color: #9e9587; font-style: italic; }
+select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%232e2a22' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* Package cards */
+.package-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 4px; }
+.pkg-card { border: 2px solid var(--border2); padding: 14px; cursor: pointer; transition: all 0.15s; position: relative; }
+.pkg-card input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+.pkg-card:has(input:checked) { border-color: var(--terra); background: rgba(184,92,62,0.03); }
+.pkg-card:hover { border-color: var(--border); }
+.pkg-tier { font-family: 'Courier New', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 4px; }
+.pkg-card:has(input[value="Essential"]:checked) .pkg-tier { color: var(--essential); }
+.pkg-card:has(input[value="Premium"]:checked) .pkg-tier { color: var(--premium); }
+.pkg-card:has(input[value="Elite"]:checked) .pkg-tier { color: var(--elite); }
+.pkg-price { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; color: var(--ink); }
+.pkg-tests { font-size: 0.78rem; color: var(--ink5); margin-top: 3px; }
+
+/* Status chips */
+.status-chips { display: flex; gap: 10px; flex-wrap: wrap; }
+.status-chip { position: relative; }
+.status-chip input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+.status-chip label { display: inline-block; padding: 10px 20px; border: 2px solid var(--border2); font-family: 'Courier New', monospace; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: all 0.15s; }
+.status-chip.paid input:checked + label { border-color: var(--green); background: var(--green-bg); color: var(--green); }
+.status-chip.partial input:checked + label { border-color: var(--terra); background: rgba(184,92,62,0.06); color: var(--terra); }
+.status-chip.pending input:checked + label { border-color: var(--gold); background: #faf5e8; color: #8a6a10; }
+
+/* Totals box */
+.totals-box { background: var(--paper3); border: 1px solid var(--border); padding: 18px 20px; margin-top: 8px; }
+.totals-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 0.95rem; }
+.totals-row.subtotal { border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 4px; color: var(--ink4); }
+.totals-row.discount { color: var(--green); }
+.totals-row.total { border-top: 2px solid var(--ink); margin-top: 8px; padding-top: 10px; font-size: 1.05rem; }
+.totals-label { font-family: 'Courier New', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.totals-amount { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; }
+.totals-row.total .totals-amount { font-size: 1.35rem; }
+
+/* Submit */
+.submit-section { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 28px; }
+.submit-note { background: white; border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 14px 16px; margin-bottom: 20px; font-size: 0.88rem; color: var(--ink4); line-height: 1.7; }
+.submit-btn { display: flex; align-items: center; justify-content: center; gap: 14px; background: var(--terra); color: white; border: none; padding: 17px 44px; font-family: 'Courier New', monospace; font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; width: 100%; }
+.submit-btn:hover { background: var(--terra2); }
+.submit-btn:disabled { background: var(--border); cursor: not-allowed; }
+
+/* Success */
+.success-screen { display: none; max-width: 520px; margin: 60px auto; padding: 0 36px; text-align: center; }
+.success-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--green-bg); border: 2px solid var(--green); color: var(--green); font-size: 1.6rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
+.success-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; font-weight: 400; color: var(--ink); margin-bottom: 14px; }
+.success-body { font-size: 0.975rem; color: var(--ink4); line-height: 1.85; }
+.success-receipt-link { display: inline-block; margin-top: 20px; font-family: 'Courier New', monospace; font-size: 0.7rem; letter-spacing: 0.14em; color: var(--terra); text-decoration: none; border-bottom: 1px solid var(--terra); padding-bottom: 2px; }
+
+.page-footer { border-top: 1px solid var(--border); padding: 18px 36px; display: flex; align-items: center; justify-content: space-between; background: white; margin-top: 60px; }
+.footer-sig { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; font-style: italic; color: var(--ink4); }
+.footer-meta { font-family: 'Courier New', monospace; font-size: 0.58rem; letter-spacing: 0.18em; color: var(--ink5); text-align: right; text-transform: uppercase; line-height: 1.8; }
+
+@media (max-width: 600px) {
+  .page-header { padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+  .hero-band { padding: 22px 18px 18px; }
+  .hero-title { font-size: 1.75rem; }
+  .form-body { padding: 24px 18px 60px; }
+  .field-row { grid-template-columns: 1fr; }
+  .package-cards { grid-template-columns: 1fr; }
+  .lookup-row { flex-direction: column; }
+  .patient-card-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-logo">
+    <svg width="44" height="33" viewBox="0 0 130 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 72 L46 72 C54 72, 58 50, 64 88 C70 55, 80 72, 94 72 C110 72, 124 58, 138 36"
+        fill="none" stroke="#2a2420" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="94" cy="72" r="5" fill="#b85c3e"/>
+    </svg>
+    <div>
+      <div class="header-brand">Signature Health Intelligence</div>
+      <div class="header-cred">Dr. D. R. Gamalathge &middot; MBBS &middot; SLMC No. 36999</div>
+    </div>
+  </div>
+  <div class="header-right">Payment Confirmation &middot; Internal</div>
+</header>
+
+<div class="hero-band">
+  <div class="hero-eyebrow">Internal Tool — Physician Use Only</div>
+  <div class="hero-title">Confirm Patient Payment</div>
+  <div class="hero-desc">Log a confirmed payment, generate a receipt PDF, and update the patient's CRM record. Use once the bank transfer or cash has cleared.</div>
+  <div class="terra-rule"></div>
+</div>
+
+<div class="form-body">
+
+  <!-- PATIENT LOOKUP -->
+  <div class="lookup-section">
+    <div class="lookup-title">Step 1 — Look up patient by GHC ID</div>
+    <div class="lookup-row">
+      <div class="lookup-input-wrap">
+        <div style="display:flex;align-items:stretch;border:1.5px solid var(--border2);background:white;overflow:hidden" id="ghc-input-group">
+          <span style="padding:12px 8px 12px 14px;font-family:'Courier New',monospace;font-size:1rem;color:var(--ink4);background:var(--paper3);border-right:1px solid var(--border);white-space:nowrap;display:flex;align-items:center">GHC-</span>
+          <select id="lookup-year" onchange="updateGhcPreview()" style="border:none;border-right:1px solid var(--border);border-radius:0;padding:12px 6px;font-family:'Courier New',monospace;font-size:1rem;color:var(--ink);background:var(--paper3);outline:none;appearance:none;-webkit-appearance:none;cursor:pointer;text-align:center;width:72px">
+            <option value="2025">2025</option>
+            <option value="2026" selected>2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+          </select>
+          <span style="padding:12px 6px;font-family:'Courier New',monospace;font-size:1rem;color:var(--ink4);background:var(--paper3);border-right:1px solid var(--border);display:flex;align-items:center">-</span>
+          <input type="text" id="lookup-number" placeholder="0001" maxlength="6"
+            style="border:none;border-radius:0;padding:12px 14px;font-family:'Courier New',monospace;font-size:1rem;color:var(--ink);background:white;outline:none;flex:1;min-width:60px;letter-spacing:0.14em"
+            oninput="this.value=this.value.replace(/[^0-9]/g,'');updateGhcPreview()"
+            onkeydown="if(event.key==='Enter'){event.preventDefault();lookupPatient()}">
+        </div>
+        <div id="ghc-preview" style="font-family:'Courier New',monospace;font-size:0.68rem;letter-spacing:0.12em;color:var(--ink5);margin-top:6px;display:none">
+          Full ID: <span id="ghc-preview-val" style="color:var(--terra);font-weight:600"></span>
+        </div>
+      </div>
+      <button class="lookup-btn" id="lookup-btn" onclick="lookupPatient()">Look up</button>
+    </div>
+  </div>
+
+  <div class="not-found" id="not-found-msg">No patient found with that GHC ID. Check the CRM and try again.</div>
+
+  <div class="patient-card" id="patient-card">
+    <div class="patient-card-title">&#10003; Patient found</div>
+    <div class="patient-card-grid" id="patient-card-grid"></div>
+  </div>
+
+  <form id="payment-form" novalidate style="display:none">
+    <input type="hidden" id="ghc_patient_id" name="ghc_patient_id">
+    <input type="hidden" id="patient_name_hidden" name="patient_name">
+    <input type="hidden" id="patient_phone_hidden" name="patient_phone">
+    <input type="hidden" id="patient_email_hidden" name="patient_email">
+    <input type="hidden" id="package_tier_hidden" name="package_tier_from_crm">
+
+    <!-- 01 PAYMENT DETAILS -->
+    <div class="form-section">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <span class="section-title">Payment Details</span>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Payment status <span class="req">*</span></label>
+        <div class="status-chips">
+          <div class="status-chip paid">
+            <input type="radio" name="payment_status" id="ps-paid" value="PAID" checked>
+            <label for="ps-paid">Paid in Full</label>
+          </div>
+          <div class="status-chip partial">
+            <input type="radio" name="payment_status" id="ps-partial" value="PARTIAL">
+            <label for="ps-partial">Partial</label>
+          </div>
+          <div class="status-chip pending">
+            <input type="radio" name="payment_status" id="ps-pending" value="PENDING">
+            <label for="ps-pending">Pending</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="payment_date">Payment date <span class="req">*</span></label>
+          <input type="date" id="payment_date" name="payment_date">
+        </div>
+        <div class="field">
+          <label class="field-label" for="payment_method">Payment method <span class="req">*</span></label>
+          <select id="payment_method" name="payment_method">
+            <option value="">Select…</option>
+            <option value="Bank Transfer — Sampath Bank">Bank Transfer — Sampath Bank</option>
+            <option value="Bank Transfer — Commercial Bank">Bank Transfer — Commercial Bank</option>
+            <option value="Bank Transfer — HNB">Bank Transfer — HNB</option>
+            <option value="Bank Transfer — BOC">Bank Transfer — BOC</option>
+            <option value="Bank Transfer — NTB">Bank Transfer — NTB</option>
+            <option value="Cash">Cash</option>
+            <option value="Card — Visa">Card — Visa</option>
+            <option value="Card — Mastercard">Card — Mastercard</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="payment_reference">Transaction reference</label>
+          <input type="text" id="payment_reference" name="payment_reference" placeholder="e.g. TXN-20260515-001">
+        </div>
+        <div class="field">
+          <label class="field-label" for="amount_received">Amount received (LKR)</label>
+          <input type="number" id="amount_received" name="amount_received" placeholder="e.g. 69000">
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 PACKAGE -->
+    <div class="form-section">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <span class="section-title">Package</span>
+      </div>
+      <p class="field-hint">Pre-selected from CRM. Change only if different from what was booked.</p>
+
+      <div class="package-cards">
+        <label class="pkg-card">
+          <input type="radio" name="package_tier" value="Essential">
+          <div class="pkg-tier" style="color:var(--essential)">Essential</div>
+          <div class="pkg-price">LKR 49,000</div>
+          <div class="pkg-tests">8 investigations</div>
+        </label>
+        <label class="pkg-card">
+          <input type="radio" name="package_tier" value="Premium">
+          <div class="pkg-tier" style="color:var(--premium)">Premium</div>
+          <div class="pkg-price">LKR 69,000</div>
+          <div class="pkg-tests">14+ investigations</div>
+        </label>
+        <label class="pkg-card">
+          <input type="radio" name="package_tier" value="Elite">
+          <div class="pkg-tier" style="color:var(--elite)">Elite</div>
+          <div class="pkg-price">LKR 95,000</div>
+          <div class="pkg-tests">20+ investigations</div>
+        </label>
+      </div>
+
+      <!-- Turnaround -->
+      <div class="field" style="margin-top:18px">
+        <label class="field-label">Turnaround tier</label>
+        <div class="status-chips">
+          <div class="status-chip paid">
+            <input type="radio" name="turnaround" id="ta-std" value="Standard — 24 hours" checked>
+            <label for="ta-std">Standard (24h)</label>
+          </div>
+          <div class="status-chip partial">
+            <input type="radio" name="turnaround" id="ta-exp" value="Express — 4 hours">
+            <label for="ta-exp">Express +LKR 8,000</label>
+          </div>
+          <div class="status-chip pending">
+            <input type="radio" name="turnaround" id="ta-same" value="Same-day">
+            <label for="ta-same">Same-day +LKR 15,000</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add-ons -->
+      <div class="field">
+        <label class="field-label">Add-ons</label>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+          <label style="display:flex;align-items:center;gap:10px;font-size:0.95rem;color:var(--ink3);cursor:pointer">
+            <input type="checkbox" id="addon-hardcopy" name="addon_hardcopy" value="3500" style="width:16px;height:16px;accent-color:var(--terra);flex-shrink:0">
+            Printed & bound hard copy (+LKR 3,500)
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;font-size:0.95rem;color:var(--ink3);cursor:pointer">
+            <input type="checkbox" id="addon-consult" name="addon_consult" value="5000" style="width:16px;height:16px;accent-color:var(--terra);flex-shrink:0">
+            Additional 30-min consultation (+LKR 5,000)
+          </label>
+        </div>
+      </div>
+
+      <!-- Discount -->
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="discount_amount">Discount (LKR)</label>
+          <input type="number" id="discount_amount" name="discount_amount" placeholder="0" min="0" value="0">
+        </div>
+        <div class="field">
+          <label class="field-label" for="discount_label">Discount reason</label>
+          <input type="text" id="discount_label" name="discount_label" placeholder="e.g. Introductory offer">
+        </div>
+      </div>
+
+      <!-- Live totals -->
+      <div class="totals-box" id="totals-box">
+        <div class="totals-row subtotal">
+          <span class="totals-label">Package subtotal</span>
+          <span class="totals-amount" id="t-subtotal">LKR —</span>
+        </div>
+        <div class="totals-row discount" id="t-discount-row" style="display:none">
+          <span class="totals-label">Discount</span>
+          <span class="totals-amount" id="t-discount">— LKR 0</span>
+        </div>
+        <div class="totals-row total">
+          <span class="totals-label">Total due</span>
+          <span class="totals-amount" id="t-total">LKR —</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 NOTES -->
+    <div class="form-section">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <span class="section-title">Notes</span>
+      </div>
+      <div class="field">
+        <label class="field-label" for="payment_notes">Delivery / payment notes</label>
+        <textarea id="payment_notes" name="payment_notes" rows="2" placeholder="e.g. Report to be delivered by 18 May. Patient travelling — send to WhatsApp only."></textarea>
+      </div>
+      <div class="field">
+        <label class="field-label" for="currency">Currency</label>
+        <select id="currency" name="currency">
+          <option value="LKR">LKR — Sri Lankan Rupee</option>
+          <option value="USD">USD — US Dollar</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-section">
+      <div class="submit-note">
+        Submitting will: log the payment in the CRM, update patient status to <strong>Payment Confirmed</strong>, and generate a signed receipt PDF which will be emailed to you at <strong>dimithra@signaturehealthintel.com</strong>.
+      </div>
+      <button type="submit" class="submit-btn" id="submit-btn">
+        <span id="btn-text">Confirm Payment &amp; Generate Receipt</span>
+        <span id="btn-arrow">→</span>
+      </button>
+    </div>
+  </form>
+
+  <div class="success-screen" id="success-screen">
+    <div class="success-icon">✓</div>
+    <div class="success-title">Payment confirmed</div>
+    <div class="success-body" id="success-body">
+      CRM updated. Receipt PDF generated and sent to your email.
+    </div>
+    <a href="#" class="success-receipt-link" id="success-another" onclick="resetForm(); return false;">Confirm another payment →</a>
+  </div>
+
+</div>
+
+<footer class="page-footer">
+  <div class="footer-sig">Dr. Dimithra Gamalathge</div>
+  <div class="footer-meta">Signature Health Intelligence<br>Internal Tools</div>
+</footer>
+
+<script>
+// ── PRICES ─────────────────────────────────────────────────────────────────
+const PRICES = { Essential: 49000, Premium: 69000, Elite: 95000 };
+const TURNAROUND_ADD = { 'Standard — 24 hours': 0, 'Express — 4 hours': 8000, 'Same-day': 15000 };
+
+// ── SET TODAY DATE ──────────────────────────────────────────────────────────
+document.getElementById('payment_date').value = new Date().toISOString().split('T')[0];
+
+// ── PATIENT LOOKUP ──────────────────────────────────────────────────────────
+let currentPatient = null;
+
+function buildGhcId() {
+  const year = document.getElementById('lookup-year').value;
+  const num  = document.getElementById('lookup-number').value.trim();
+  return num ? 'GHC-' + year + '-' + num : '';
+}
+
+function updateGhcPreview() {
+  const id = buildGhcId();
+  const preview = document.getElementById('ghc-preview');
+  const val     = document.getElementById('ghc-preview-val');
+  if (id) { val.textContent = id; preview.style.display = 'block'; }
+  else    { preview.style.display = 'none'; }
+}
+
+// Focus the number field on page load
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('lookup-number').focus();
+});
+
+async function lookupPatient() {
+  const ghc = buildGhcId();
+  if (!ghc) { document.getElementById('lookup-number').focus(); return; }
+  const btn = document.getElementById('lookup-btn');
+  btn.disabled = true; btn.textContent = 'Looking up…';
+
+  document.getElementById('patient-card').style.display = 'none';
+  document.getElementById('not-found-msg').style.display = 'none';
+  document.getElementById('payment-form').style.display = 'none';
+
+  try {
+    const res = await fetch('https://dimithra.app.n8n.cloud/webhook/payment-lookup', {
+      method: 'POST', mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ghc_patient_id: ghc })
+    });
+    const data = await res.json();
+
+    if (data.found && data.patient) {
+      currentPatient = data.patient;
+      showPatientCard(data.patient);
+    } else {
+      document.getElementById('not-found-msg').style.display = 'block';
+    }
+  } catch(err) {
+    document.getElementById('not-found-msg').style.display = 'block';
+    document.getElementById('not-found-msg').textContent = 'Lookup failed — check your connection. (' + err.message + ')';
+  }
+
+  btn.disabled = false; btn.textContent = 'Look up';
+}
+
+function showPatientCard(p) {
+  const grid = document.getElementById('patient-card-grid');
+  grid.innerHTML = [
+    { label: 'Patient', val: p.name },
+    { label: 'GHC ID', val: p.ghc_id },
+    { label: 'Package', val: p.package },
+    { label: 'Phone', val: p.phone },
+    { label: 'Status', val: p.status },
+    { label: 'Enrolled', val: p.enrolled },
+  ].map(i => `<div class="pc-item"><span class="pc-label">${i.label}</span><span class="pc-val">${i.val || '—'}</span></div>`).join('');
+
+  document.getElementById('patient-card').style.display = 'block';
+
+  // Pre-fill hidden fields
+  document.getElementById('ghc_patient_id').value = p.ghc_id;
+  document.getElementById('patient_name_hidden').value = p.name;
+  document.getElementById('patient_phone_hidden').value = p.phone;
+  document.getElementById('patient_email_hidden').value = p.email || '';
+  document.getElementById('package_tier_hidden').value = p.package;
+
+  // Pre-select package
+  const pkgRadio = document.querySelector(`input[name="package_tier"][value="${p.package}"]`);
+  if (pkgRadio) pkgRadio.checked = true;
+
+  // Show form
+  document.getElementById('payment-form').style.display = 'block';
+  updateTotals();
+  window.scrollTo({ top: document.getElementById('payment-form').offsetTop - 20, behavior: 'smooth' });
+}
+
+// ── LIVE TOTALS ─────────────────────────────────────────────────────────────
+function updateTotals() {
+  const pkgRadio = document.querySelector('input[name="package_tier"]:checked');
+  const taRadio  = document.querySelector('input[name="turnaround"]:checked');
+  const discount = parseInt(document.getElementById('discount_amount').value) || 0;
+  const hardcopy = document.getElementById('addon-hardcopy').checked ? 3500 : 0;
+  const consult  = document.getElementById('addon-consult').checked ? 5000 : 0;
+
+  const basePrice = pkgRadio ? (PRICES[pkgRadio.value] || 0) : 0;
+  const taAdd     = taRadio  ? (TURNAROUND_ADD[taRadio.value] || 0) : 0;
+  const subtotal  = basePrice + taAdd + hardcopy + consult;
+  const total     = Math.max(0, subtotal - discount);
+
+  const fmt = n => 'LKR ' + n.toLocaleString('en-LK');
+
+  document.getElementById('t-subtotal').textContent = basePrice ? fmt(subtotal) : 'LKR —';
+  document.getElementById('t-total').textContent = basePrice ? fmt(total) : 'LKR —';
+
+  const dRow = document.getElementById('t-discount-row');
+  if (discount > 0) {
+    dRow.style.display = 'flex';
+    document.getElementById('t-discount').textContent = '− ' + fmt(discount);
+  } else {
+    dRow.style.display = 'none';
+  }
+}
+
+// Attach listeners
+['input[name="package_tier"]', 'input[name="turnaround"]'].forEach(sel => {
+  document.querySelectorAll(sel).forEach(el => el.addEventListener('change', updateTotals));
+});
+document.getElementById('discount_amount').addEventListener('input', updateTotals);
+document.getElementById('addon-hardcopy').addEventListener('change', updateTotals);
+document.getElementById('addon-consult').addEventListener('change', updateTotals);
+
+// ── SUBMIT ──────────────────────────────────────────────────────────────────
+document.getElementById('payment-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const pkgRadio = document.querySelector('input[name="package_tier"]:checked');
+  const taRadio  = document.querySelector('input[name="turnaround"]:checked');
+  const psRadio  = document.querySelector('input[name="payment_status"]:checked');
+  const method   = document.getElementById('payment_method').value;
+
+  if (!pkgRadio || !method) {
+    alert('Please select a package and payment method.');
+    return;
+  }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  document.getElementById('btn-text').textContent = 'Processing…';
+  document.getElementById('btn-arrow').textContent = '⟳';
+
+  const discount = parseInt(document.getElementById('discount_amount').value) || 0;
+  const hardcopy = document.getElementById('addon-hardcopy').checked ? 3500 : 0;
+  const consult  = document.getElementById('addon-consult').checked ? 5000 : 0;
+  const taAdd    = TURNAROUND_ADD[taRadio?.value] || 0;
+  const subtotal = (PRICES[pkgRadio.value] || 0) + taAdd + hardcopy + consult;
+  const total    = Math.max(0, subtotal - discount);
+
+  const payload = {
+    ghc_patient_id:    document.getElementById('ghc_patient_id').value,
+    patient_name:      document.getElementById('patient_name_hidden').value,
+    patient_phone:     document.getElementById('patient_phone_hidden').value,
+    patient_email:     document.getElementById('patient_email_hidden').value,
+    package_tier:      pkgRadio.value,
+    turnaround:        taRadio?.value || 'Standard — 24 hours',
+    payment_status:    psRadio?.value || 'PAID',
+    payment_date:      document.getElementById('payment_date').value,
+    payment_method:    method,
+    payment_reference: document.getElementById('payment_reference').value.trim(),
+    amount_received:   document.getElementById('amount_received').value || String(total),
+    discount_amount:   discount,
+    discount_label:    document.getElementById('discount_label').value.trim(),
+    addon_hardcopy:    document.getElementById('addon-hardcopy').checked,
+    addon_consult:     document.getElementById('addon-consult').checked,
+    subtotal:          subtotal,
+    total:             total,
+    currency:          document.getElementById('currency').value,
+    payment_notes:     document.getElementById('payment_notes').value.trim(),
+    submitted_at:      new Date().toISOString(),
+  };
+
+  try {
+    const res = await fetch('https://dimithra.app.n8n.cloud/webhook/payment-confirm', {
+      method: 'POST', mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok || res.status === 200) {
+      document.getElementById('payment-form').style.display = 'none';
+      document.getElementById('patient-card').style.display = 'none';
+      document.getElementById('success-screen').style.display = 'block';
+      document.getElementById('success-body').innerHTML =
+        `<strong>${payload.patient_name}</strong> &middot; ${payload.package_tier} Package<br>
+        LKR ${payload.total.toLocaleString('en-LK')} &middot; ${payload.payment_status}<br><br>
+        CRM updated. Receipt PDF emailed to you.`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      throw new Error('HTTP ' + res.status);
+    }
+  } catch(err) {
+    btn.disabled = false;
+    document.getElementById('btn-text').textContent = 'Confirm Payment & Generate Receipt';
+    document.getElementById('btn-arrow').textContent = '→';
+    alert('Submission failed. Please try again. (' + err.message + ')');
+  }
+});
+
+function resetForm() {
+  currentPatient = null;
+  document.getElementById('lookup-number').value = ''; document.getElementById('lookup-year').value = '2026'; document.getElementById('ghc-preview').style.display = 'none';
+  document.getElementById('patient-card').style.display = 'none';
+  document.getElementById('payment-form').style.display = 'none';
+  document.getElementById('success-screen').style.display = 'none';
+  document.getElementById('payment_date').value = new Date().toISOString().split('T')[0];
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
