@@ -56,11 +56,7 @@ body {
 }
 
 /* ── Layout ──────────────────────────────────────────── */
-.page-wrap {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+.page-wrap { min-height: 100vh; display: flex; flex-direction: column; }
 
 .header {
   background: var(--paper-alt);
@@ -76,12 +72,7 @@ body {
   margin: 0 auto;
   width: 100%;
 }
-.progress-bar-track {
-  height: 2px;
-  background: var(--paper-dark);
-  border-radius: 9999px;
-  overflow: hidden;
-}
+.progress-bar-track { height: 2px; background: var(--paper-dark); border-radius: 9999px; overflow: hidden; }
 .progress-bar-fill {
   height: 100%;
   background: var(--terra);
@@ -109,500 +100,165 @@ body {
 }
 
 /* ── Screens ─────────────────────────────────────────── */
-.screen {
-  display: none;
-  width: 100%;
-  max-width: 600px;
-  animation: fadeUp 280ms ease both;
-}
+.screen { display: none; width: 100%; max-width: 600px; animation: fadeUp 280ms ease both; }
 .screen.active { display: block; }
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(1.25rem); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Welcome screen ──────────────────────────────────── */
-.welcome-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--terra);
-  margin-bottom: var(--space-3);
-}
-.welcome-title {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(2rem, 6vw, 3rem);
-  line-height: 1.1;
-  color: var(--ink);
-  margin-bottom: var(--space-4);
-}
-.welcome-title em {
-  font-style: italic;
-  color: var(--terra);
-}
-.welcome-body {
-  color: var(--ink-sub);
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  margin-bottom: var(--space-6);
-  max-width: 480px;
-}
-.welcome-meta {
-  display: flex;
-  gap: var(--space-8);
-  margin-bottom: var(--space-8);
-  flex-wrap: wrap;
-}
-.welcome-meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.welcome-meta-label {
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-}
-.welcome-meta-value {
-  font-family: var(--font-display);
-  font-size: 0.9375rem;
-  color: var(--ink-sub);
-}
-.terra-rule {
-  height: 1px;
-  background: var(--terra);
-  opacity: 0.35;
-  margin: var(--space-6) 0;
-  border: none;
-}
+/* ── Welcome ──────────────────────────────────────────── */
+.welcome-eyebrow { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); margin-bottom: var(--space-3); }
+.welcome-title { font-family: var(--font-display); font-weight: 300; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; color: var(--ink); margin-bottom: var(--space-4); }
+.welcome-title em { font-style: italic; color: var(--terra); }
+.welcome-body { color: var(--ink-sub); font-size: 0.9375rem; line-height: 1.7; margin-bottom: var(--space-6); max-width: 480px; }
+.welcome-meta { display: flex; gap: var(--space-8); margin-bottom: var(--space-8); flex-wrap: wrap; }
+.welcome-meta-item { display: flex; flex-direction: column; gap: 2px; }
+.welcome-meta-label { font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-muted); }
+.welcome-meta-value { font-family: var(--font-display); font-size: 0.9375rem; color: var(--ink-sub); }
+.terra-rule { height: 1px; background: var(--terra); opacity: 0.35; margin: var(--space-6) 0; border: none; }
 
 /* ── Question cards ──────────────────────────────────── */
-.q-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--terra);
-  margin-bottom: var(--space-3);
-}
-.q-text {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
-  line-height: 1.25;
-  color: var(--ink);
-  margin-bottom: var(--space-2);
-}
-.q-sub {
-  font-size: 0.875rem;
-  color: var(--ink-sub);
-  line-height: 1.6;
-  margin-bottom: var(--space-6);
-}
-.q-required {
-  color: var(--terra);
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  margin-left: 4px;
-}
+.q-eyebrow { font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: var(--space-3); }
+.q-text { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.25rem, 3.5vw, 1.75rem); line-height: 1.25; color: var(--ink); margin-bottom: var(--space-2); }
+.q-sub { font-size: 0.875rem; color: var(--ink-sub); line-height: 1.6; margin-bottom: var(--space-6); }
+.q-required { color: var(--terra); font-size: 0.75rem; font-family: var(--font-mono); margin-left: 4px; }
 
 /* ── Inputs ──────────────────────────────────────────── */
 .field-wrap { margin-bottom: var(--space-6); }
-.field-label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--ink-sub);
-  margin-bottom: var(--space-2);
-}
+.field-label { display: block; font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-sub); margin-bottom: var(--space-2); }
 .field-input {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1.5px solid var(--rule);
-  padding: var(--space-3) 0;
-  font-family: var(--font-display);
-  font-size: 1.125rem;
-  font-weight: 300;
-  color: var(--ink);
-  outline: none;
-  transition: border-color var(--transition);
-  border-radius: 0;
-  -webkit-appearance: none;
+  width: 100%; background: transparent; border: none; border-bottom: 1.5px solid var(--rule);
+  padding: var(--space-3) 0; font-family: var(--font-display); font-size: 1.125rem;
+  font-weight: 300; color: var(--ink); outline: none; transition: border-color var(--transition);
+  border-radius: 0; -webkit-appearance: none;
 }
-.field-input:focus {
-  border-bottom-color: var(--terra);
-}
+.field-input:focus { border-bottom-color: var(--terra); }
 .field-input::placeholder { color: var(--ink-muted); }
 .field-input.error { border-bottom-color: var(--red); }
 
 .field-select {
-  width: 100%;
-  background: var(--paper-alt);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-md);
-  padding: var(--space-3) var(--space-4);
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 300;
-  color: var(--ink);
-  outline: none;
-  transition: border-color var(--transition);
-  cursor: pointer;
-  -webkit-appearance: none;
+  width: 100%; background: var(--paper-alt); border: 1px solid var(--rule); border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4); font-family: var(--font-display); font-size: 1rem;
+  font-weight: 300; color: var(--ink); outline: none; transition: border-color var(--transition);
+  cursor: pointer; -webkit-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a8a095' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 36px;
+  background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
 }
 .field-select:focus { border-color: var(--terra); }
 
-/* ── Radio / Choice options ──────────────────────────── */
+/* ── Choices ──────────────────────────────────────────── */
 .choices { display: flex; flex-direction: column; gap: var(--space-3); }
 .choice-btn {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  padding: var(--space-4) var(--space-4);
-  background: var(--paper-alt);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: border-color var(--transition), background var(--transition);
-  text-align: left;
-  width: 100%;
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  color: var(--ink-sub);
+  display: flex; align-items: center; gap: var(--space-4); padding: var(--space-4) var(--space-4);
+  background: var(--paper-alt); border: 1px solid var(--rule); border-radius: var(--radius-md);
+  cursor: pointer; transition: border-color var(--transition), background var(--transition);
+  text-align: left; width: 100%; font-family: var(--font-body); font-size: 0.9375rem; color: var(--ink-sub);
 }
 .choice-btn:hover { border-color: var(--terra); background: var(--paper); }
-.choice-btn.selected {
-  border-color: var(--terra);
-  background: var(--terra-light);
-  color: var(--ink);
-}
+.choice-btn.selected { border-color: var(--terra); background: var(--terra-light); color: var(--ink); }
 .choice-key {
-  width: 24px;
-  height: 24px;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  color: var(--ink-muted);
-  flex-shrink: 0;
-  transition: all var(--transition);
+  width: 24px; height: 24px; border: 1px solid var(--rule); border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
+  font-size: 0.625rem; color: var(--ink-muted); flex-shrink: 0; transition: all var(--transition);
 }
-.choice-btn.selected .choice-key {
-  background: var(--terra);
-  border-color: var(--terra);
-  color: var(--paper);
-}
+.choice-btn.selected .choice-key { background: var(--terra); border-color: var(--terra); color: var(--paper); }
 
-/* ── Consent item ────────────────────────────────────── */
+/* ── Consent card ──────────────────────────────────────── */
 .consent-card {
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-md);
-  padding: var(--space-4) var(--space-6);
-  margin-bottom: var(--space-3);
-  background: var(--paper);
-  cursor: pointer;
+  border: 1px solid var(--rule); border-radius: var(--radius-md); padding: var(--space-4) var(--space-6);
+  margin-bottom: var(--space-3); background: var(--paper); cursor: pointer;
   transition: border-color var(--transition), background var(--transition);
-  display: flex;
-  gap: var(--space-4);
-  align-items: flex-start;
+  display: flex; gap: var(--space-4); align-items: flex-start;
 }
 .consent-card:hover { border-color: var(--terra); }
-.consent-card.agreed {
-  border-color: var(--green);
-  background: var(--green-bg);
-}
-.consent-card.declined {
-  border-color: var(--red);
-  background: var(--red-bg);
-}
+.consent-card.agreed { border-color: var(--green); background: var(--green-bg); }
+.consent-card.declined { border-color: var(--red); background: var(--red-bg); }
 .consent-checkbox {
-  width: 20px;
-  height: 20px;
-  border: 1.5px solid var(--rule);
-  border-radius: var(--radius-sm);
-  flex-shrink: 0;
-  margin-top: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition);
-  background: var(--paper);
+  width: 20px; height: 20px; border: 1.5px solid var(--rule); border-radius: var(--radius-sm);
+  flex-shrink: 0; margin-top: 3px; display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition); background: var(--paper);
 }
-.consent-card.agreed .consent-checkbox {
-  background: var(--green);
-  border-color: var(--green);
-}
+.consent-card.agreed .consent-checkbox { background: var(--green); border-color: var(--green); }
 .consent-card.agreed .consent-checkbox::after {
-  content: '';
-  width: 10px;
-  height: 6px;
-  border-left: 2px solid white;
-  border-bottom: 2px solid white;
-  transform: rotate(-45deg) translateY(-1px);
-  display: block;
+  content: ''; width: 10px; height: 6px;
+  border-left: 2px solid white; border-bottom: 2px solid white;
+  transform: rotate(-45deg) translateY(-1px); display: block;
 }
-.consent-card.declined .consent-checkbox {
-  background: var(--red);
-  border-color: var(--red);
-}
-.consent-card.declined .consent-checkbox::after {
-  content: '×';
-  color: white;
-  font-size: 14px;
-  line-height: 1;
-}
-.consent-title {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.875rem;
-  color: var(--ink);
-  display: block;
-  margin-bottom: 4px;
-}
-.consent-body {
-  font-size: 0.8125rem;
-  color: var(--ink-sub);
-  line-height: 1.6;
-}
-.consent-decline-note {
-  font-size: 0.75rem;
-  color: var(--red);
-  margin-top: 4px;
-  font-family: var(--font-mono);
-  display: none;
-}
+.consent-card.declined .consent-checkbox { background: var(--red); border-color: var(--red); }
+.consent-card.declined .consent-checkbox::after { content: ' d7'; color: white; font-size: 14px; line-height: 1; }
+.consent-title { font-family: var(--font-body); font-weight: 700; font-size: 0.875rem; color: var(--ink); display: block; margin-bottom: 4px; }
+.consent-body { font-size: 0.8125rem; color: var(--ink-sub); line-height: 1.6; }
+.consent-decline-note { font-size: 0.75rem; color: var(--red); margin-top: 4px; font-family: var(--font-mono); display: none; }
 .consent-card.declined .consent-decline-note { display: block; }
 
-/* ── E-signature ─────────────────────────────────────── */
-.esig-note {
-  font-size: 0.8125rem;
-  color: var(--ink-sub);
-  line-height: 1.6;
-  background: var(--terra-light);
-  border-left: 3px solid var(--terra);
-  padding: var(--space-3) var(--space-4);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  margin-bottom: var(--space-6);
-}
-.esig-legal {
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  letter-spacing: 0.1em;
-  color: var(--ink-muted);
-  text-transform: uppercase;
-  margin-top: var(--space-4);
-  line-height: 1.7;
-}
+/* ── E-sig ──────────────────────────────────────────── */
+.esig-legal { font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.1em; color: var(--ink-muted); text-transform: uppercase; margin-top: var(--space-4); line-height: 1.7; }
 
-/* ── Buttons ─────────────────────────────────────────── */
-.btn-row {
-  display: flex;
-  gap: var(--space-3);
-  align-items: center;
-  margin-top: var(--space-8);
-  flex-wrap: wrap;
-}
+/* ── Buttons ──────────────────────────────────────────── */
+.btn-row { display: flex; gap: var(--space-3); align-items: center; margin-top: var(--space-8); flex-wrap: wrap; }
 .btn-primary {
-  background: var(--ink);
-  color: var(--paper);
-  border: none;
-  padding: var(--space-3) var(--space-8);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: background var(--transition), transform 120ms ease;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
+  background: var(--ink); color: var(--paper); border: none; padding: var(--space-3) var(--space-8);
+  font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.15em; text-transform: uppercase;
+  border-radius: var(--radius-sm); cursor: pointer; transition: background var(--transition), transform 120ms ease;
+  display: inline-flex; align-items: center; gap: var(--space-3);
 }
 .btn-primary:hover { background: var(--terra); }
 .btn-primary:active { transform: scale(0.98); }
-.btn-primary:disabled {
-  background: var(--paper-dark);
-  color: var(--ink-muted);
-  cursor: not-allowed;
-}
+.btn-primary:disabled { background: var(--paper-dark); color: var(--ink-muted); cursor: not-allowed; }
 .btn-back {
-  background: none;
-  border: none;
-  color: var(--ink-muted);
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color var(--transition);
-  padding: var(--space-3) 0;
+  background: none; border: none; color: var(--ink-muted); font-family: var(--font-mono);
+  font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+  transition: color var(--transition); padding: var(--space-3) 0;
 }
 .btn-back:hover { color: var(--ink); }
 
-/* ── Error / validation ──────────────────────────────── */
-.field-error {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.1em;
-  color: var(--red);
-  margin-top: var(--space-2);
-  display: none;
-  text-transform: uppercase;
-}
+/* ── Errors ──────────────────────────────────────────── */
+.field-error { font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.1em; color: var(--red); margin-top: var(--space-2); display: none; text-transform: uppercase; }
 .field-error.visible { display: block; }
-
-.screen-error {
-  background: var(--red-bg);
-  border: 1px solid #e8b4b8;
-  border-radius: var(--radius-md);
-  padding: var(--space-4) var(--space-6);
-  font-size: 0.875rem;
-  color: var(--red);
-  margin-bottom: var(--space-6);
-  display: none;
-}
+.screen-error { background: var(--red-bg); border: 1px solid #e8b4b8; border-radius: var(--radius-md); padding: var(--space-4) var(--space-6); font-size: 0.875rem; color: var(--red); margin-bottom: var(--space-6); display: none; }
 .screen-error.visible { display: block; }
 
-/* ── Cannot proceed screen ───────────────────────────── */
-.cannot-proceed {
-  text-align: center;
-  padding: var(--space-12) 0;
-}
-.cannot-proceed .icon {
-  font-size: 2.5rem;
-  margin-bottom: var(--space-4);
-}
-.cannot-proceed h2 {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: 1.75rem;
-  margin-bottom: var(--space-4);
-}
-.cannot-proceed p {
-  color: var(--ink-sub);
-  font-size: 0.9375rem;
-  max-width: 380px;
-  margin: 0 auto var(--space-6);
-  line-height: 1.7;
-}
+/* ── Cannot proceed ──────────────────────────────────── */
+.cannot-proceed { text-align: center; padding: var(--space-12) 0; }
+.cannot-proceed .icon { font-size: 2.5rem; margin-bottom: var(--space-4); }
+.cannot-proceed h2 { font-family: var(--font-display); font-weight: 300; font-size: 1.75rem; margin-bottom: var(--space-4); }
+.cannot-proceed p { color: var(--ink-sub); font-size: 0.9375rem; max-width: 380px; margin: 0 auto var(--space-6); line-height: 1.7; }
 .wa-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  background: var(--terra-light);
-  border: 1px solid var(--terra);
-  color: var(--terra-dark);
-  padding: var(--space-3) var(--space-6);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background var(--transition);
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  background: var(--terra-light); border: 1px solid var(--terra); color: var(--terra-dark);
+  padding: var(--space-3) var(--space-6); border-radius: var(--radius-sm);
+  font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.1em;
+  text-transform: uppercase; text-decoration: none; transition: background var(--transition);
 }
 .wa-link:hover { background: var(--terra); color: var(--paper); }
 
-/* ── Success screen ──────────────────────────────────── */
-.success-screen {
-  text-align: center;
-  padding: var(--space-12) var(--space-4);
-}
+/* ── Success ──────────────────────────────────────────── */
+.success-screen { text-align: center; padding: var(--space-12) var(--space-4); }
 .success-mark {
-  width: 56px;
-  height: 56px;
-  border: 1.5px solid var(--green);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto var(--space-6);
+  width: 56px; height: 56px; border: 1.5px solid var(--green); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-6);
 }
 .success-mark::after {
-  content: '';
-  width: 22px;
-  height: 13px;
-  border-left: 2.5px solid var(--green);
-  border-bottom: 2.5px solid var(--green);
-  transform: rotate(-45deg) translateY(-2px);
-  display: block;
+  content: ''; width: 22px; height: 13px;
+  border-left: 2.5px solid var(--green); border-bottom: 2.5px solid var(--green);
+  transform: rotate(-45deg) translateY(-2px); display: block;
 }
-.success-title {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(1.75rem, 5vw, 2.5rem);
-  margin-bottom: var(--space-4);
-  color: var(--ink);
-}
-.success-body {
-  color: var(--ink-sub);
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  max-width: 420px;
-  margin: 0 auto var(--space-8);
-}
-.success-id {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--ink-muted);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-top: var(--space-8);
-}
+.success-title { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.75rem, 5vw, 2.5rem); margin-bottom: var(--space-4); color: var(--ink); }
+.success-body { color: var(--ink-sub); font-size: 0.9375rem; line-height: 1.7; max-width: 420px; margin: 0 auto var(--space-8); }
+.success-id { font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: var(--space-8); }
 
-/* ── Submitting spinner ──────────────────────────────── */
-.spinner {
-  width: 16px; height: 16px;
-  border: 2px solid rgba(255,255,255,0.3);
-  border-top-color: white;
-  border-radius: 50%;
-  animation: spin 600ms linear infinite;
-  display: none;
-}
+/* ── Spinner ──────────────────────────────────────────── */
+.spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 600ms linear infinite; display: none; }
 .btn-primary.loading .spinner { display: block; }
 .btn-primary.loading .btn-label { display: none; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ── Footer ──────────────────────────────────────────── */
-footer {
-  border-top: 1px solid var(--rule);
-  padding: var(--space-6);
-  text-align: center;
-}
-.footer-sig {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.875rem;
-  color: var(--ink-sub);
-}
-.footer-meta {
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  margin-top: var(--space-2);
-}
-.footer-terra {
-  color: var(--terra);
-  opacity: 0.7;
-  margin-top: var(--space-1);
-}
+footer { border-top: 1px solid var(--rule); padding: var(--space-6); text-align: center; }
+.footer-sig { font-family: var(--font-display); font-style: italic; font-size: 0.875rem; color: var(--ink-sub); }
+.footer-meta { font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-muted); margin-top: var(--space-2); }
+.footer-terra { color: var(--terra); opacity: 0.7; margin-top: var(--space-1); }
 
 /* ── Responsive ──────────────────────────────────────── */
 @media (min-width: 480px) {
@@ -620,72 +276,23 @@ footer {
 
 <!-- ── Header ────────────────────────────────────────── -->
 <header class="header" style="background:var(--paper-alt);border-bottom:1px solid var(--rule);padding:0 var(--space-6);position:sticky;top:0;z-index:100;">
-  <!--
-    Lockup 3 — Premium Inline, LIGHT version (brand-assets.md)
-    Light background: symbol stroke = INK #2a2420, pivot dot = ACCENT #b85c3e
-    viewBox 680×56: symbol row at y≈10–44, SLMC line at y≈50
-    Symbol: 28% scale of 240×140 → 67.2×39.2px, vertically centred in top row
-    Text top row baseline: y=32
-    SLMC line baseline: y=50
-    Total viewBox height: 56px → header height 64px with 4px padding top/bottom
-  -->
-  <svg width="100%" viewBox="0 0 680 56" xmlns="http://www.w3.org/2000/svg"
-       role="img" style="display:block; height:56px; max-width:660px; overflow:visible;">
+  <svg width="100%" viewBox="0 0 680 56" xmlns="http://www.w3.org/2000/svg" role="img" style="display:block;height:56px;max-width:660px;overflow:visible;">
     <title>Signature Health Intelligence — Dr. D. R. Gamalathge, MBBS, SLMC No. 36999</title>
-
-    <!-- Horizon Pulse symbol: 28% scale, vertically centred in 44px row
-         scale(0.28): symbol spans y = 36×0.28=10 (trough=104×0.28=29) to ascent=36×0.28=10
-         Translate y so midpoint (82×0.28=22.96) sits at row centre = 22 → translateY(0)
-         x: start at 0, symbol ends at 224×0.28 = 62.7px -->
-    <g transform="translate(2, 2) scale(0.28)" aria-hidden="true">
-      <path d="M16 82 L80 82 C90 82,96 58,102 104 C108 68,122 82,140 82 C165 82,190 68,224 36"
-            fill="none"
-            stroke="#2a2420"
-            stroke-width="2.6"
-            stroke-linecap="round"
-            stroke-linejoin="round"/>
+    <g transform="translate(2,2) scale(0.28)" aria-hidden="true">
+      <path d="M16 82 L80 82 C90 82,96 58,102 104 C108 68,122 82,140 82 C165 82,190 68,224 36" fill="none" stroke="#2a2420" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="140" cy="82" r="3.4" fill="#b85c3e"/>
     </g>
-
-    <!-- Vertical rule: x=74, from y=6 to y=43 -->
-    <line x1="74" y1="6" x2="74" y2="43"
-          stroke="#e0d8c8" stroke-width="0.7"/>
-
-    <!-- Wordmark: Cormorant Garamond Light 20px, INK, x=84 -->
-    <text x="84" y="24"
-          font-family="'Cormorant Garamond','Palatino Linotype',Georgia,serif"
-          font-size="20"
-          font-weight="300"
-          fill="#2a2420"
-          letter-spacing="0.5">Signature Health Intelligence</text>
-
-    <!-- Doctor name: italic 14px, INK_SUB, same x=84, y=41 -->
-    <text x="84" y="41"
-          font-family="'Cormorant Garamond','Palatino Linotype',Georgia,serif"
-          font-size="14"
-          font-weight="300"
-          font-style="italic"
-          fill="#6b6156"
-          letter-spacing="0.3">Dr. D. R. Gamalathge, MBBS</text>
-
-    <!-- SLMC credential: mono 7.5px, INK_MUTED, x=84, y=52 -->
-    <text x="84" y="52"
-          font-family="'IBM Plex Mono','Courier New',monospace"
-          font-size="7.5"
-          fill="#a8a095"
-          letter-spacing="1.6">SLMC No. 36999  ·  Dr. Gamalathge Healthcare Centre, Mirihana, Nugegoda</text>
+    <line x1="74" y1="6" x2="74" y2="43" stroke="#e0d8c8" stroke-width="0.7"/>
+    <text x="84" y="24" font-family="'Cormorant Garamond','Palatino Linotype',Georgia,serif" font-size="20" font-weight="300" fill="#2a2420" letter-spacing="0.5">Signature Health Intelligence</text>
+    <text x="84" y="41" font-family="'Cormorant Garamond','Palatino Linotype',Georgia,serif" font-size="14" font-weight="300" font-style="italic" fill="#6b6156" letter-spacing="0.3">Dr. D. R. Gamalathge, MBBS</text>
+    <text x="84" y="52" font-family="'IBM Plex Mono','Courier New',monospace" font-size="7.5" fill="#a8a095" letter-spacing="1.6">SLMC No. 36999  ·  Dr. Gamalathge Healthcare Centre, Mirihana, Nugegoda</text>
   </svg>
 </header>
 
 <!-- ── Progress bar ──────────────────────────────────── -->
 <div class="progress-wrap" id="progressWrap" style="display:none">
-  <div class="progress-bar-track">
-    <div class="progress-bar-fill" id="progressFill"></div>
-  </div>
-  <div class="progress-label">
-    <span id="progressStep">Step 1 of 7</span>
-    <span id="progressPct">0%</span>
-  </div>
+  <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill"></div></div>
+  <div class="progress-label"><span id="progressStep">Step 1 of 7</span><span id="progressPct">0%</span></div>
 </div>
 
 <!-- ── Main ──────────────────────────────────────────── -->
@@ -695,36 +302,16 @@ footer {
   <section class="screen active" id="screen-0" aria-label="Welcome">
     <p class="welcome-eyebrow">Patient Consent to Treatment</p>
     <h1 class="welcome-title">Your consent,<br><em>your record.</em></h1>
-    <p class="welcome-body">
-      This form records your informed consent for clinical care under Dr. D. R. Gamalathge.
-      It takes approximately 3 minutes to complete. Your information is strictly confidential
-      and held in accordance with SLMC ethical guidelines and PDPA No. 9 of 2022.
-    </p>
-    <p class="welcome-body" style="font-size:0.875rem; margin-top: -0.5rem;">
-      Under the <strong>Electronic Transactions Act No. 19 of 2006 (Sri Lanka)</strong>, this electronic
-      record is legally equivalent to a written document, your typed signature satisfies any legal
-      requirement for a signature, and your timestamped submission is admissible as evidence.
-    </p>
+    <p class="welcome-body">This form records your informed consent for clinical care under Dr. D. R. Gamalathge. It takes approximately 3 minutes to complete. Your information is strictly confidential and held in accordance with SLMC ethical guidelines and PDPA No. 9 of 2022.</p>
+    <p class="welcome-body" style="font-size:0.875rem;margin-top:-0.5rem;">Under the <strong>Electronic Transactions Act No. 19 of 2006 (Sri Lanka)</strong>, this electronic record is legally equivalent to a written document, your typed signature satisfies any legal requirement for a signature, and your timestamped submission is admissible as evidence.</p>
     <div class="welcome-meta">
-      <div class="welcome-meta-item">
-        <span class="welcome-meta-label">Time required</span>
-        <span class="welcome-meta-value">~3 minutes</span>
-      </div>
-      <div class="welcome-meta-item">
-        <span class="welcome-meta-label">Questions</span>
-        <span class="welcome-meta-value">7 sections</span>
-      </div>
-      <div class="welcome-meta-item">
-        <span class="welcome-meta-label">Legal basis</span>
-        <span class="welcome-meta-value">ETA No. 19 of 2006 · PDPA No. 9 of 2022</span>
-      </div>
+      <div class="welcome-meta-item"><span class="welcome-meta-label">Time required</span><span class="welcome-meta-value">~3 minutes</span></div>
+      <div class="welcome-meta-item"><span class="welcome-meta-label">Questions</span><span class="welcome-meta-value">7 sections</span></div>
+      <div class="welcome-meta-item"><span class="welcome-meta-label">Legal basis</span><span class="welcome-meta-value">ETA No. 19 of 2006 · PDPA No. 9 of 2022</span></div>
     </div>
     <hr class="terra-rule">
     <div class="btn-row" style="margin-top:0">
-      <button class="btn-primary" onclick="goTo(1)">
-        <span class="btn-label">Begin</span>
-        <span>→</span>
-      </button>
+      <button class="btn-primary" onclick="goTo(1)"><span class="btn-label">Begin</span><span>&#8594;</span></button>
     </div>
   </section>
 
@@ -733,13 +320,10 @@ footer {
     <p class="q-eyebrow">Section 1 of 7 · Identity</p>
     <h2 class="q-text">Your details<span class="q-required">*</span></h2>
     <p class="q-sub">As per your NIC or passport. This appears on your consent record.</p>
-
     <div class="screen-error" id="err-1">Please complete all required fields.</div>
-
     <div class="field-wrap">
       <label class="field-label" for="patient_name">Full name *</label>
-      <input class="field-input" type="text" id="patient_name" name="patient_name"
-        placeholder="e.g. Priya Perera" autocomplete="name" autocapitalize="words">
+      <input class="field-input" type="text" id="patient_name" name="patient_name" placeholder="e.g. Priya Perera" autocomplete="name" autocapitalize="words">
       <div class="field-error" id="err-name">Please enter your full name</div>
     </div>
     <div class="field-wrap">
@@ -750,7 +334,7 @@ footer {
     <div class="field-wrap">
       <label class="field-label" for="biological_sex">Biological sex *</label>
       <select class="field-select" id="biological_sex" name="biological_sex">
-        <option value="">Select…</option>
+        <option value="">Select&#8230;</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
         <option value="Prefer not to say">Prefer not to say</option>
@@ -759,16 +343,12 @@ footer {
     </div>
     <div class="field-wrap">
       <label class="field-label" for="whatsapp_number">WhatsApp number *</label>
-      <input class="field-input" type="tel" id="whatsapp_number" name="whatsapp_number"
-        placeholder="+94 77 000 0000" autocomplete="tel">
+      <input class="field-input" type="tel" id="whatsapp_number" name="whatsapp_number" placeholder="+94 77 000 0000" autocomplete="tel">
       <div class="field-error" id="err-phone">Please enter your WhatsApp number</div>
     </div>
-
     <div class="btn-row">
-      <button class="btn-back" onclick="goTo(0)">← Back</button>
-      <button class="btn-primary" onclick="validateAndGo(1,2)">
-        <span class="btn-label">Continue</span><span>→</span>
-      </button>
+      <button class="btn-back" onclick="goTo(0)">&#8592; Back</button>
+      <button class="btn-primary" onclick="validateAndGo(1,2)"><span class="btn-label">Continue</span><span>&#8594;</span></button>
     </div>
   </section>
 
@@ -777,35 +357,20 @@ footer {
     <p class="q-eyebrow">Section 2 of 7 · Package</p>
     <h2 class="q-text">Your package<span class="q-required">*</span></h2>
     <p class="q-sub">Select the package you have been registered for.</p>
-
     <div class="screen-error" id="err-2">Please make a selection to continue.</div>
-
     <div class="field-wrap">
       <div class="choices" id="package-choices">
-        <button type="button" class="choice-btn" data-value="Essential" onclick="selectChoice('package_tier','Essential',this)">
-          <span class="choice-key">E</span>
-          <span>Essential — LKR 49,000</span>
-        </button>
-        <button type="button" class="choice-btn" data-value="Premium" onclick="selectChoice('package_tier','Premium',this)">
-          <span class="choice-key">P</span>
-          <span>Premium — LKR 69,000</span>
-        </button>
-        <button type="button" class="choice-btn" data-value="Elite" onclick="selectChoice('package_tier','Elite',this)">
-          <span class="choice-key">L</span>
-          <span>Elite — LKR 95,000</span>
-        </button>
-        <button type="button" class="choice-btn" data-value="Not confirmed" onclick="selectChoice('package_tier','Not confirmed',this)">
-          <span class="choice-key">N</span>
-          <span>Not yet confirmed</span>
-        </button>
+        <button type="button" class="choice-btn" data-value="Essential" onclick="selectChoice('package_tier','Essential',this)"><span class="choice-key">E</span><span>Essential &#8212; LKR 49,000</span></button>
+        <button type="button" class="choice-btn" data-value="Premium" onclick="selectChoice('package_tier','Premium',this)"><span class="choice-key">P</span><span>Premium &#8212; LKR 69,000</span></button>
+        <button type="button" class="choice-btn" data-value="Elite" onclick="selectChoice('package_tier','Elite',this)"><span class="choice-key">L</span><span>Elite &#8212; LKR 95,000</span></button>
+        <button type="button" class="choice-btn" data-value="Not confirmed" onclick="selectChoice('package_tier','Not confirmed',this)"><span class="choice-key">N</span><span>Not yet confirmed</span></button>
       </div>
       <input type="hidden" id="package_tier" name="package_tier">
     </div>
-
     <div class="field-wrap">
       <label class="field-label" for="patient_location">Current location *</label>
       <select class="field-select" id="patient_location" name="patient_location" onchange="toggleIntlConsent()">
-        <option value="">Select country…</option>
+        <option value="">Select country&#8230;</option>
         <option value="Sri Lanka">Sri Lanka</option>
         <option value="Australia">Australia</option>
         <option value="United Kingdom">United Kingdom</option>
@@ -813,199 +378,122 @@ footer {
         <option value="Other">Other country</option>
       </select>
     </div>
-
     <div id="intl-consent-wrap" style="display:none">
       <div class="consent-card" id="intl-card" onclick="toggleCard('intl-card','international_transfer_consent')">
         <div class="consent-checkbox"></div>
         <div>
           <span class="consent-title">International data transfer</span>
-          <p class="consent-body">
-            I consent to my health data and clinical report being transferred to my location overseas.
-            Required under PDPA No. 9 of 2022 for cross-border delivery.
-          </p>
+          <p class="consent-body">I consent to my health data and clinical report being transferred to my location overseas. Required under PDPA No. 9 of 2022 for cross-border delivery.</p>
           <p class="consent-decline-note">You must agree to this to receive your report.</p>
         </div>
       </div>
       <input type="hidden" id="international_transfer_consent" name="international_transfer_consent" value="">
     </div>
-
     <div class="btn-row">
-      <button class="btn-back" onclick="goTo(1)">← Back</button>
-      <button class="btn-primary" onclick="validateAndGo(2,3)">
-        <span class="btn-label">Continue</span><span>→</span>
-      </button>
+      <button class="btn-back" onclick="goTo(1)">&#8592; Back</button>
+      <button class="btn-primary" onclick="validateAndGo(2,3)"><span class="btn-label">Continue</span><span>&#8594;</span></button>
     </div>
   </section>
 
-  <!-- SCREEN 3: Core consents A -->
+  <!-- SCREEN 3: Clinical consent -->
   <section class="screen" id="screen-3" aria-label="Consent items part one">
     <p class="q-eyebrow">Section 3 of 7 · Consent</p>
     <h2 class="q-text">Clinical consent</h2>
-    <p class="q-sub">Please read and confirm each item. Tap to agree or decline.</p>
-
+    <p class="q-sub">Please read and confirm each item. Tap to agree.</p>
     <div class="screen-error" id="err-3">Please respond to every consent item before continuing.</div>
-
     <div class="consent-card" id="card-examination" onclick="toggleCard('card-examination','consent_examination')">
       <div class="consent-checkbox"></div>
-      <div>
-        <span class="consent-title">Clinical examination & investigation</span>
-        <p class="consent-body">I consent to clinical history-taking, physical examination, and any investigation ordered by Dr. D. R. Gamalathge as part of my care.</p>
-        <p class="consent-decline-note">You must agree to proceed.</p>
-      </div>
+      <div><span class="consent-title">Clinical examination &amp; investigation</span><p class="consent-body">I consent to clinical history-taking, physical examination, and any investigation ordered by Dr. D. R. Gamalathge as part of my care.</p><p class="consent-decline-note">You must agree to proceed.</p></div>
     </div>
     <input type="hidden" id="consent_examination" name="consent_examination" value="">
-
     <div class="consent-card" id="card-treatment" onclick="toggleCard('card-treatment','consent_treatment')">
       <div class="consent-checkbox"></div>
-      <div>
-        <span class="consent-title">Treatment & prescribing</span>
-        <p class="consent-body">I consent to any treatment or prescription issued following clinical assessment. I may ask questions before accepting any treatment, and I may decline.</p>
-        <p class="consent-decline-note">You must agree to proceed.</p>
-      </div>
+      <div><span class="consent-title">Treatment &amp; prescribing</span><p class="consent-body">I consent to any treatment or prescription issued following clinical assessment. I may ask questions before accepting any treatment, and I may decline.</p><p class="consent-decline-note">You must agree to proceed.</p></div>
     </div>
     <input type="hidden" id="consent_treatment" name="consent_treatment" value="">
-
     <div class="consent-card" id="card-referral" onclick="toggleCard('card-referral','consent_referral')">
       <div class="consent-checkbox"></div>
-      <div>
-        <span class="consent-title">Specialist referral</span>
-        <p class="consent-body">I consent to referral to a specialist or secondary care provider where Dr. Gamalathge considers it clinically appropriate. Referral details will be discussed with me beforehand.</p>
-        <p class="consent-decline-note">You must agree to proceed.</p>
-      </div>
+      <div><span class="consent-title">Specialist referral</span><p class="consent-body">I consent to referral to a specialist or secondary care provider where Dr. Gamalathge considers it clinically appropriate. Referral details will be discussed with me beforehand.</p><p class="consent-decline-note">You must agree to proceed.</p></div>
     </div>
     <input type="hidden" id="consent_referral" name="consent_referral" value="">
-
     <div class="btn-row">
-      <button class="btn-back" onclick="goTo(2)">← Back</button>
-      <button class="btn-primary" onclick="validateAndGo(3,4)">
-        <span class="btn-label">Continue</span><span>→</span>
-      </button>
+      <button class="btn-back" onclick="goTo(2)">&#8592; Back</button>
+      <button class="btn-primary" onclick="validateAndGo(3,4)"><span class="btn-label">Continue</span><span>&#8594;</span></button>
     </div>
   </section>
 
-  <!-- SCREEN 4: Core consents B -->
+  <!-- SCREEN 4: Data consent -->
   <section class="screen" id="screen-4" aria-label="Consent items part two">
-    <p class="q-eyebrow">Section 4 of 7 · Data & Reports</p>
-    <h2 class="q-text">Data & report consent</h2>
+    <p class="q-eyebrow">Section 4 of 7 · Data &amp; Reports</p>
+    <h2 class="q-text">Data &amp; report consent</h2>
     <p class="q-sub">Your data is handled in accordance with PDPA No. 9 of 2022 and SLMC guidelines.</p>
-
     <div class="screen-error" id="err-4">Please respond to every consent item before continuing.</div>
-
     <div class="consent-card" id="card-data" onclick="toggleCard('card-data','consent_data')">
       <div class="consent-checkbox"></div>
-      <div>
-        <span class="consent-title">Health data processing</span>
-        <p class="consent-body">My personal and health data is collected solely for my care under Dr. Gamalathge. It will not be shared with any third party without my written consent, except where required by Sri Lankan law. Records are retained for a minimum of 7 years.</p>
-        <p class="consent-decline-note">You must agree to proceed.</p>
-      </div>
+      <div><span class="consent-title">Health data processing</span><p class="consent-body">My personal and health data is collected solely for my care under Dr. Gamalathge. It will not be shared with any third party without my written consent, except where required by Sri Lankan law. Records are retained for a minimum of 7 years.</p><p class="consent-decline-note">You must agree to proceed.</p></div>
     </div>
     <input type="hidden" id="consent_data" name="consent_data" value="">
-
     <div class="consent-card" id="card-report" onclick="toggleCard('card-report','consent_report_nature')">
       <div class="consent-checkbox"></div>
-      <div>
-        <span class="consent-title">Clinical decision-support reports</span>
-        <p class="consent-body">Where a written health report is generated, I understand it is a physician-authored document and does not replace ongoing clinical care or specialist consultation.</p>
-        <p class="consent-decline-note">You must agree to proceed.</p>
-      </div>
+      <div><span class="consent-title">Clinical decision-support reports</span><p class="consent-body">Where a written health report is generated, I understand it is a physician-authored document and does not replace ongoing clinical care or specialist consultation.</p><p class="consent-decline-note">You must agree to proceed.</p></div>
     </div>
     <input type="hidden" id="consent_report_nature" name="consent_report_nature" value="">
-
     <div class="consent-card" id="card-withdraw" onclick="toggleCard('card-withdraw','consent_withdraw')">
       <div class="consent-checkbox"></div>
-      <div>
-        <span class="consent-title">Right to withdraw</span>
-        <p class="consent-body">I understand I may withdraw consent for any part of this care at any time without penalty. Withdrawal does not affect the lawfulness of care already provided.</p>
-        <p class="consent-decline-note">You must agree to proceed.</p>
-      </div>
+      <div><span class="consent-title">Right to withdraw</span><p class="consent-body">I understand I may withdraw consent for any part of this care at any time without penalty. Withdrawal does not affect the lawfulness of care already provided.</p><p class="consent-decline-note">You must agree to proceed.</p></div>
     </div>
     <input type="hidden" id="consent_withdraw" name="consent_withdraw" value="">
-
     <div class="btn-row">
-      <button class="btn-back" onclick="goTo(3)">← Back</button>
-      <button class="btn-primary" onclick="validateAndGo(4,5)">
-        <span class="btn-label">Continue</span><span>→</span>
-      </button>
+      <button class="btn-back" onclick="goTo(3)">&#8592; Back</button>
+      <button class="btn-primary" onclick="validateAndGo(4,5)"><span class="btn-label">Continue</span><span>&#8594;</span></button>
     </div>
   </section>
 
-  <!-- SCREEN 5: Delivery consents -->
+  <!-- SCREEN 5: Delivery consent -->
   <section class="screen" id="screen-5" aria-label="Delivery and security consent">
     <p class="q-eyebrow">Section 5 of 7 · Delivery</p>
-    <h2 class="q-text">Security & delivery</h2>
+    <h2 class="q-text">Security &amp; delivery</h2>
     <p class="q-sub">How your report and data are handled.</p>
-
     <div class="screen-error" id="err-5">Please respond to every consent item before continuing.</div>
-
     <div class="consent-card" id="card-security" onclick="toggleCard('card-security','consent_data_security')">
       <div class="consent-checkbox"></div>
-      <div>
-        <span class="consent-title">Data security & storage</span>
-        <p class="consent-body">I understand my personal and health data is stored securely, with access restricted to Dr. Gamalathge and authorised clinical staff. Clinical reports are delivered as password-protected PDFs and transmitted through secured channels.</p>
-        <p class="consent-decline-note">You must agree to proceed.</p>
-      </div>
+      <div><span class="consent-title">Data security &amp; storage</span><p class="consent-body">I understand my personal and health data is stored securely, with access restricted to Dr. Gamalathge and authorised clinical staff. Clinical reports are delivered as password-protected PDFs and transmitted through secured channels.</p><p class="consent-decline-note">You must agree to proceed.</p></div>
     </div>
     <input type="hidden" id="consent_data_security" name="consent_data_security" value="">
-
     <div class="consent-card" id="card-whatsapp" onclick="toggleCard('card-whatsapp','consent_whatsapp_delivery')">
       <div class="consent-checkbox"></div>
-      <div>
-        <span class="consent-title">Report delivery via WhatsApp</span>
-        <p class="consent-body">I consent to my clinical report and communications being delivered to my WhatsApp number. I understand WhatsApp is a consumer platform and accept responsibility for my own device security. I may request an alternative delivery method at any time.</p>
-        <p class="consent-decline-note">You must agree to proceed.</p>
-      </div>
+      <div><span class="consent-title">Report delivery via WhatsApp</span><p class="consent-body">I consent to my clinical report and communications being delivered to my WhatsApp number. I understand WhatsApp is a consumer platform and accept responsibility for my own device security. I may request an alternative delivery method at any time.</p><p class="consent-decline-note">You must agree to proceed.</p></div>
     </div>
     <input type="hidden" id="consent_whatsapp_delivery" name="consent_whatsapp_delivery" value="">
-
     <div class="consent-card" id="card-pdpa" onclick="toggleCard('card-pdpa','consent_pdpa_rights')">
       <div class="consent-checkbox"></div>
-      <div>
-        <span class="consent-title">PDPA data subject rights</span>
-        <p class="consent-body">I understand I have the right to request access to, correction of, or erasure of my personal data by contacting dimithra@signaturehealthintel.com.</p>
-        <p class="consent-decline-note">You must agree to proceed.</p>
-      </div>
+      <div><span class="consent-title">PDPA data subject rights</span><p class="consent-body">I understand I have the right to request access to, correction of, or erasure of my personal data by contacting dimithra@signaturehealthintel.com.</p><p class="consent-decline-note">You must agree to proceed.</p></div>
     </div>
     <input type="hidden" id="consent_pdpa_rights" name="consent_pdpa_rights" value="">
-
     <div class="btn-row">
-      <button class="btn-back" onclick="goTo(4)">← Back</button>
-      <button class="btn-primary" onclick="validateAndGo(5,6)">
-        <span class="btn-label">Continue</span><span>→</span>
-      </button>
+      <button class="btn-back" onclick="goTo(4)">&#8592; Back</button>
+      <button class="btn-primary" onclick="validateAndGo(5,6)"><span class="btn-label">Continue</span><span>&#8594;</span></button>
     </div>
   </section>
 
-  <!-- SCREEN 6: Declaration + E-sig -->
+  <!-- SCREEN 6: Declaration -->
   <section class="screen" id="screen-6" aria-label="Declaration and electronic signature">
     <p class="q-eyebrow">Section 6 of 7 · Declaration</p>
     <h2 class="q-text">Your declaration</h2>
-
     <div class="screen-error" id="err-6">Please complete your declaration and sign before continuing.</div>
-
     <div class="consent-card" id="card-declaration" onclick="toggleCard('card-declaration','declaration_confirmed')">
       <div class="consent-checkbox"></div>
-      <div>
-        <span class="consent-title">Confirmed declaration</span>
-        <p class="consent-body">I have read and understood all the consent items above. I confirm that the information I have provided is accurate to the best of my knowledge and I voluntarily consent to the terms of this form.</p>
-        <p class="consent-decline-note">You must confirm the declaration to proceed.</p>
-      </div>
+      <div><span class="consent-title">Confirmed declaration</span><p class="consent-body">I have read and understood all the consent items above. I confirm that the information I have provided is accurate to the best of my knowledge and I voluntarily consent to the terms of this form.</p><p class="consent-decline-note">You must confirm the declaration to proceed.</p></div>
     </div>
     <input type="hidden" id="declaration_confirmed" name="declaration_confirmed" value="">
-
-    <div class="field-wrap" style="margin-top: var(--space-6)">
+    <div class="field-wrap" style="margin-top:var(--space-6)">
       <label class="field-label" for="electronic_signature">Type your full name to sign *</label>
-      <input class="field-input" type="text" id="electronic_signature" name="electronic_signature"
-        placeholder="Your full name" autocomplete="name" autocapitalize="words"
-        style="font-family: var(--font-display); font-style: italic; font-size: 1.375rem; font-weight: 300;">
+      <input class="field-input" type="text" id="electronic_signature" name="electronic_signature" placeholder="Your full name" autocomplete="name" autocapitalize="words" style="font-family:var(--font-display);font-style:italic;font-size:1.375rem;font-weight:300;">
       <div class="field-error" id="err-sig">Please type your full name as your electronic signature</div>
-      <p class="esig-legal">
-        Electronic Transactions Act No. 19 of 2006 (Sri Lanka) — ss. 3, 7 &amp; 10: electronic records legally equivalent to written records; typed signature satisfies signature requirements; timestamped submission admissible as evidence.<br>
-        SLMC Ethical Conduct Guidelines s.35 · PDPA No. 9 of 2022 · Gamalathge Healthcare · Mirihana, Nugegoda
-      </p>
+      <p class="esig-legal">Electronic Transactions Act No. 19 of 2006 (Sri Lanka) &#8212; ss. 3, 7 &amp; 10: electronic records legally equivalent to written records; typed signature satisfies signature requirements; timestamped submission admissible as evidence.<br>SLMC Ethical Conduct Guidelines s.35 · PDPA No. 9 of 2022 · Gamalathge Healthcare · Mirihana, Nugegoda</p>
     </div>
-
     <div class="btn-row">
-      <button class="btn-back" onclick="goTo(5)">← Back</button>
+      <button class="btn-back" onclick="goTo(5)">&#8592; Back</button>
       <button class="btn-primary" id="submitBtn" onclick="submitForm()">
         <span class="btn-label">Submit consent</span>
         <div class="spinner"></div>
@@ -1013,39 +501,24 @@ footer {
     </div>
   </section>
 
-  <!-- SCREEN 7: Cannot proceed -->
+  <!-- SCREEN: Cannot proceed -->
   <section class="screen" id="screen-cannot" aria-label="Cannot proceed">
     <div class="cannot-proceed">
-      <div class="icon">—</div>
+      <div class="icon">&#8212;</div>
       <h2>We cannot proceed</h2>
-      <p>
-        One or more required consent items were declined. To proceed with Signature Health Intelligence, 
-        all items must be agreed to. If you have concerns about any item, please contact 
-        Dr. Gamalathge directly before submitting.
-      </p>
-      <a class="wa-link" href="https://wa.me/94756192319" target="_blank" rel="noopener">
-        Contact Dr. Gamalathge →
-      </a>
-      <div style="margin-top: var(--space-8)">
-        <button class="btn-back" onclick="goTo(1)" style="font-size:0.75rem;">← Start again</button>
-      </div>
+      <p>One or more required consent items were declined. To proceed with Signature Health Intelligence, all items must be agreed to. If you have concerns about any item, please contact Dr. Gamalathge directly before submitting.</p>
+      <a class="wa-link" href="https://wa.me/94756192319" target="_blank" rel="noopener">Contact Dr. Gamalathge &#8594;</a>
+      <div style="margin-top:var(--space-8)"><button class="btn-back" onclick="goTo(1)" style="font-size:0.75rem;">&#8592; Start again</button></div>
     </div>
   </section>
 
-  <!-- SCREEN 8: Success -->
+  <!-- SCREEN: Success -->
   <section class="screen" id="screen-success" aria-label="Consent submitted successfully">
     <div class="success-screen">
       <div class="success-mark"></div>
       <h2 class="success-title">Consent recorded.</h2>
-      <p class="success-body">
-        Thank you. Your consent has been submitted and timestamped. Under the
-        <strong>Electronic Transactions Act No. 19 of 2006</strong>, this electronic record is legally
-        equivalent to a signed written consent form and is admissible as evidence. Dr. Gamalathge
-        will be in touch via WhatsApp with your next steps shortly.
-      </p>
-      <a class="wa-link" href="https://wa.me/94756192319" target="_blank" rel="noopener">
-        Message Dr. Gamalathge →
-      </a>
+      <p class="success-body" id="success-body-text">Thank you. Your consent has been submitted and timestamped. Under the <strong>Electronic Transactions Act No. 19 of 2006</strong>, this electronic record is legally equivalent to a signed written consent form and is admissible as evidence. Dr. Gamalathge will be in touch via WhatsApp with your next steps shortly.</p>
+      <a class="wa-link" href="https://wa.me/94756192319" target="_blank" rel="noopener">Message Dr. Gamalathge &#8594;</a>
       <p class="success-id" id="successRef"></p>
     </div>
   </section>
@@ -1058,20 +531,32 @@ footer {
   <div class="footer-meta">MBBS · SLMC No. 36999 · Dr. Gamalathge Healthcare Centre</div>
   <div class="footer-meta footer-terra">Signature Health Intelligence</div>
 </footer>
-
 <script>
-// ── State ─────────────────────────────────────────────
-const N8N_WEBHOOK = 'https://dimithra.app.n8n.cloud/webhook/shi-consent-form';
-const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+// ── Config ────────────────────────────────────────────
+const N8N_WEBHOOK = 'https://dimithra.app.n8n.cloud/webhook/consent-submit';
 const TOTAL_STEPS = 7;
+
+// Read GHC ID and package from URL — consent fields stay blank for patient to fill fresh
+const urlParams = new URLSearchParams(window.location.search);
+const GHC_ID    = urlParams.get('ghc')     || '';
+const URL_PKG   = urlParams.get('package') || '';
 
 let currentScreen = 0;
 const formData = {};
 
+// Pre-select package from URL if present
+window.addEventListener('DOMContentLoaded', () => {
+  if (URL_PKG) {
+    document.querySelectorAll('#package-choices .choice-btn').forEach(btn => {
+      if (btn.dataset.value === URL_PKG) selectChoice('package_tier', URL_PKG, btn);
+    });
+  }
+});
+
 // ── Navigation ────────────────────────────────────────
 function goTo(n) {
   document.getElementById('screen-' + currentScreen)?.classList.remove('active');
-  const next = document.getElementById('screen-' + n) || document.getElementById('screen-' + n);
+  const next = document.getElementById('screen-' + n);
   if (!next) return;
   currentScreen = n;
   next.classList.add('active');
@@ -1087,29 +572,28 @@ function goToNamed(name) {
 }
 
 function updateProgress(n) {
-  const wrap = document.getElementById('progressWrap');
-  const fill = document.getElementById('progressFill');
+  const wrap    = document.getElementById('progressWrap');
+  const fill    = document.getElementById('progressFill');
   const stepLbl = document.getElementById('progressStep');
-  const pctLbl = document.getElementById('progressPct');
+  const pctLbl  = document.getElementById('progressPct');
   if (n === 0 || typeof n === 'string') { wrap.style.display = 'none'; return; }
   wrap.style.display = 'block';
   const pct = Math.round((n / TOTAL_STEPS) * 100);
-  fill.style.width = pct + '%';
+  fill.style.width  = pct + '%';
   stepLbl.textContent = 'Step ' + n + ' of ' + TOTAL_STEPS;
-  pctLbl.textContent = pct + '%';
+  pctLbl.textContent  = pct + '%';
 }
 
 // ── Choice selector ───────────────────────────────────
 function selectChoice(fieldId, value, btn) {
   document.getElementById(fieldId).value = value;
-  btn.closest('.choices').querySelectorAll('.choice-btn')
-    .forEach(b => b.classList.remove('selected'));
+  btn.closest('.choices').querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
 }
 
 // ── Consent card toggle ───────────────────────────────
 function toggleCard(cardId, fieldId) {
-  const card = document.getElementById(cardId);
+  const card  = document.getElementById(cardId);
   const field = document.getElementById(fieldId);
   if (card.classList.contains('agreed')) {
     card.classList.remove('agreed');
@@ -1121,16 +605,13 @@ function toggleCard(cardId, fieldId) {
   }
 }
 
-// ── International consent toggle ──────────────────────
+// ── International consent ─────────────────────────────
 function toggleIntlConsent() {
-  const loc = document.getElementById('patient_location').value;
+  const loc  = document.getElementById('patient_location').value;
   const wrap = document.getElementById('intl-consent-wrap');
-  wrap.style.display = loc && loc !== 'Sri Lanka' ? 'block' : 'none';
-  if (loc === 'Sri Lanka') {
-    document.getElementById('international_transfer_consent').value = 'N/A';
-  } else {
-    document.getElementById('international_transfer_consent').value = '';
-  }
+  wrap.style.display = (loc && loc !== 'Sri Lanka') ? 'block' : 'none';
+  document.getElementById('international_transfer_consent').value =
+    (loc === 'Sri Lanka') ? 'N/A' : '';
 }
 
 // ── Validation ────────────────────────────────────────
@@ -1141,43 +622,49 @@ const validators = {
     const dob  = document.getElementById('date_of_birth').value;
     const sex  = document.getElementById('biological_sex').value;
     const ph   = document.getElementById('whatsapp_number').value.trim();
-    showErr('err-name', !name); if (!name) ok = false;
-    showErr('err-dob',  !dob);  if (!dob)  ok = false;
-    showErr('err-sex',  !sex);  if (!sex)  ok = false;
-    showErr('err-phone', !ph);  if (!ph)   ok = false;
+    showErr('err-name',  !name); if (!name) ok = false;
+    showErr('err-dob',   !dob);  if (!dob)  ok = false;
+    showErr('err-sex',   !sex);  if (!sex)  ok = false;
+    showErr('err-phone', !ph);   if (!ph)   ok = false;
     showErr('err-1', !ok);
-    if (ok) { formData.patient_name = name; formData.date_of_birth = dob;
-              formData.biological_sex = sex; formData.whatsapp_number = ph; }
+    if (ok) {
+      formData.patient_name    = name;
+      formData.date_of_birth   = dob;
+      formData.biological_sex  = sex;
+      formData.whatsapp_number = ph;
+    }
     return ok;
   },
   2: () => {
-    const pkg = document.getElementById('package_tier').value;
-    const loc = document.getElementById('patient_location').value;
-    const intl = document.getElementById('international_transfer_consent').value;
-    const isOverseas = loc && loc !== 'Sri Lanka';
-    const needsIntl = isOverseas && !intl;
-    const ok = pkg && loc && !needsIntl;
+    const pkg       = document.getElementById('package_tier').value;
+    const loc       = document.getElementById('patient_location').value;
+    const intl      = document.getElementById('international_transfer_consent').value;
+    const needsIntl = loc && loc !== 'Sri Lanka' && !intl;
+    const ok        = !!(pkg && loc && !needsIntl);
     showErr('err-2', !ok);
-    if (ok) { formData.package_tier = pkg; formData.patient_location = loc;
-              formData.international_transfer_consent = intl || 'N/A'; }
+    if (ok) {
+      formData.package_tier                   = pkg;
+      formData.patient_location               = loc;
+      formData.international_transfer_consent = intl || 'N/A';
+    }
     return ok;
   },
   3: () => {
-    const fields = ['consent_examination','consent_treatment','consent_referral'];
+    const fields   = ['consent_examination','consent_treatment','consent_referral'];
     const declined = fields.some(f => document.getElementById(f).value !== 'true');
     showErr('err-3', declined);
     if (!declined) fields.forEach(f => { formData[f] = 'true'; });
     return !declined;
   },
   4: () => {
-    const fields = ['consent_data','consent_report_nature','consent_withdraw'];
+    const fields   = ['consent_data','consent_report_nature','consent_withdraw'];
     const declined = fields.some(f => document.getElementById(f).value !== 'true');
     showErr('err-4', declined);
     if (!declined) fields.forEach(f => { formData[f] = 'true'; });
     return !declined;
   },
   5: () => {
-    const fields = ['consent_data_security','consent_whatsapp_delivery','consent_pdpa_rights'];
+    const fields   = ['consent_data_security','consent_whatsapp_delivery','consent_pdpa_rights'];
     const declined = fields.some(f => document.getElementById(f).value !== 'true');
     showErr('err-5', declined);
     if (!declined) fields.forEach(f => { formData[f] = 'true'; });
@@ -1196,99 +683,129 @@ function validateAndGo(from, to) {
   goTo(to);
 }
 
+// ── Age calculator from DOB ───────────────────────────
+function calcAge(dob) {
+  if (!dob) return '';
+  const today = new Date();
+  const birth = new Date(dob);
+  let age = today.getFullYear() - birth.getFullYear();
+  const m = today.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+  return String(age);
+}
+
 // ── Submit ────────────────────────────────────────────
 async function submitForm() {
-  // Validate screen 6
   const declared = document.getElementById('declaration_confirmed').value;
-  const sig = document.getElementById('electronic_signature').value.trim();
-  let ok = true;
-  if (declared !== 'true') { ok = false; }
-  if (!sig) { showErr('err-sig', true); ok = false; }
+  const sig      = document.getElementById('electronic_signature').value.trim();
+  const ok       = declared === 'true' && !!sig;
+  showErr('err-sig', !sig);
   showErr('err-6', !ok);
   if (!ok) return;
 
   formData.declaration_confirmed = 'true';
-  formData.electronic_signature = sig;
-  formData.submitted_at = new Date().toISOString();
-  formData.form_version = 'SHI-CONSENT-V2-2026';
+  formData.electronic_signature  = sig;
+  formData.submitted_at          = new Date().toISOString();
+  formData.consent_date          = new Date().toISOString().slice(0, 10);
+  formData.form_version          = 'SHI-CONSENT-V2-2026';
 
   const btn = document.getElementById('submitBtn');
   btn.classList.add('loading');
   btn.disabled = true;
 
-  // ── Fire both targets ──────────────────────────────
-  const payload = { ...formData };
-  let n8nOk = false, emailOk = false;
+  // Flat payload — matches exactly what Workflow C expects
+  const payload = {
+    ghc_id:       GHC_ID,
+    patient_name: formData.patient_name || sig,
+    signature:    sig,
+    consent_date: formData.consent_date,
+    submitted_at: formData.submitted_at,
+    date_of_birth:                  formData.date_of_birth   || '',
+    biological_sex:                 formData.biological_sex  || '',
+    whatsapp_number:                formData.whatsapp_number || '',
+    package_tier:                   formData.package_tier    || URL_PKG || '',
+    patient_location:               formData.patient_location || '',
+    international_transfer_consent: formData.international_transfer_consent || 'N/A',
+    consent_examination:            formData.consent_examination       || '',
+    consent_treatment:              formData.consent_treatment         || '',
+    consent_referral:               formData.consent_referral          || '',
+    consent_data:                   formData.consent_data              || '',
+    consent_report_nature:          formData.consent_report_nature     || '',
+    consent_withdraw:               formData.consent_withdraw          || '',
+    consent_data_security:          formData.consent_data_security     || '',
+    consent_whatsapp_delivery:      formData.consent_whatsapp_delivery || '',
+    consent_pdpa_rights:            formData.consent_pdpa_rights       || '',
+    form_version:                   formData.form_version,
+  };
 
-  // 1. n8n webhook
+  let submitted = false;
   try {
-    const res = await fetch(N8N_WEBHOOK, {
-      method: 'POST',
+    const res  = await fetch(N8N_WEBHOOK, {
+      method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ form_response: { answers: buildTypeformAnswers(payload), submitted_at: payload.submitted_at, token: generateRef() } })
+      body:    JSON.stringify(payload)
     });
-    n8nOk = res.ok;
-  } catch(e) { console.warn('n8n webhook failed:', e); }
-
-  // 2. Web3Forms email backup
-  try {
-    const body = new FormData();
-    body.append('access_key', WEB3FORMS_KEY);
-    body.append('subject', 'SHI Consent Form — ' + formData.patient_name);
-    body.append('from_name', 'Signature Health Intelligence');
-    body.append('message', Object.entries(payload).map(([k,v]) => k + ': ' + v).join('\n'));
-    body.append('to', 'dimithra@signaturehealthintel.com');
-    const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body });
-    emailOk = res.ok;
-  } catch(e) { console.warn('Web3Forms failed:', e); }
+    const data = await res.json().catch(() => ({}));
+    submitted  = data.success === true || res.ok;
+  } catch (e) {
+    console.warn('Webhook error:', e);
+  }
 
   btn.classList.remove('loading');
   btn.disabled = false;
 
-  if (n8nOk || emailOk) {
+  if (submitted) {
+    // Build PHI form URL with pre-filled params from consent data
+    const pkg     = formData.package_tier || URL_PKG || '';
+    const phiBase = pkg === 'Elite'
+      ? 'https://forms.signaturehealthintel.com/elite.html'
+      : 'https://forms.signaturehealthintel.com/essential-premium.html';
+
+    const phiParams = new URLSearchParams({
+      ghc:   GHC_ID,
+      name:  formData.patient_name || '',
+      dob:   formData.date_of_birth || '',
+      age:   calcAge(formData.date_of_birth),
+      sex:   formData.biological_sex || '',
+      phone: formData.whatsapp_number || '',
+    });
+    const phiUrl = GHC_ID ? (phiBase + '?' + phiParams.toString()) : '';
+
+    // Show reference on success screen
     const ref = 'SHI-' + new Date().getFullYear() + '-' + Date.now().toString().slice(-6);
-    const ts = new Date().toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
+    const ts  = new Date().toLocaleString('en-GB', {
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
+    });
     document.getElementById('successRef').textContent = 'Reference: ' + ref + ' · Submitted: ' + ts;
+
+    // If we have a GHC ID, add redirect link to success screen
+    if (phiUrl) {
+      const body = document.getElementById('success-body-text');
+      if (body) {
+        const p = document.createElement('p');
+        p.style.cssText = 'margin-top:1.5rem;font-size:0.9rem;line-height:1.7;';
+        p.innerHTML = 'Your next step is to complete your <strong>Patient Health Information form</strong>. '
+          + 'You will be redirected automatically, or '
+          + '<a href="' + phiUrl + '" style="color:var(--terra);font-weight:bold;text-decoration:underline;">tap here to continue now</a>.';
+        body.parentNode.insertBefore(p, body.nextSibling);
+        setTimeout(() => { window.location.href = phiUrl; }, 4000);
+      }
+    }
+
     goToNamed('success');
   } else {
-    showErr('err-6', true);
-    document.getElementById('err-6').textContent = 'Submission failed. Please try again or contact Dr. Gamalathge directly via WhatsApp.';
+    const errEl = document.getElementById('err-6');
+    errEl.textContent = 'Submission failed. Please try again or contact Dr. Gamalathge directly via WhatsApp.';
+    errEl.classList.add('visible');
   }
 }
 
-// ── Build Typeform-style answer array (for n8n compatibility) ─
-function buildTypeformAnswers(data) {
-  const map = [
-    { ref: 'patient_name',                  type: 'text',   key: 'patient_name' },
-    { ref: 'whatsapp_number',               type: 'text',   key: 'whatsapp_number' },
-    { ref: 'date_of_birth',                 type: 'date',   key: 'date_of_birth' },
-    { ref: 'biological_sex',                type: 'choice', key: 'biological_sex' },
-    { ref: 'package_tier',                  type: 'choice', key: 'package_tier' },
-    { ref: 'patient_location',              type: 'choice', key: 'patient_location' },
-    { ref: 'international_transfer_consent',type: 'text',   key: 'international_transfer_consent' },
-    { ref: 'declaration_confirmed',         type: 'boolean',key: 'declaration_confirmed' },
-    { ref: 'electronic_signature',          type: 'text',   key: 'electronic_signature' },
-    { ref: 'additional_notes',              type: 'text',   key: 'additional_notes' },
-  ];
-  return map.map(m => {
-    const val = data[m.key];
-    const ans = { field: { ref: m.ref }, type: m.type };
-    if (m.type === 'text' || m.type === 'date') ans.text = val || '';
-    else if (m.type === 'choice') ans.choice = { label: val || '' };
-    else if (m.type === 'boolean') ans.boolean = val === 'true';
-    return ans;
-  });
-}
-
-function generateRef() {
-  return 'shi-' + Date.now().toString(36) + Math.random().toString(36).slice(2,6);
-}
-
-// ── Keyboard shortcuts ────────────────────────────────
+// ── Keyboard — Enter to advance ───────────────────────
 document.addEventListener('keydown', e => {
   if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
     const screen = document.querySelector('.screen.active');
-    const btn = screen?.querySelector('.btn-primary:not([disabled])');
+    const btn    = screen?.querySelector('.btn-primary:not([disabled])');
     if (btn) btn.click();
   }
 });
