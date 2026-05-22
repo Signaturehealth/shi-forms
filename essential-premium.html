@@ -3,457 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Essential & Premium — Patient Intake — Signature Health Intelligence</title>
+<title>Essential &amp; Premium &mdash; Patient Intake &mdash; Signature Health Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --ink:      #111009;
-    --ink2:     #1e1b16;
-    --ink3:     #2e2a22;
-    --ink4:     #4a4438;
-    --ink5:     #6b6358;
-    --terra:    #b85c3e;
-    --terra2:   #8c3a20;
-    --paper:    #fdfcf8;
-    --paper2:   #faf8f3;
-    --paper3:   #f2ede0;
-    --border:   #e0ddd4;
-    --border2:  #d0cbbf;
-    --gold:     #c8a030;
-    --green:    #3a6647;
-    --green-bg: #eef4f0;
+    --ink:#111009; --ink2:#1e1b16; --ink3:#2e2a22; --ink4:#4a4438; --ink5:#6b6358;
+    --terra:#b85c3e; --terra2:#8c3a20;
+    --paper:#fdfcf8; --paper2:#faf8f3; --paper3:#f2ede0;
+    --border:#e0ddd4; --border2:#d0cbbf;
+    --gold:#c8a030; --green:#3a6647; --green-bg:#eef4f0;
   }
-
-  html { font-size: 16px; }
-
-  body {
-    background: #ffffff;
-    color: var(--ink);
-    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-    font-weight: 400;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
+  html { font-size:16px; }
+  body { background:#ffffff; color:var(--ink); font-family:'Source Serif 4',Georgia,'Times New Roman',serif; font-weight:400; min-height:100vh; -webkit-font-smoothing:antialiased; }
+  .page-header { background:white; padding:20px 36px 18px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; border-bottom:2px solid var(--terra); box-shadow:0 1px 8px rgba(0,0,0,0.06); }
+  .header-logo { display:flex; align-items:center; gap:14px; }
+  .header-brand { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.15rem; font-weight:400; letter-spacing:0.04em; color:var(--ink); line-height:1.2; }
+  .header-cred { font-family:'Courier New',monospace; font-size:0.55rem; letter-spacing:0.2em; color:var(--ink4); margin-top:3px; text-transform:uppercase; }
+  .header-right { text-align:right; }
+  .header-form-label { font-family:'Courier New',monospace; font-size:0.58rem; letter-spacing:0.22em; color:var(--terra); text-transform:uppercase; }
+  .hero-band { background:#ffffff; border-bottom:1px solid #e8e2d6; padding:36px 36px 28px; }
+  .hero-eyebrow { font-family:'Courier New',monospace; font-size:0.65rem; letter-spacing:0.3em; color:var(--terra); text-transform:uppercase; margin-bottom:10px; }
+  .hero-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:2.2rem; font-weight:400; color:var(--ink); line-height:1.1; letter-spacing:0.01em; margin-bottom:12px; }
+  .hero-desc { font-size:1rem; color:var(--ink3); line-height:1.75; max-width:600px; }
+  .terra-rule { width:48px; height:2px; background:var(--terra); margin:16px 0 0; opacity:0.7; }
+  .form-body { max-width:740px; margin:0 auto; padding:40px 36px 80px; background:#ffffff; }
+  .privacy-notice { background:white; border:1px solid var(--border); border-left:3px solid var(--gold); padding:14px 18px; margin-bottom:36px; font-size:0.9rem; color:var(--ink4); line-height:1.65; }
+  .privacy-notice strong { color:var(--ink2); font-weight:600; }
+  .form-section { margin-bottom:44px; background:#ffffff; }
+  .section-header { display:flex; align-items:baseline; gap:14px; padding-bottom:12px; border-bottom:1.5px solid var(--border); margin-bottom:24px; }
+  .section-num { font-family:'Courier New',monospace; font-size:0.65rem; letter-spacing:0.22em; color:var(--terra); flex-shrink:0; }
+  .section-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.25rem; font-weight:400; color:var(--ink); letter-spacing:0.02em; }
+  .field { margin-bottom:24px; }
+  .field-label { display:block; font-family:'Courier New',monospace; font-size:0.68rem; letter-spacing:0.16em; color:var(--ink3); text-transform:uppercase; margin-bottom:8px; font-weight:700; }
+  .field-label .req { color:var(--terra); margin-left:2px; }
+  .field-hint { font-size:0.9rem; color:var(--ink5); margin-bottom:10px; line-height:1.6; font-style:italic; }
+  input[type="text"], input[type="date"], input[type="number"], input[type="email"], input[type="tel"], textarea, select {
+    width:100%; background:white; border:1.5px solid var(--border2); border-radius:0; padding:13px 16px;
+    font-family:'Source Serif 4',Georgia,serif; font-size:1rem; font-weight:400; color:var(--ink);
+    outline:none; appearance:none; -webkit-appearance:none;
+    transition:border-color 0.18s,box-shadow 0.18s; line-height:1.5;
   }
-
-  /* ── HEADER ── */
-  .page-header {
-    background: white;
-    padding: 20px 36px 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 2px solid var(--terra);
-    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-  }
-
-  .header-logo {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .header-brand {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.15rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-    line-height: 1.2;
-  }
-
-  .header-cred {
-    font-family: 'Courier New', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.2em;
-    color: var(--ink4);
-    margin-top: 3px;
-    text-transform: uppercase;
-  }
-
-  .header-right {
-    text-align: right;
-  }
-
-  .header-form-label {
-    font-family: 'Courier New', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.22em;
-    color: var(--terra);
-    text-transform: uppercase;
-  }
-
-  /* ── HERO BAND ── */
-  .hero-band {
-    background: #ffffff;
-    border-bottom: 1px solid #e8e2d6;
-    padding: 36px 36px 28px;
-  }
-
-  .hero-eyebrow {
-    font-family: 'Courier New', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    color: var(--terra);
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .hero-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 2.2rem;
-    font-weight: 400;
-    color: var(--ink);
-    line-height: 1.1;
-    letter-spacing: 0.01em;
-    margin-bottom: 12px;
-  }
-
-  .hero-desc {
-    font-size: 1rem;
-    color: var(--ink3);
-    line-height: 1.75;
-    max-width: 600px;
-  }
-
-  .terra-rule {
-    width: 48px;
-    height: 2px;
-    background: var(--terra);
-    margin: 16px 0 0;
-    opacity: 0.7;
-  }
-
-  /* ── BODY ── */
-  .form-body {
-    max-width: 740px;
-    margin: 0 auto;
-    padding: 40px 36px 80px;
-    background: #ffffff;
-  }
-
-  /* ── PRIVACY NOTICE ── */
-  .privacy-notice {
-    background: white;
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    padding: 14px 18px;
-    margin-bottom: 36px;
-    font-size: 0.9rem;
-    color: var(--ink4);
-    line-height: 1.65;
-  }
-
-  .privacy-notice strong { color: var(--ink2); font-weight: 600; }
-
-  /* ── SECTION ── */
-  .form-section {
-    margin-bottom: 44px;
-    background: #ffffff;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    padding-bottom: 12px;
-    border-bottom: 1.5px solid var(--border);
-    margin-bottom: 24px;
-  }
-
-  .section-num {
-    font-family: 'Courier New', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.22em;
-    color: var(--terra);
-    flex-shrink: 0;
-  }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.25rem;
-    font-weight: 400;
-    color: var(--ink);
-    letter-spacing: 0.02em;
-  }
-
-  /* ── FIELD ── */
-  .field {
-    margin-bottom: 24px;
-  }
-
-  .field-label {
-    display: block;
-    font-family: 'Courier New', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
-    color: var(--ink3);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    font-weight: 700;
-  }
-
-  .field-label .req { color: var(--terra); margin-left: 2px; }
-
-  .field-hint {
-    font-size: 0.9rem;
-    color: var(--ink5);
-    margin-bottom: 10px;
-    line-height: 1.6;
-    font-style: italic;
-  }
-
-  input[type="text"],
-  input[type="date"],
-  input[type="number"],
-  input[type="email"],
-  input[type="tel"],
-  textarea,
+  input:focus, textarea:focus, select:focus { border-color:var(--terra); box-shadow:0 0 0 3px rgba(184,92,62,0.1); }
+  input::placeholder, textarea::placeholder { color:#9e9587; font-style:italic; }
+  textarea { resize:vertical; min-height:88px; line-height:1.65; }
   select {
-    width: 100%;
-    background: white;
-    border: 1.5px solid var(--border2);
-    border-radius: 0;
-    padding: 13px 16px;
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--ink);
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    transition: border-color 0.18s, box-shadow 0.18s;
-    line-height: 1.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%232e2a22' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 16px center; padding-right:44px; cursor:pointer;
   }
-
-  input:focus, textarea:focus, select:focus {
-    border-color: var(--terra);
-    box-shadow: 0 0 0 3px rgba(184,92,62,0.1);
+  select option { color:var(--ink); }
+  input.invalid, textarea.invalid, select.invalid { border-color:var(--terra); background:#fff8f6; }
+  .field-error { font-size:0.78rem; color:var(--terra2); margin-top:5px; display:none; font-family:'Courier New',monospace; letter-spacing:0.04em; }
+  .field-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .radio-group { display:flex; flex-wrap:wrap; gap:10px; margin-top:2px; }
+  .radio-chip { position:relative; }
+  .radio-chip input[type="radio"], .radio-chip input[type="checkbox"] { position:absolute; opacity:0; width:0; height:0; }
+  .radio-chip label { display:inline-block; padding:10px 18px; border:1.5px solid var(--border2); background:white; font-size:0.95rem; color:var(--ink3); cursor:pointer; transition:all 0.15s; line-height:1.3; font-family:'Source Serif 4',Georgia,serif; }
+  .radio-chip input:checked + label { border-color:var(--terra); background:rgba(184,92,62,0.04); color:var(--ink); }
+  .radio-chip label:hover { border-color:var(--terra); color:var(--ink); }
+  .clinical-note { background:white; border:1px solid var(--border); border-left:3px solid var(--terra); padding:14px 18px; margin-bottom:20px; font-size:0.92rem; color:var(--ink3); line-height:1.7; }
+  .clinical-note strong { color:var(--ink); font-weight:600; }
+  .submit-section { margin-top:48px; border-top:1px solid var(--border); padding-top:32px; }
+  .consent-block { background:white; border:1px solid var(--border); padding:18px 20px; margin-bottom:24px; font-size:0.9rem; color:var(--ink4); line-height:1.75; }
+  .submit-btn { display:inline-flex; align-items:center; gap:14px; background:var(--terra); color:var(--paper); border:none; padding:17px 44px; font-family:'Courier New',monospace; font-size:0.72rem; letter-spacing:0.24em; text-transform:uppercase; cursor:pointer; transition:background 0.2s; width:100%; justify-content:center; }
+  .submit-btn:hover { background:#8c3a20; }
+  .submit-btn:disabled { background:var(--border); cursor:not-allowed; }
+  .success-screen { display:none; max-width:500px; margin:80px auto; padding:0 36px; text-align:center; }
+  .success-icon { width:64px; height:64px; border-radius:50%; background:var(--green-bg); border:2px solid var(--green); color:var(--green); font-size:1.6rem; display:flex; align-items:center; justify-content:center; margin:0 auto 24px; }
+  .success-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:2rem; font-weight:400; color:var(--ink); margin-bottom:16px; }
+  .success-body { font-size:0.975rem; color:var(--ink4); line-height:1.8; }
+  .page-footer { border-top:1px solid var(--border); padding:20px 36px; display:flex; align-items:center; justify-content:space-between; background:white; }
+  .footer-sig { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.05rem; font-style:italic; color:var(--ink4); }
+  .footer-meta { font-family:'Courier New',monospace; font-size:0.58rem; letter-spacing:0.18em; color:var(--ink5); text-align:right; text-transform:uppercase; line-height:1.8; }
+  @media (max-width:600px) {
+    .page-header { padding:14px 20px; flex-wrap:wrap; gap:12px; }
+    .hero-band { padding:24px 20px 20px; }
+    .hero-title { font-size:1.75rem; }
+    .form-body { padding:28px 20px 60px; }
+    .field-row { grid-template-columns:1fr; }
+    .page-footer { flex-direction:column; gap:10px; text-align:center; }
+    .footer-meta { text-align:center; }
   }
-
-  input::placeholder, textarea::placeholder {
-    color: #9e9587;
-    font-style: italic;
-  }
-
-  textarea {
-    resize: vertical;
-    min-height: 88px;
-    line-height: 1.65;
-  }
-
-  select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%232e2a22' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: 44px;
-    cursor: pointer;
-  }
-
-  select option { color: var(--ink); }
-
-  input.invalid, textarea.invalid, select.invalid {
-    border-color: var(--terra);
-    background: #fff8f6;
-  }
-
-  .field-error {
-    font-size: 0.78rem;
-    color: var(--terra2);
-    margin-top: 5px;
-    display: none;
-    font-family: 'Courier New', monospace;
-    letter-spacing: 0.04em;
-  }
-
-  /* ── TWO-COL GRID ── */
-  .field-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-  }
-
-  /* ── RADIO GROUP ── */
-  .radio-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 2px;
-  }
-
-  .radio-chip {
-    position: relative;
-  }
-
-  .radio-chip input[type="radio"],
-  .radio-chip input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    width: 0; height: 0;
-  }
-
-  .radio-chip label {
-    display: inline-block;
-    padding: 10px 18px;
-    border: 1.5px solid var(--border2);
-    background: white;
-    font-size: 0.95rem;
-    color: var(--ink3);
-    cursor: pointer;
-    transition: all 0.15s;
-    line-height: 1.3;
-    font-family: 'Source Serif 4', Georgia, serif;
-  }
-
-  .radio-chip input:checked + label {
-    border-color: var(--terra);
-    background: rgba(184,92,62,0.04);
-    color: var(--ink);
-  }
-
-  .radio-chip label:hover {
-    border-color: var(--terra);
-    color: var(--ink);
-  }
-
-  /* ── CLINICAL NOTE BOX ── */
-  .clinical-note {
-    background: white;
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--terra);
-    padding: 14px 18px;
-    margin-bottom: 20px;
-    font-size: 0.92rem;
-    color: var(--ink3);
-    line-height: 1.7;
-  }
-
-  .clinical-note strong { color: var(--ink); font-weight: 600; }
-
-  /* ── SUBMIT ── */
-  .submit-section {
-    margin-top: 48px;
-    border-top: 1px solid var(--border);
-    padding-top: 32px;
-  }
-
-  .consent-block {
-    background: white;
-    border: 1px solid var(--border);
-    padding: 18px 20px;
-    margin-bottom: 24px;
-    font-size: 0.9rem;
-    color: var(--ink4);
-    line-height: 1.75;
-  }
-
-  .submit-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    background: var(--terra);
-    color: var(--paper);
-    border: none;
-    padding: 17px 44px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .submit-btn:hover { background: #8c3a20; }
-  .submit-btn:disabled { background: var(--border); cursor: not-allowed; }
-
-  /* ── SUCCESS ── */
-  .success-screen {
-    display: none;
-    max-width: 500px;
-    margin: 80px auto;
-    padding: 0 36px;
-    text-align: center;
-  }
-
-  .success-icon {
-    width: 64px; height: 64px;
-    border-radius: 50%;
-    background: var(--green-bg);
-    border: 2px solid var(--green);
-    color: var(--green);
-    font-size: 1.6rem;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 24px;
-  }
-
-  .success-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 2rem;
-    font-weight: 400;
-    color: var(--ink);
-    margin-bottom: 16px;
-  }
-
-  .success-body {
-    font-size: 0.975rem;
-    color: var(--ink4);
-    line-height: 1.8;
-  }
-
-  /* ── FOOTER ── */
-  .page-footer {
-    border-top: 1px solid var(--border);
-    padding: 20px 36px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: white;
-  }
-
-  .footer-sig {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--ink4);
-  }
-
-  .footer-meta {
-    font-family: 'Courier New', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.18em;
-    color: var(--ink5);
-    text-align: right;
-    text-transform: uppercase;
-    line-height: 1.8;
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 600px) {
-    .page-header { padding: 14px 20px; flex-wrap: wrap; gap: 12px; }
-    .hero-band { padding: 24px 20px 20px; }
-    .hero-title { font-size: 1.75rem; }
-    .form-body { padding: 28px 20px 60px; }
-    .field-row { grid-template-columns: 1fr; }
-    .page-footer { flex-direction: column; gap: 10px; text-align: center; }
-    .footer-meta { text-align: center; }
-  }
-
 </style>
 </head>
 <body>
+
 <header class="page-header">
   <div class="header-logo">
     <svg width="48" height="36" viewBox="0 0 130 100" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 72 L46 72 C54 72, 58 50, 64 88 C70 55, 80 72, 94 72 C110 72, 124 58, 138 36"
-        fill="none" stroke="#2a2420" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M8 72 L46 72 C54 72,58 50,64 88 C70 55,80 72,94 72 C110 72,124 58,138 36" fill="none" stroke="#2a2420" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="94" cy="72" r="5" fill="#b85c3e"/>
     </svg>
     <div>
@@ -462,508 +101,499 @@
     </div>
   </div>
   <div class="header-right">
-    <div class="header-form-label">Essential & Premium · Patient Intake Form</div>
+    <div class="header-form-label">Essential &amp; Premium &middot; Patient Intake Form</div>
   </div>
 </header>
+
 <div class="hero-band">
-  <div class="hero-eyebrow">CVD Risk & Metabolic Assessment</div>
+  <div class="hero-eyebrow">CVD Risk &amp; Metabolic Assessment</div>
   <div class="hero-title">Patient Health Information Form</div>
-  <div class="hero-desc">Please complete this form before your laboratory results are reviewed. It takes 5–7 minutes. Fields marked * are required — the more you provide, the more accurate your report.</div>
+  <div class="hero-desc">Please complete this form before your laboratory results are reviewed. It takes 5&ndash;7 minutes. Fields marked * are required &mdash; the more you provide, the more accurate your report.</div>
   <div class="terra-rule"></div>
 </div>
+
 <div class="form-body">
+  <div class="privacy-notice"><strong>Why we collect this information.</strong> All information is strictly confidential and used solely to generate your clinical laboratory report under the care of Dr. D. R. Gamalathge (MBBS), SLMC No. 36999. It will not be shared with any third party without your written consent.</div>
 
-<div class="privacy-notice">
-  <strong>Why we collect this information.</strong> All information is strictly confidential and used solely to generate your clinical laboratory report under the care of Dr. D. R. Gamalathge (MBBS), SLMC No. 36999. It will not be shared with any third party without your written consent.
-</div>
+  <form id="phi-form" novalidate>
+    <input type="hidden" id="ghc_patient_id" name="ghc_patient_id">
 
-<form id="phi-form" novalidate>
-  <input type="hidden" id="ghc_patient_id" name="ghc_patient_id">
-
-  <!-- 01 PATIENT IDENTITY -->
-  <div class="form-section">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <span class="section-title">Patient Identity</span>
-    </div>
-
-    <div class="field">
-      <label class="field-label" for="full_name">Full name <span class="req">*</span></label>
-      <input type="text" id="full_name" name="full_name" placeholder="As per NIC or passport" autocomplete="name">
-      <div class="field-error" id="err-full_name">Full name is required.</div>
-    </div>
-
-    <div class="field-row">
+    <!-- 01 PATIENT IDENTITY -->
+    <div class="form-section">
+      <div class="section-header"><span class="section-num">01</span><span class="section-title">Patient Identity</span></div>
       <div class="field">
-        <label class="field-label" for="date_of_birth">Date of birth</label>
-        <input type="date" id="date_of_birth" name="date_of_birth">
+        <label class="field-label" for="full_name">Full name <span class="req">*</span></label>
+        <input type="text" id="full_name" name="full_name" placeholder="As per NIC or passport" autocomplete="name">
+        <div class="field-error" id="err-full_name">Full name is required.</div>
       </div>
-      <div class="field">
-        <label class="field-label" for="age">Age <span class="req">*</span></label>
-        <input type="number" id="age" name="age" placeholder="e.g. 44" min="1" max="120">
-        <div class="field-error" id="err-age">Age is required.</div>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="field-label">Biological sex <span class="req">*</span></label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="biological_sex" id="sex-m" value="Male"><label for="sex-m">Male</label></div>
-        <div class="radio-chip"><input type="radio" name="biological_sex" id="sex-f" value="Female"><label for="sex-f">Female</label></div>
-        <div class="radio-chip"><input type="radio" name="biological_sex" id="sex-o" value="Other"><label for="sex-o">Other</label></div>
-      </div>
-      <div class="field-error" id="err-biological_sex">Please select biological sex.</div>
-    </div>
-
-    <div class="field">
-      <label class="field-label" for="contact_number">Contact number (WhatsApp)</label>
-      <input type="tel" id="contact_number" name="contact_number" placeholder="+94 77 000 0000" autocomplete="tel">
-    </div>
-  </div>
-
-  <!-- 02 REASON FOR TESTS -->
-  <div class="form-section">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <span class="section-title">Reason for These Tests</span>
-    </div>
-
-    <div class="field">
-      <label class="field-label">Purpose of investigation <span class="req">*</span></label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="checkbox" name="purpose_of_investigation" id="pur-routine" value="Routine health screen"><label for="pur-routine">Routine health screen</label></div>
-        <div class="radio-chip"><input type="checkbox" name="purpose_of_investigation" id="pur-monitor" value="Monitoring known condition"><label for="pur-monitor">Monitoring known condition</label></div>
-        <div class="radio-chip"><input type="checkbox" name="purpose_of_investigation" id="pur-preop" value="Pre-operative"><label for="pur-preop">Pre-operative</label></div>
-        <div class="radio-chip"><input type="checkbox" name="purpose_of_investigation" id="pur-symptoms" value="Symptoms"><label for="pur-symptoms">Symptoms</label></div>
-        <div class="radio-chip"><input type="checkbox" name="purpose_of_investigation" id="pur-other" value="Other"><label for="pur-other">Other</label></div>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="field-label" for="specific_concern">Specific concern or symptom</label>
-      <textarea id="specific_concern" name="specific_concern" placeholder="e.g. fatigue, chest tightness, weight gain, family history concern"></textarea>
-    </div>
-  </div>
-
-  <!-- 03 MEDICAL HISTORY -->
-  <div class="form-section">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <span class="section-title">Medical History &amp; Medications</span>
-    </div>
-
-    <div class="field">
-      <label class="field-label" for="diagnosed_conditions">Diagnosed conditions</label>
-      <p class="field-hint">Include dates where known — e.g. Type 2 diabetes (2019), hypertension (2021)</p>
-      <textarea id="diagnosed_conditions" name="diagnosed_conditions" placeholder="None known / describe..."></textarea>
-    </div>
-
-    <div class="field">
-      <label class="field-label" for="current_medications">Current medications</label>
-      <p class="field-hint">Especially BP tablets, statins, diabetes medication, blood thinners, aspirin, contraceptives</p>
-      <textarea id="current_medications" name="current_medications" placeholder="None / list medications and doses..."></textarea>
-    </div>
-
-    <div class="field">
-      <label class="field-label" for="known_allergies">Known allergies</label>
-      <input type="text" id="known_allergies" name="known_allergies" placeholder="e.g. Penicillin, none known">
-    </div>
-  </div>
-
-  <!-- 04 SMOKING & LIFESTYLE -->
-  <div class="form-section">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <span class="section-title">Smoking &amp; Lifestyle</span>
-    </div>
-
-    <div class="field">
-      <label class="field-label">Smoking status <span class="req">*</span></label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="smoking_status" id="smk-never" value="Never smoked"><label for="smk-never">Never smoked</label></div>
-        <div class="radio-chip"><input type="radio" name="smoking_status" id="smk-ex" value="Ex-smoker"><label for="smk-ex">Ex-smoker</label></div>
-        <div class="radio-chip"><input type="radio" name="smoking_status" id="smk-current" value="Current smoker"><label for="smk-current">Current smoker</label></div>
-      </div>
-      <div class="field-error" id="err-smoking_status">Please select smoking status.</div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label class="field-label" for="cigarettes_per_day">Cigarettes per day</label>
-        <input type="number" id="cigarettes_per_day" name="cigarettes_per_day" placeholder="e.g. 10">
-      </div>
-      <div class="field">
-        <label class="field-label" for="years_smoked">Years smoked</label>
-        <input type="text" id="years_smoked" name="years_smoked" placeholder="e.g. 20 years">
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="field-label" for="years_since_quitting">Years since quitting</label>
-      <input type="text" id="years_since_quitting" name="years_since_quitting" placeholder="e.g. 5 years ago (ex-smokers only)">
-    </div>
-
-    <div class="field">
-      <label class="field-label" for="other_tobacco_use">Other tobacco use</label>
-      <input type="text" id="other_tobacco_use" name="other_tobacco_use" placeholder="e.g. Betel, bidi, smokeless tobacco — or none">
-    </div>
-
-    <div class="field">
-      <label class="field-label">Alcohol use</label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="alcohol_use" id="alc-none" value="None"><label for="alc-none">None</label></div>
-        <div class="radio-chip"><input type="radio" name="alcohol_use" id="alc-occ" value="Occasional (less than 1x per week)"><label for="alc-occ">Occasional</label></div>
-        <div class="radio-chip"><input type="radio" name="alcohol_use" id="alc-mod" value="Moderate (1-3x per week)"><label for="alc-mod">Moderate (1–3×/week)</label></div>
-        <div class="radio-chip"><input type="radio" name="alcohol_use" id="alc-heavy" value="Heavy (daily)"><label for="alc-heavy">Heavy (daily)</label></div>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="field-label">Weekly physical activity</label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="weekly_activity" id="act-sed" value="Sedentary (less than 30 min)"><label for="act-sed">Sedentary (&lt;30 min)</label></div>
-        <div class="radio-chip"><input type="radio" name="weekly_activity" id="act-light" value="Light (30-90 min)"><label for="act-light">Light (30–90 min)</label></div>
-        <div class="radio-chip"><input type="radio" name="weekly_activity" id="act-mod" value="Moderate (90-150 min)"><label for="act-mod">Moderate (90–150 min)</label></div>
-        <div class="radio-chip"><input type="radio" name="weekly_activity" id="act-active" value="Active (more than 150 min)"><label for="act-active">Active (&gt;150 min)</label></div>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="field-label">Dietary pattern</label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="dietary_pattern" id="diet-mixed" value="Mixed (non-vegetarian)"><label for="diet-mixed">Mixed (non-vegetarian)</label></div>
-        <div class="radio-chip"><input type="radio" name="dietary_pattern" id="diet-veg" value="Vegetarian"><label for="diet-veg">Vegetarian</label></div>
-        <div class="radio-chip"><input type="radio" name="dietary_pattern" id="diet-vegan" value="Vegan"><label for="diet-vegan">Vegan</label></div>
-        <div class="radio-chip"><input type="radio" name="dietary_pattern" id="diet-other" value="Other"><label for="diet-other">Other</label></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 05 BLOOD PRESSURE -->
-  <div class="form-section">
-    <div class="section-header">
-      <span class="section-num">05</span>
-      <span class="section-title">Blood Pressure</span>
-    </div>
-    <div class="clinical-note">Blood pressure is the single most powerful modifiable cardiovascular risk factor. Even an approximate recent reading significantly improves the accuracy of your 10-year risk calculation.</div>
-
-    <div class="field-row">
-      <div class="field">
-        <label class="field-label" for="bp_reading">Most recent BP reading <span class="req">*</span></label>
-        <input type="text" id="bp_reading" name="bp_reading" placeholder="e.g. 138 / 86 mmHg">
-        <div class="field-error" id="err-bp_reading">Please enter your BP reading.</div>
-      </div>
-      <div class="field">
-        <label class="field-label" for="bp_date">Date of this reading</label>
-        <input type="text" id="bp_date" name="bp_date" placeholder="e.g. March 2025">
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="field-label">On BP-lowering medication?</label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="on_bp_medication" id="bp-yes" value="Yes"><label for="bp-yes">Yes</label></div>
-        <div class="radio-chip"><input type="radio" name="on_bp_medication" id="bp-no" value="No"><label for="bp-no">No</label></div>
-        <div class="radio-chip"><input type="radio" name="on_bp_medication" id="bp-ns" value="Not sure"><label for="bp-ns">Not sure</label></div>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="field-label" for="bp_medication_name">Medication name &amp; dose</label>
-      <input type="text" id="bp_medication_name" name="bp_medication_name" placeholder="e.g. Amlodipine 5 mg">
-    </div>
-  </div>
-
-  <!-- 06 DIABETES -->
-  <div class="form-section">
-    <div class="section-header">
-      <span class="section-num">06</span>
-      <span class="section-title">Diabetes &amp; Glucose Status</span>
-    </div>
-
-    <div class="field">
-      <label class="field-label">Diabetes status <span class="req">*</span></label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="diabetes_status" id="diab-none" value="None"><label for="diab-none">None</label></div>
-        <div class="radio-chip"><input type="radio" name="diabetes_status" id="diab-pre" value="Pre-diabetes / IFG"><label for="diab-pre">Pre-diabetes / IFG</label></div>
-        <div class="radio-chip"><input type="radio" name="diabetes_status" id="diab-t1" value="Type 1"><label for="diab-t1">Type 1</label></div>
-        <div class="radio-chip"><input type="radio" name="diabetes_status" id="diab-t2" value="Type 2"><label for="diab-t2">Type 2</label></div>
-        <div class="radio-chip"><input type="radio" name="diabetes_status" id="diab-gest" value="Gestational (past)"><label for="diab-gest">Gestational (past)</label></div>
-      </div>
-      <div class="field-error" id="err-diabetes_status">Please select diabetes status.</div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label class="field-label" for="most_recent_hba1c">Most recent HbA1c</label>
-        <input type="text" id="most_recent_hba1c" name="most_recent_hba1c" placeholder="e.g. 7.2% (with date)">
-      </div>
-      <div class="field">
-        <label class="field-label" for="most_recent_fasting_glucose">Most recent fasting glucose</label>
-        <input type="text" id="most_recent_fasting_glucose" name="most_recent_fasting_glucose" placeholder="e.g. 122 mg/dL">
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="field-label">On insulin?</label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="on_insulin" id="ins-yes" value="Yes"><label for="ins-yes">Yes</label></div>
-        <div class="radio-chip"><input type="radio" name="on_insulin" id="ins-no" value="No"><label for="ins-no">No</label></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 07 CARDIOVASCULAR HISTORY -->
-  <div class="form-section">
-    <div class="section-header">
-      <span class="section-num">07</span>
-      <span class="section-title">Heart &amp; Vascular History</span>
-    </div>
-    <div class="clinical-note"><strong>Important:</strong> South Asian individuals carry a 1.4× higher cardiovascular risk at identical risk factor levels. Family history is a critical independent variable in your risk calculation.</div>
-
-    <div class="field">
-      <label class="field-label">Family history of premature heart disease? <span class="req">*</span></label>
-      <p class="field-hint">Heart attack or stroke in a male relative under 55, or female relative under 65</p>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="family_history_cvd" id="fhx-yes" value="Yes"><label for="fhx-yes">Yes</label></div>
-        <div class="radio-chip"><input type="radio" name="family_history_cvd" id="fhx-no" value="No"><label for="fhx-no">No</label></div>
-        <div class="radio-chip"><input type="radio" name="family_history_cvd" id="fhx-ns" value="Not sure"><label for="fhx-ns">Not sure</label></div>
-      </div>
-      <div class="field-error" id="err-family_history_cvd">Please answer this question.</div>
-    </div>
-
-    <div class="field">
-      <label class="field-label" for="family_history_details">If yes — who and at what age?</label>
-      <input type="text" id="family_history_details" name="family_history_details" placeholder="e.g. Father — heart attack age 52, Paternal uncle — stroke age 49">
-    </div>
-
-    <div class="field">
-      <label class="field-label">Personal history of heart or vascular disease?</label>
-      <p class="field-hint">Angina, heart attack, stroke, TIA, peripheral vascular disease, heart failure</p>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="personal_history_vascular" id="phx-yes" value="Yes"><label for="phx-yes">Yes</label></div>
-        <div class="radio-chip"><input type="radio" name="personal_history_vascular" id="phx-no" value="No"><label for="phx-no">No</label></div>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="field-label" for="personal_history_details">If yes — condition and year diagnosed</label>
-      <input type="text" id="personal_history_details" name="personal_history_details" placeholder="e.g. Angina (2020)">
-    </div>
-
-    <div class="field">
-      <label class="field-label">Atrial fibrillation (irregular heartbeat)?</label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="atrial_fibrillation" id="af-yes" value="Yes"><label for="af-yes">Yes</label></div>
-        <div class="radio-chip"><input type="radio" name="atrial_fibrillation" id="af-no" value="No"><label for="af-no">No</label></div>
-        <div class="radio-chip"><input type="radio" name="atrial_fibrillation" id="af-ns" value="Not sure"><label for="af-ns">Not sure</label></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 08 KIDNEY -->
-  <div class="form-section">
-    <div class="section-header">
-      <span class="section-num">08</span>
-      <span class="section-title">Kidney &amp; Related Conditions</span>
-    </div>
-
-    <div class="field">
-      <label class="field-label">Known kidney disease (CKD)?</label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="known_ckd" id="ckd-yes" value="Yes"><label for="ckd-yes">Yes</label></div>
-        <div class="radio-chip"><input type="radio" name="known_ckd" id="ckd-no" value="No"><label for="ckd-no">No</label></div>
-      </div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label class="field-label" for="most_recent_egfr">Most recent eGFR</label>
-        <input type="text" id="most_recent_egfr" name="most_recent_egfr" placeholder="e.g. 55 mL/min/1.73m²">
-      </div>
-      <div class="field">
-        <label class="field-label" for="urine_acr">Urine ACR</label>
-        <input type="text" id="urine_acr" name="urine_acr" placeholder="e.g. 12 mg/mmol">
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="field-label">Familial hypercholesterolaemia?</label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="familial_hypercholesterolaemia" id="fh-yes" value="Yes"><label for="fh-yes">Yes</label></div>
-        <div class="radio-chip"><input type="radio" name="familial_hypercholesterolaemia" id="fh-no" value="No"><label for="fh-no">No</label></div>
-        <div class="radio-chip"><input type="radio" name="familial_hypercholesterolaemia" id="fh-ns" value="Not sure"><label for="fh-ns">Not sure</label></div>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="field-label">Autoimmune condition?</label>
-      <p class="field-hint">Rheumatoid arthritis, SLE, psoriasis</p>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="autoimmune_condition" id="ai-yes" value="Yes"><label for="ai-yes">Yes</label></div>
-        <div class="radio-chip"><input type="radio" name="autoimmune_condition" id="ai-no" value="No"><label for="ai-no">No</label></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 09 BODY MEASUREMENTS -->
-  <div class="form-section">
-    <div class="section-header">
-      <span class="section-num">09</span>
-      <span class="section-title">Body Measurements</span>
-    </div>
-    <div class="clinical-note">South Asian thresholds: Overweight = BMI &ge; 23 kg/m&sup2; &middot; Central obesity: Waist &gt; 90 cm (male) or &gt; 80 cm (female)</div>
-
-    <div class="field-row">
-      <div class="field">
-        <label class="field-label" for="height">Height (cm)</label>
-        <input type="number" id="height" name="height" placeholder="e.g. 168">
-      </div>
-      <div class="field">
-        <label class="field-label" for="weight">Weight (kg)</label>
-        <input type="number" id="weight" name="weight" placeholder="e.g. 72">
-      </div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label class="field-label" for="waist_circumference">Waist circumference (cm)</label>
-        <input type="number" id="waist_circumference" name="waist_circumference" placeholder="e.g. 88">
-      </div>
-      <div class="field">
-        <label class="field-label" for="hip_circumference">Hip circumference (cm)</label>
-        <input type="number" id="hip_circumference" name="hip_circumference" placeholder="Optional — e.g. 96">
-      </div>
-    </div>
-  </div>
-
-  <!-- 10 STATIN -->
-  <div class="form-section">
-    <div class="section-header">
-      <span class="section-num">10</span>
-      <span class="section-title">Cholesterol Medication</span>
-    </div>
-    <div class="clinical-note">If you are on a statin, your observed cholesterol will be lower than your true untreated level. This allows Dr. Gamalathge to back-correct your result using the ESC-EAS 2021 method.</div>
-
-    <div class="field">
-      <label class="field-label">Currently on statin therapy?</label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="on_statin" id="stat-yes" value="Yes"><label for="stat-yes">Yes</label></div>
-        <div class="radio-chip"><input type="radio" name="on_statin" id="stat-no" value="No"><label for="stat-no">No</label></div>
-      </div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label class="field-label" for="statin_name">Statin name &amp; dose</label>
-        <input type="text" id="statin_name" name="statin_name" placeholder="e.g. Atorvastatin 20 mg">
-      </div>
-      <div class="field">
-        <label class="field-label" for="statin_duration">Duration of use</label>
-        <input type="text" id="statin_duration" name="statin_duration" placeholder="e.g. 2 years">
-      </div>
-    </div>
-  </div>
-
-  <!-- 11 WOMENS HEALTH -->
-  <div class="form-section">
-    <div class="section-header">
-      <span class="section-num">11</span>
-      <span class="section-title">Women's Health</span>
-    </div>
-    <p class="field-hint" style="margin-bottom:18px">Female patients only — skip if not applicable.</p>
-
-    <div class="field">
-      <label class="field-label">Menopausal status</label>
-      <div class="radio-group">
-        <div class="radio-chip"><input type="radio" name="menopausal_status" id="men-pre" value="Pre-menopausal"><label for="men-pre">Pre-menopausal</label></div>
-        <div class="radio-chip"><input type="radio" name="menopausal_status" id="men-peri" value="Peri-menopausal"><label for="men-peri">Peri-menopausal</label></div>
-        <div class="radio-chip"><input type="radio" name="menopausal_status" id="men-post" value="Post-menopausal"><label for="men-post">Post-menopausal</label></div>
-        <div class="radio-chip"><input type="radio" name="menopausal_status" id="men-na" value="N/A"><label for="men-na">N/A</label></div>
-      </div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label class="field-label">History of gestational diabetes?</label>
-        <div class="radio-group">
-          <div class="radio-chip"><input type="radio" name="gestational_diabetes" id="gd-yes" value="Yes"><label for="gd-yes">Yes</label></div>
-          <div class="radio-chip"><input type="radio" name="gestational_diabetes" id="gd-no" value="No"><label for="gd-no">No</label></div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="date_of_birth">Date of birth</label>
+          <input type="date" id="date_of_birth" name="date_of_birth">
+        </div>
+        <div class="field">
+          <label class="field-label" for="age">Age <span class="req">*</span></label>
+          <input type="number" id="age" name="age" placeholder="e.g. 44" min="1" max="120">
+          <div class="field-error" id="err-age">Age is required.</div>
         </div>
       </div>
       <div class="field">
-        <label class="field-label">PCOS?</label>
+        <label class="field-label">Biological sex <span class="req">*</span></label>
         <div class="radio-group">
-          <div class="radio-chip"><input type="radio" name="pcos" id="pcos-yes" value="Yes"><label for="pcos-yes">Yes</label></div>
-          <div class="radio-chip"><input type="radio" name="pcos" id="pcos-no" value="No"><label for="pcos-no">No</label></div>
-          <div class="radio-chip"><input type="radio" name="pcos" id="pcos-ns" value="Not sure"><label for="pcos-ns">Not sure</label></div>
+          <div class="radio-chip"><input type="radio" name="biological_sex" id="sex-m" value="Male"><label for="sex-m">Male</label></div>
+          <div class="radio-chip"><input type="radio" name="biological_sex" id="sex-f" value="Female"><label for="sex-f">Female</label></div>
+          <div class="radio-chip"><input type="radio" name="biological_sex" id="sex-o" value="Other"><label for="sex-o">Other</label></div>
+        </div>
+        <div class="field-error" id="err-biological_sex">Please select biological sex.</div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="contact_number">Contact number (WhatsApp)</label>
+        <input type="tel" id="contact_number" name="contact_number" placeholder="+94 77 000 0000" autocomplete="tel">
+      </div>
+    </div>
+
+    <!-- 02 REASON FOR TESTS -->
+    <div class="form-section">
+      <div class="section-header"><span class="section-num">02</span><span class="section-title">Reason for These Tests</span></div>
+      <div class="field">
+        <label class="field-label">Purpose of investigation <span class="req">*</span></label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="checkbox" name="purpose_of_investigation" id="pur-routine" value="Routine health screen"><label for="pur-routine">Routine health screen</label></div>
+          <div class="radio-chip"><input type="checkbox" name="purpose_of_investigation" id="pur-monitor" value="Monitoring known condition"><label for="pur-monitor">Monitoring known condition</label></div>
+          <div class="radio-chip"><input type="checkbox" name="purpose_of_investigation" id="pur-preop" value="Pre-operative"><label for="pur-preop">Pre-operative</label></div>
+          <div class="radio-chip"><input type="checkbox" name="purpose_of_investigation" id="pur-symptoms" value="Symptoms"><label for="pur-symptoms">Symptoms</label></div>
+          <div class="radio-chip"><input type="checkbox" name="purpose_of_investigation" id="pur-other" value="Other"><label for="pur-other">Other</label></div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="specific_concern">Specific concern or symptom</label>
+        <textarea id="specific_concern" name="specific_concern" placeholder="e.g. fatigue, chest tightness, weight gain, family history concern"></textarea>
+      </div>
+    </div>
+
+    <!-- 03 MEDICAL HISTORY -->
+    <div class="form-section">
+      <div class="section-header"><span class="section-num">03</span><span class="section-title">Medical History &amp; Medications</span></div>
+      <div class="field">
+        <label class="field-label" for="diagnosed_conditions">Diagnosed conditions</label>
+        <p class="field-hint">Include dates where known &mdash; e.g. Type 2 diabetes (2019), hypertension (2021)</p>
+        <textarea id="diagnosed_conditions" name="diagnosed_conditions" placeholder="None known / describe..."></textarea>
+      </div>
+      <div class="field">
+        <label class="field-label" for="current_medications">Current medications</label>
+        <p class="field-hint">Especially BP tablets, statins, diabetes medication, blood thinners, aspirin, contraceptives</p>
+        <textarea id="current_medications" name="current_medications" placeholder="None / list medications and doses..."></textarea>
+      </div>
+      <div class="field">
+        <label class="field-label" for="known_allergies">Known allergies</label>
+        <input type="text" id="known_allergies" name="known_allergies" placeholder="e.g. Penicillin, none known">
+      </div>
+    </div>
+
+    <!-- 04 SMOKING & LIFESTYLE -->
+    <div class="form-section">
+      <div class="section-header"><span class="section-num">04</span><span class="section-title">Smoking &amp; Lifestyle</span></div>
+      <div class="field">
+        <label class="field-label">Smoking status <span class="req">*</span></label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="smoking_status" id="smk-never" value="Never smoked"><label for="smk-never">Never smoked</label></div>
+          <div class="radio-chip"><input type="radio" name="smoking_status" id="smk-ex" value="Ex-smoker"><label for="smk-ex">Ex-smoker</label></div>
+          <div class="radio-chip"><input type="radio" name="smoking_status" id="smk-current" value="Current smoker"><label for="smk-current">Current smoker</label></div>
+        </div>
+        <div class="field-error" id="err-smoking_status">Please select smoking status.</div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="cigarettes_per_day">Cigarettes per day</label>
+          <input type="number" id="cigarettes_per_day" name="cigarettes_per_day" placeholder="e.g. 10">
+        </div>
+        <div class="field">
+          <label class="field-label" for="years_smoked">Years smoked</label>
+          <input type="text" id="years_smoked" name="years_smoked" placeholder="e.g. 20 years">
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="years_since_quitting">Years since quitting</label>
+        <input type="text" id="years_since_quitting" name="years_since_quitting" placeholder="e.g. 5 years ago (ex-smokers only)">
+      </div>
+      <div class="field">
+        <label class="field-label" for="other_tobacco_use">Other tobacco use</label>
+        <input type="text" id="other_tobacco_use" name="other_tobacco_use" placeholder="e.g. Betel, bidi, smokeless tobacco &mdash; or none">
+      </div>
+      <div class="field">
+        <label class="field-label">Alcohol use</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="alcohol_use" id="alc-none" value="None"><label for="alc-none">None</label></div>
+          <div class="radio-chip"><input type="radio" name="alcohol_use" id="alc-occ" value="Occasional (less than 1x per week)"><label for="alc-occ">Occasional</label></div>
+          <div class="radio-chip"><input type="radio" name="alcohol_use" id="alc-mod" value="Moderate (1-3x per week)"><label for="alc-mod">Moderate (1&ndash;3&times;/week)</label></div>
+          <div class="radio-chip"><input type="radio" name="alcohol_use" id="alc-heavy" value="Heavy (daily)"><label for="alc-heavy">Heavy (daily)</label></div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Weekly physical activity</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="weekly_activity" id="act-sed" value="Sedentary (less than 30 min)"><label for="act-sed">Sedentary (&lt;30 min)</label></div>
+          <div class="radio-chip"><input type="radio" name="weekly_activity" id="act-light" value="Light (30-90 min)"><label for="act-light">Light (30&ndash;90 min)</label></div>
+          <div class="radio-chip"><input type="radio" name="weekly_activity" id="act-mod" value="Moderate (90-150 min)"><label for="act-mod">Moderate (90&ndash;150 min)</label></div>
+          <div class="radio-chip"><input type="radio" name="weekly_activity" id="act-active" value="Active (more than 150 min)"><label for="act-active">Active (&gt;150 min)</label></div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Dietary pattern</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="dietary_pattern" id="diet-mixed" value="Mixed (non-vegetarian)"><label for="diet-mixed">Mixed (non-vegetarian)</label></div>
+          <div class="radio-chip"><input type="radio" name="dietary_pattern" id="diet-veg" value="Vegetarian"><label for="diet-veg">Vegetarian</label></div>
+          <div class="radio-chip"><input type="radio" name="dietary_pattern" id="diet-vegan" value="Vegan"><label for="diet-vegan">Vegan</label></div>
+          <div class="radio-chip"><input type="radio" name="dietary_pattern" id="diet-other" value="Other"><label for="diet-other">Other</label></div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- 12 ADDITIONAL NOTES -->
-  <div class="form-section">
-    <div class="section-header">
-      <span class="section-num">12</span>
-      <span class="section-title">Additional Notes</span>
+    <!-- 05 BLOOD PRESSURE -->
+    <div class="form-section">
+      <div class="section-header"><span class="section-num">05</span><span class="section-title">Blood Pressure</span></div>
+      <div class="clinical-note">Blood pressure is the single most powerful modifiable cardiovascular risk factor. Even an approximate recent reading significantly improves the accuracy of your 10-year risk calculation.</div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="bp_reading">Most recent BP reading <span class="req">*</span></label>
+          <input type="text" id="bp_reading" name="bp_reading" placeholder="e.g. 138 / 86 mmHg">
+          <div class="field-error" id="err-bp_reading">Please enter your BP reading.</div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="bp_date">Date of this reading</label>
+          <input type="text" id="bp_date" name="bp_date" placeholder="e.g. March 2025">
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">On BP-lowering medication?</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="on_bp_medication" id="bp-yes" value="Yes"><label for="bp-yes">Yes</label></div>
+          <div class="radio-chip"><input type="radio" name="on_bp_medication" id="bp-no" value="No"><label for="bp-no">No</label></div>
+          <div class="radio-chip"><input type="radio" name="on_bp_medication" id="bp-ns" value="Not sure"><label for="bp-ns">Not sure</label></div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="bp_medication_name">Medication name &amp; dose</label>
+        <input type="text" id="bp_medication_name" name="bp_medication_name" placeholder="e.g. Amlodipine 5 mg">
+      </div>
     </div>
-    <div class="field">
-      <label class="field-label" for="additional_notes">Anything else Dr. Gamalathge should know</label>
-      <p class="field-hint">Recent illness, travel, pregnancy, significant stress, new symptoms, or recent medication changes</p>
-      <textarea id="additional_notes" name="additional_notes" rows="4" placeholder="Optional — leave blank if none"></textarea>
-    </div>
-  </div>
 
-  <!-- SUBMIT -->
-  <div class="submit-section">
-    <div class="consent-block">
-      By submitting this form, I confirm the information provided is accurate to the best of my knowledge. I consent to this information being used solely by Dr. D. R. Gamalathge (MBBS), SLMC No. 36999, to generate my clinical laboratory report. This form does not replace a full clinical consultation and my information will not be shared with any third party without my written consent.
+    <!-- 06 DIABETES -->
+    <div class="form-section">
+      <div class="section-header"><span class="section-num">06</span><span class="section-title">Diabetes &amp; Glucose Status</span></div>
+      <div class="field">
+        <label class="field-label">Diabetes status <span class="req">*</span></label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="diabetes_status" id="diab-none" value="None"><label for="diab-none">None</label></div>
+          <div class="radio-chip"><input type="radio" name="diabetes_status" id="diab-pre" value="Pre-diabetes / IFG"><label for="diab-pre">Pre-diabetes / IFG</label></div>
+          <div class="radio-chip"><input type="radio" name="diabetes_status" id="diab-t1" value="Type 1"><label for="diab-t1">Type 1</label></div>
+          <div class="radio-chip"><input type="radio" name="diabetes_status" id="diab-t2" value="Type 2"><label for="diab-t2">Type 2</label></div>
+          <div class="radio-chip"><input type="radio" name="diabetes_status" id="diab-gest" value="Gestational (past)"><label for="diab-gest">Gestational (past)</label></div>
+        </div>
+        <div class="field-error" id="err-diabetes_status">Please select diabetes status.</div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="most_recent_hba1c">Most recent HbA1c</label>
+          <input type="text" id="most_recent_hba1c" name="most_recent_hba1c" placeholder="e.g. 7.2% (with date)">
+        </div>
+        <div class="field">
+          <label class="field-label" for="most_recent_fasting_glucose">Most recent fasting glucose</label>
+          <input type="text" id="most_recent_fasting_glucose" name="most_recent_fasting_glucose" placeholder="e.g. 122 mg/dL">
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">On insulin?</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="on_insulin" id="ins-yes" value="Yes"><label for="ins-yes">Yes</label></div>
+          <div class="radio-chip"><input type="radio" name="on_insulin" id="ins-no" value="No"><label for="ins-no">No</label></div>
+        </div>
+      </div>
     </div>
-    <button type="submit" class="submit-btn" id="submit-btn">
-      <span id="btn-text">Submit Patient Information</span>
-      <span id="btn-arrow">→</span>
-    </button>
-  </div>
-</form>
 
-<div class="success-screen" id="success-screen">
-  <div class="success-icon">✓</div>
-  <div class="success-title">Form received</div>
-  <div class="success-body">
-    Thank you. Your patient information has been received and is now with Dr. Gamalathge.<br><br>
-    You will hear from Dr. Gamalathge via WhatsApp to confirm your home collection date and time.<br><br>
-    <em style="font-size:0.875rem;color:var(--ink5)">GHC ID: <span id="confirmed-ghc"></span></em>
+    <!-- 07 CARDIOVASCULAR HISTORY -->
+    <div class="form-section">
+      <div class="section-header"><span class="section-num">07</span><span class="section-title">Heart &amp; Vascular History</span></div>
+      <div class="clinical-note"><strong>Important:</strong> South Asian individuals carry a 1.4&times; higher cardiovascular risk at identical risk factor levels. Family history is a critical independent variable in your risk calculation.</div>
+      <div class="field">
+        <label class="field-label">Family history of premature heart disease? <span class="req">*</span></label>
+        <p class="field-hint">Heart attack or stroke in a male relative under 55, or female relative under 65</p>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="family_history_cvd" id="fhx-yes" value="Yes"><label for="fhx-yes">Yes</label></div>
+          <div class="radio-chip"><input type="radio" name="family_history_cvd" id="fhx-no" value="No"><label for="fhx-no">No</label></div>
+          <div class="radio-chip"><input type="radio" name="family_history_cvd" id="fhx-ns" value="Not sure"><label for="fhx-ns">Not sure</label></div>
+        </div>
+        <div class="field-error" id="err-family_history_cvd">Please answer this question.</div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="family_history_details">If yes &mdash; who and at what age?</label>
+        <input type="text" id="family_history_details" name="family_history_details" placeholder="e.g. Father &mdash; heart attack age 52, Paternal uncle &mdash; stroke age 49">
+      </div>
+      <div class="field">
+        <label class="field-label">Personal history of heart or vascular disease?</label>
+        <p class="field-hint">Angina, heart attack, stroke, TIA, peripheral vascular disease, heart failure</p>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="personal_history_vascular" id="phx-yes" value="Yes"><label for="phx-yes">Yes</label></div>
+          <div class="radio-chip"><input type="radio" name="personal_history_vascular" id="phx-no" value="No"><label for="phx-no">No</label></div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="personal_history_details">If yes &mdash; condition and year diagnosed</label>
+        <input type="text" id="personal_history_details" name="personal_history_details" placeholder="e.g. Angina (2020)">
+      </div>
+      <div class="field">
+        <label class="field-label">Atrial fibrillation (irregular heartbeat)?</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="atrial_fibrillation" id="af-yes" value="Yes"><label for="af-yes">Yes</label></div>
+          <div class="radio-chip"><input type="radio" name="atrial_fibrillation" id="af-no" value="No"><label for="af-no">No</label></div>
+          <div class="radio-chip"><input type="radio" name="atrial_fibrillation" id="af-ns" value="Not sure"><label for="af-ns">Not sure</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 KIDNEY -->
+    <div class="form-section">
+      <div class="section-header"><span class="section-num">08</span><span class="section-title">Kidney &amp; Related Conditions</span></div>
+      <div class="field">
+        <label class="field-label">Known kidney disease (CKD)?</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="known_ckd" id="ckd-yes" value="Yes"><label for="ckd-yes">Yes</label></div>
+          <div class="radio-chip"><input type="radio" name="known_ckd" id="ckd-no" value="No"><label for="ckd-no">No</label></div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="most_recent_egfr">Most recent eGFR</label>
+          <input type="text" id="most_recent_egfr" name="most_recent_egfr" placeholder="e.g. 55 mL/min/1.73m&sup2;">
+        </div>
+        <div class="field">
+          <label class="field-label" for="urine_acr">Urine ACR</label>
+          <input type="text" id="urine_acr" name="urine_acr" placeholder="e.g. 12 mg/mmol">
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Familial hypercholesterolaemia?</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="familial_hypercholesterolaemia" id="fh-yes" value="Yes"><label for="fh-yes">Yes</label></div>
+          <div class="radio-chip"><input type="radio" name="familial_hypercholesterolaemia" id="fh-no" value="No"><label for="fh-no">No</label></div>
+          <div class="radio-chip"><input type="radio" name="familial_hypercholesterolaemia" id="fh-ns" value="Not sure"><label for="fh-ns">Not sure</label></div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Autoimmune condition?</label>
+        <p class="field-hint">Rheumatoid arthritis, SLE, psoriasis</p>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="autoimmune_condition" id="ai-yes" value="Yes"><label for="ai-yes">Yes</label></div>
+          <div class="radio-chip"><input type="radio" name="autoimmune_condition" id="ai-no" value="No"><label for="ai-no">No</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 09 BODY MEASUREMENTS -->
+    <div class="form-section">
+      <div class="section-header"><span class="section-num">09</span><span class="section-title">Body Measurements</span></div>
+      <div class="clinical-note">South Asian thresholds: Overweight = BMI &ge; 23 kg/m&sup2; &middot; Central obesity: Waist &gt; 90 cm (male) or &gt; 80 cm (female)</div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="height">Height (cm)</label>
+          <input type="number" id="height" name="height" placeholder="e.g. 168">
+        </div>
+        <div class="field">
+          <label class="field-label" for="weight">Weight (kg)</label>
+          <input type="number" id="weight" name="weight" placeholder="e.g. 72">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="waist_circumference">Waist circumference (cm)</label>
+          <input type="number" id="waist_circumference" name="waist_circumference" placeholder="e.g. 88">
+        </div>
+        <div class="field">
+          <label class="field-label" for="hip_circumference">Hip circumference (cm)</label>
+          <input type="number" id="hip_circumference" name="hip_circumference" placeholder="Optional &mdash; e.g. 96">
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 STATIN -->
+    <div class="form-section">
+      <div class="section-header"><span class="section-num">10</span><span class="section-title">Cholesterol Medication</span></div>
+      <div class="clinical-note">If you are on a statin, your observed cholesterol will be lower than your true untreated level. This allows Dr. Gamalathge to back-correct your result using the ESC-EAS 2021 method.</div>
+      <div class="field">
+        <label class="field-label">Currently on statin therapy?</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="on_statin" id="stat-yes" value="Yes"><label for="stat-yes">Yes</label></div>
+          <div class="radio-chip"><input type="radio" name="on_statin" id="stat-no" value="No"><label for="stat-no">No</label></div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="statin_name">Statin name &amp; dose</label>
+          <input type="text" id="statin_name" name="statin_name" placeholder="e.g. Atorvastatin 20 mg">
+        </div>
+        <div class="field">
+          <label class="field-label" for="statin_duration">Duration of use</label>
+          <input type="text" id="statin_duration" name="statin_duration" placeholder="e.g. 2 years">
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 WOMEN'S HEALTH -->
+    <div class="form-section">
+      <div class="section-header"><span class="section-num">11</span><span class="section-title">Women&#39;s Health</span></div>
+      <p class="field-hint" style="margin-bottom:18px">Female patients only &mdash; skip if not applicable.</p>
+      <div class="field">
+        <label class="field-label">Menopausal status</label>
+        <div class="radio-group">
+          <div class="radio-chip"><input type="radio" name="menopausal_status" id="men-pre" value="Pre-menopausal"><label for="men-pre">Pre-menopausal</label></div>
+          <div class="radio-chip"><input type="radio" name="menopausal_status" id="men-peri" value="Peri-menopausal"><label for="men-peri">Peri-menopausal</label></div>
+          <div class="radio-chip"><input type="radio" name="menopausal_status" id="men-post" value="Post-menopausal"><label for="men-post">Post-menopausal</label></div>
+          <div class="radio-chip"><input type="radio" name="menopausal_status" id="men-na" value="N/A"><label for="men-na">N/A</label></div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label">History of gestational diabetes?</label>
+          <div class="radio-group">
+            <div class="radio-chip"><input type="radio" name="gestational_diabetes" id="gd-yes" value="Yes"><label for="gd-yes">Yes</label></div>
+            <div class="radio-chip"><input type="radio" name="gestational_diabetes" id="gd-no" value="No"><label for="gd-no">No</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">PCOS?</label>
+          <div class="radio-group">
+            <div class="radio-chip"><input type="radio" name="pcos" id="pcos-yes" value="Yes"><label for="pcos-yes">Yes</label></div>
+            <div class="radio-chip"><input type="radio" name="pcos" id="pcos-no" value="No"><label for="pcos-no">No</label></div>
+            <div class="radio-chip"><input type="radio" name="pcos" id="pcos-ns" value="Not sure"><label for="pcos-ns">Not sure</label></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12 ADDITIONAL NOTES -->
+    <div class="form-section">
+      <div class="section-header"><span class="section-num">12</span><span class="section-title">Additional Notes</span></div>
+      <div class="field">
+        <label class="field-label" for="additional_notes">Anything else Dr. Gamalathge should know</label>
+        <p class="field-hint">Recent illness, travel, pregnancy, significant stress, new symptoms, or recent medication changes</p>
+        <textarea id="additional_notes" name="additional_notes" rows="4" placeholder="Optional &mdash; leave blank if none"></textarea>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-section">
+      <div class="consent-block">By submitting this form, I confirm the information provided is accurate to the best of my knowledge. I consent to this information being used solely by Dr. D. R. Gamalathge (MBBS), SLMC No. 36999, to generate my clinical laboratory report. This form does not replace a full clinical consultation and my information will not be shared with any third party without my written consent.</div>
+      <button type="submit" class="submit-btn" id="submit-btn">
+        <span id="btn-text">Submit Patient Information</span>
+        <span id="btn-arrow">&rarr;</span>
+      </button>
+    </div>
+  </form>
+
+  <div class="success-screen" id="success-screen">
+    <div class="success-icon">&#10003;</div>
+    <div class="success-title">Form received</div>
+    <div class="success-body">Thank you. Your patient information has been received and is now with Dr. Gamalathge.<br><br>You will hear from Dr. Gamalathge via WhatsApp to confirm your home collection date and time.<br><br><em style="font-size:0.875rem;color:var(--ink5)">GHC ID: <span id="confirmed-ghc"></span></em></div>
   </div>
 </div>
 
-</div>
 <footer class="page-footer">
   <div class="footer-sig">Dr. Dimithra Gamalathge</div>
   <div class="footer-meta">Signature Health Intelligence<br>signaturehealthintel.com</div>
 </footer>
+
 <script>
 
-  // ── URL PARAMS ──
+  // ── URL PARAMS — pre-fill from consent form ──────────
   (function() {
-    const p = new URLSearchParams(window.location.search);
-    const ghc = p.get('ghc') || '';
+    const p     = new URLSearchParams(window.location.search);
+    const ghc   = p.get('ghc')   || '';
+    const name  = p.get('name')  || '';
+    const dob   = p.get('dob')   || '';
+    const sex   = p.get('sex')   || '';
+    const phone = p.get('phone') || '';
+
+    // Calculate age from DOB (YYYY-MM-DD)
+    function calcAge(d) {
+      if (!d) return '';
+      const today = new Date(), birth = new Date(d);
+      let age = today.getFullYear() - birth.getFullYear();
+      const m = today.getMonth() - birth.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+      return String(age);
+    }
+
+    // Age from URL param, or calculate from DOB
+    const age = p.get('age') || calcAge(dob);
+
+    // Set GHC ID
     document.getElementById('ghc_patient_id').value = ghc;
+
+    // Helper: set value + green tint to indicate pre-filled
+    function set(id, val) {
+      if (!val) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.value = val;
+      el.style.background = '#f0f7f2';
+      el.style.borderColor = '#b8ddb0';
+    }
+
+    // Pre-fill identity fields from consent form data
+    set('full_name',      name);
+    set('date_of_birth',  dob);
+    set('age',            age);
+    set('contact_number', phone);
+
+    // Biological sex — check the matching radio
+    if (sex) {
+      document.querySelectorAll('input[name="biological_sex"]').forEach(r => {
+        if (r.value === sex) r.checked = true;
+      });
+    }
+
+    // GHC ID tag at top of form
     if (ghc) {
       const tag = document.createElement('div');
       tag.style.cssText = 'font-family:Courier New,monospace;font-size:0.7rem;letter-spacing:0.14em;color:var(--terra);margin-bottom:28px;padding:10px 14px;background:var(--paper2);border-left:3px solid var(--terra);display:inline-block';
       tag.textContent = 'GHC ID: ' + ghc;
       document.getElementById('phi-form').insertBefore(tag, document.getElementById('phi-form').firstChild.nextSibling);
     }
+
+    // Pre-fill notice banner
+    if (name || dob || phone) {
+      const notice = document.createElement('div');
+      notice.style.cssText = 'background:#f0f7f2;border:1px solid #b8ddb0;border-left:3px solid #3a6647;padding:12px 16px;margin-bottom:24px;font-size:0.88rem;color:#3a6647;font-family:Courier New,monospace;letter-spacing:0.04em;';
+      notice.textContent = '\u2713 Some fields have been pre-filled from your consent form. Please review and complete the remaining sections.';
+      const form = document.getElementById('phi-form');
+      const anchor = form.firstChild;
+      form.insertBefore(notice, anchor ? anchor.nextSibling : form.firstChild);
+    }
   })();
 
-  // ── COLLECT CHECKBOXES ──
+  // ── Auto-calculate age when DOB changes ───────────────
+  document.addEventListener('DOMContentLoaded', function() {
+    var dobEl = document.getElementById('date_of_birth');
+    if (dobEl) {
+      dobEl.addEventListener('change', function() {
+        if (!this.value) return;
+        var today = new Date(), birth = new Date(this.value);
+        var age = today.getFullYear() - birth.getFullYear();
+        var m = today.getMonth() - birth.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+        var ageEl = document.getElementById('age');
+        if (ageEl) { ageEl.value = age; ageEl.style.background = '#f0f7f2'; ageEl.style.borderColor = '#b8ddb0'; }
+      });
+    }
+  });
+
+  // ── Collect checkboxes ────────────────────────────────
   function getCheckboxValues(name) {
     return Array.from(document.querySelectorAll('input[name="' + name + '"]:checked'))
       .map(el => el.value).join(', ');
   }
 
-  // ── SUBMIT ──
+  // ── Submit ────────────────────────────────────────────
   document.getElementById('phi-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     let valid = true;
@@ -991,12 +621,12 @@
       if (empty) valid = false;
     });
 
-    if (!valid) { window.scrollTo({top:0,behavior:'smooth'}); return; }
+    if (!valid) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
 
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
-    document.getElementById('btn-text').textContent = 'Submitting…';
-    document.getElementById('btn-arrow').textContent = '⟳';
+    document.getElementById('btn-text').textContent = 'Submitting\u2026';
+    document.getElementById('btn-arrow').textContent = '\u27f3';
 
     const payload = {
       ghc_patient_id:               document.getElementById('ghc_patient_id').value,
@@ -1052,8 +682,7 @@
 
     try {
       const res = await fetch('https://dimithra.app.n8n.cloud/webhook/form1-intake', {
-        method: 'POST',
-        mode: 'cors',
+        method: 'POST', mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
@@ -1061,14 +690,14 @@
         document.getElementById('phi-form').style.display = 'none';
         document.getElementById('success-screen').style.display = 'block';
         document.getElementById('confirmed-ghc').textContent = payload.ghc_patient_id || 'Received';
-        window.scrollTo({top:0,behavior:'smooth'});
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         throw new Error('HTTP ' + res.status);
       }
     } catch(err) {
       btn.disabled = false;
       document.getElementById('btn-text').textContent = 'Submit Patient Information';
-      document.getElementById('btn-arrow').textContent = '→';
+      document.getElementById('btn-arrow').textContent = '\u2192';
       alert('Submission failed. Please check your connection and try again. (' + err.message + ')');
     }
   });
