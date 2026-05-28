@@ -735,35 +735,15 @@ footer {
     </div>
   </section>
 
-  <!-- SCREEN 2: Package & Location -->
-  <section class="screen" id="screen-2" aria-label="Package and location">
-    <p class="q-eyebrow">Section 2 of 7 · Package</p>
-    <h2 class="q-text">Your package<span class="q-required">*</span></h2>
-    <p class="q-sub">Select the package you have been registered for.</p>
+  <!-- SCREEN 2: Location -->
+  <section class="screen" id="screen-2" aria-label="Location">
+    <p class="q-eyebrow">Section 2 of 7 · Location</p>
+    <h2 class="q-text">Where are you based?<span class="q-required">*</span></h2>
+    <p class="q-sub">This determines how your reports and data are handled under Sri Lankan privacy law.</p>
 
-    <div class="screen-error" id="err-2">Please make a selection to continue.</div>
+    <div class="screen-error" id="err-2">Please select your location to continue.</div>
 
-    <div class="field-wrap">
-      <div class="choices" id="package-choices">
-        <button type="button" class="choice-btn" data-value="Essential" onclick="selectChoice('package_tier','Essential',this)">
-          <span class="choice-key">E</span>
-          <span>Essential — LKR 49,000</span>
-        </button>
-        <button type="button" class="choice-btn" data-value="Premium" onclick="selectChoice('package_tier','Premium',this)">
-          <span class="choice-key">P</span>
-          <span>Premium — LKR 69,000</span>
-        </button>
-        <button type="button" class="choice-btn" data-value="Elite" onclick="selectChoice('package_tier','Elite',this)">
-          <span class="choice-key">L</span>
-          <span>Elite — LKR 95,000</span>
-        </button>
-        <button type="button" class="choice-btn" data-value="Not confirmed" onclick="selectChoice('package_tier','Not confirmed',this)">
-          <span class="choice-key">N</span>
-          <span>Not yet confirmed</span>
-        </button>
-      </div>
-      <input type="hidden" id="package_tier" name="package_tier">
-    </div>
+    <input type="hidden" id="package_tier" name="package_tier">
 
     <div class="field-wrap">
       <label class="field-label" for="patient_location">Current location *</label>
@@ -782,10 +762,6 @@ footer {
         <div class="consent-checkbox"></div>
         <div>
           <span class="consent-title">International data transfer</span>
-          <p class="consent-body">
-            I consent to my health data and clinical report being transferred to my location overseas.
-            Required under PDPA No. 9 of 2022 for cross-border delivery.
-          </p>
           <p class="consent-decline-note">You must agree to this to receive your report.</p>
         </div>
       </div>
@@ -812,7 +788,6 @@ footer {
       <div class="consent-checkbox"></div>
       <div>
         <span class="consent-title">Clinical examination & investigation</span>
-        <p class="consent-body">I consent to clinical history-taking, physical examination, and any investigation ordered by Dr. D. R. Gamalathge as part of my care.</p>
         <p class="consent-decline-note">You must agree to proceed.</p>
       </div>
     </div>
@@ -822,7 +797,6 @@ footer {
       <div class="consent-checkbox"></div>
       <div>
         <span class="consent-title">Treatment & prescribing</span>
-        <p class="consent-body">I consent to any treatment or prescription issued following clinical assessment. I may ask questions before accepting any treatment, and I may decline.</p>
         <p class="consent-decline-note">You must agree to proceed.</p>
       </div>
     </div>
@@ -832,7 +806,6 @@ footer {
       <div class="consent-checkbox"></div>
       <div>
         <span class="consent-title">Specialist referral</span>
-        <p class="consent-body">I consent to referral to a specialist or secondary care provider where Dr. Gamalathge considers it clinically appropriate. Referral details will be discussed with me beforehand.</p>
         <p class="consent-decline-note">You must agree to proceed.</p>
       </div>
     </div>
@@ -858,7 +831,6 @@ footer {
       <div class="consent-checkbox"></div>
       <div>
         <span class="consent-title">Health data processing</span>
-        <p class="consent-body">My personal and health data is collected solely for my care under Dr. Gamalathge. It will not be shared with any third party without my written consent, except where required by Sri Lankan law. Records are retained for a minimum of 7 years.</p>
         <p class="consent-decline-note">You must agree to proceed.</p>
       </div>
     </div>
@@ -868,7 +840,6 @@ footer {
       <div class="consent-checkbox"></div>
       <div>
         <span class="consent-title">Clinical decision-support reports</span>
-        <p class="consent-body">Where a written health report is generated, I understand it is a physician-authored document and does not replace ongoing clinical care or specialist consultation.</p>
         <p class="consent-decline-note">You must agree to proceed.</p>
       </div>
     </div>
@@ -878,7 +849,6 @@ footer {
       <div class="consent-checkbox"></div>
       <div>
         <span class="consent-title">Right to withdraw</span>
-        <p class="consent-body">I understand I may withdraw consent for any part of this care at any time without penalty. Withdrawal does not affect the lawfulness of care already provided.</p>
         <p class="consent-decline-note">You must agree to proceed.</p>
       </div>
     </div>
@@ -904,7 +874,6 @@ footer {
       <div class="consent-checkbox"></div>
       <div>
         <span class="consent-title">Data security & storage</span>
-        <p class="consent-body">I understand my personal and health data is stored securely, with access restricted to Dr. Gamalathge and authorised clinical staff. Clinical reports are delivered as password-protected PDFs and transmitted through secured channels.</p>
         <p class="consent-decline-note">You must agree to proceed.</p>
       </div>
     </div>
@@ -914,7 +883,6 @@ footer {
       <div class="consent-checkbox"></div>
       <div>
         <span class="consent-title">Report delivery via WhatsApp</span>
-        <p class="consent-body">I consent to my clinical report and communications being delivered to my WhatsApp number. I understand WhatsApp is a consumer platform and accept responsibility for my own device security. I may request an alternative delivery method at any time.</p>
         <p class="consent-decline-note">You must agree to proceed.</p>
       </div>
     </div>
@@ -924,7 +892,6 @@ footer {
       <div class="consent-checkbox"></div>
       <div>
         <span class="consent-title">Your rights over your data</span>
-        <p class="consent-body">I understand I have the right to request access to, correction of, or erasure of my personal data by contacting dimithra@signaturehealthintel.com.</p>
         <p class="consent-decline-note">You must agree to proceed.</p>
       </div>
     </div>
@@ -949,7 +916,6 @@ footer {
       <div class="consent-checkbox"></div>
       <div>
         <span class="consent-title">Confirmed declaration</span>
-        <p class="consent-body">I have read and understood all the items above. I confirm that the information I have provided is accurate and I voluntarily consent to the terms of this form.</p>
         <p class="consent-decline-note">You must confirm the declaration to proceed.</p>
       </div>
     </div>
@@ -1117,7 +1083,7 @@ const validators = {
     const intl = document.getElementById('international_transfer_consent').value;
     const isOverseas = loc && loc !== 'Sri Lanka';
     const needsIntl = isOverseas && !intl;
-    const ok = pkg && loc && !needsIntl;
+    const ok = loc && !needsIntl;
     showErr('err-2', !ok);
     if (ok) { formData.package_tier = pkg; formData.patient_location = loc;
               formData.international_transfer_consent = intl || 'N/A'; }
@@ -1164,6 +1130,16 @@ function validateAndGo(from, to) {
   if (ghc) {
     const el = document.getElementById('ghc_id');
     if (el) { el.value = ghc.toUpperCase(); el.style.color = 'var(--terra)'; }
+  }
+  const dob = p.get('dob');
+  if (dob) {
+    const el = document.getElementById('date_of_birth');
+    if (el) el.value = dob;
+  }
+  const pkg = p.get('package');
+  if (pkg) {
+    const el = document.getElementById('package_tier');
+    if (el) el.value = pkg;
   }
 })();
 
