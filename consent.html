@@ -1244,7 +1244,9 @@ async function submitForm() {
       + '?ghc='     + encodeURIComponent(formData.ghc_id)
       + '&name='    + encodeURIComponent(formData.patient_name)
       + '&phone='   + encodeURIComponent(formData.whatsapp_number)
-      + '&package=' + encodeURIComponent(pkg);
+      + '&package=' + encodeURIComponent(pkg)
+      + '&dob='     + encodeURIComponent(formData.date_of_birth || '')
+      + '&sex='     + encodeURIComponent(formData.biological_sex || '');
     setTimeout(function() { window.location.href = phiUrl; }, 2500);
 
   } else {
