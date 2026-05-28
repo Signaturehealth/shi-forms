@@ -620,60 +620,22 @@ footer {
 
 <!-- ── Header ────────────────────────────────────────── -->
 <header class="header" style="background:var(--paper-alt);border-bottom:1px solid var(--rule);padding:0 var(--space-6);position:sticky;top:0;z-index:100;">
-  <!--
-    Lockup 3 — Premium Inline, LIGHT version (brand-assets.md)
-    Light background: symbol stroke = INK #2a2420, pivot dot = ACCENT #b85c3e
-    viewBox 680×56: symbol row at y≈10–44, SLMC line at y≈50
-    Symbol: 28% scale of 240×140 → 67.2×39.2px, vertically centred in top row
-    Text top row baseline: y=32
-    SLMC line baseline: y=50
-    Total viewBox height: 56px → header height 64px with 4px padding top/bottom
-  -->
   <svg width="100%" viewBox="0 0 680 56" xmlns="http://www.w3.org/2000/svg"
        role="img" style="display:block; height:56px; max-width:660px; overflow:visible;">
     <title>Signature Health Intelligence — Dr. D. R. Gamalathge, MBBS, SLMC No. 36999</title>
-
-    <!-- Horizon Pulse symbol: 28% scale, vertically centred in 44px row
-         scale(0.28): symbol spans y = 36×0.28=10 (trough=104×0.28=29) to ascent=36×0.28=10
-         Translate y so midpoint (82×0.28=22.96) sits at row centre = 22 → translateY(0)
-         x: start at 0, symbol ends at 224×0.28 = 62.7px -->
     <g transform="translate(2, 2) scale(0.28)" aria-hidden="true">
       <path d="M16 82 L80 82 C90 82,96 58,102 104 C108 68,122 82,140 82 C165 82,190 68,224 36"
-            fill="none"
-            stroke="#2a2420"
-            stroke-width="2.6"
-            stroke-linecap="round"
-            stroke-linejoin="round"/>
+            fill="none" stroke="#2a2420" stroke-width="2.6"
+            stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="140" cy="82" r="3.4" fill="#b85c3e"/>
     </g>
-
-    <!-- Vertical rule: x=74, from y=6 to y=43 -->
-    <line x1="74" y1="6" x2="74" y2="43"
-          stroke="#e0d8c8" stroke-width="0.7"/>
-
-    <!-- Wordmark: Cormorant Garamond Light 20px, INK, x=84 -->
-    <text x="84" y="24"
-          font-family="'Cormorant Garamond','Palatino Linotype',Georgia,serif"
-          font-size="20"
-          font-weight="300"
-          fill="#2a2420"
-          letter-spacing="0.5">Signature Health Intelligence</text>
-
-    <!-- Doctor name: italic 14px, INK_SUB, same x=84, y=41 -->
-    <text x="84" y="41"
-          font-family="'Cormorant Garamond','Palatino Linotype',Georgia,serif"
-          font-size="14"
-          font-weight="300"
-          font-style="italic"
-          fill="#6b6156"
-          letter-spacing="0.3">Dr. D. R. Gamalathge, MBBS</text>
-
-    <!-- SLMC credential: mono 7.5px, INK_MUTED, x=84, y=52 -->
-    <text x="84" y="52"
-          font-family="'IBM Plex Mono','Courier New',monospace"
-          font-size="7.5"
-          fill="#a8a095"
-          letter-spacing="1.6">SLMC No. 36999  ·  Dr. Gamalathge Healthcare Centre, Mirihana, Nugegoda</text>
+    <line x1="74" y1="6" x2="74" y2="43" stroke="#e0d8c8" stroke-width="0.7"/>
+    <text x="84" y="24" font-family="'Cormorant Garamond','Palatino Linotype',Georgia,serif"
+          font-size="20" font-weight="300" fill="#2a2420" letter-spacing="0.5">Signature Health Intelligence</text>
+    <text x="84" y="41" font-family="'Cormorant Garamond','Palatino Linotype',Georgia,serif"
+          font-size="14" font-weight="300" font-style="italic" fill="#6b6156" letter-spacing="0.3">Dr. D. R. Gamalathge, MBBS</text>
+    <text x="84" y="52" font-family="'IBM Plex Mono','Courier New',monospace"
+          font-size="7.5" fill="#a8a095" letter-spacing="1.6">SLMC No. 36999  ·  Dr. Gamalathge Healthcare Centre, Mirihana, Nugegoda</text>
   </svg>
 </header>
 
@@ -1020,8 +982,8 @@ footer {
       <div class="icon">—</div>
       <h2>We cannot proceed</h2>
       <p>
-        One or more required consent items were declined. To proceed with Signature Health Intelligence, 
-        all items must be agreed to. If you have concerns about any item, please contact 
+        One or more required consent items were declined. To proceed with Signature Health Intelligence,
+        all items must be agreed to. If you have concerns about any item, please contact
         Dr. Gamalathge directly before submitting.
       </p>
       <a class="wa-link" href="https://wa.me/94756192319" target="_blank" rel="noopener">
@@ -1038,13 +1000,10 @@ footer {
     <div class="success-screen">
       <div class="success-mark"></div>
       <h2 class="success-title">Consent recorded.</h2>
-      <p class="success-body">
-        Thank you. Your consent has been submitted and timestamped. Dr. Gamalathge
-        will be in touch via WhatsApp with your next steps shortly.
+      <p class="success-body" id="successBody">
+        Thank you. Your consent has been submitted and timestamped.
+        Your Personal Health Intake form is loading now…
       </p>
-      <a class="wa-link" href="https://wa.me/94756192319" target="_blank" rel="noopener">
-        Message Dr. Gamalathge →
-      </a>
       <p class="success-id" id="successRef"></p>
     </div>
   </section>
@@ -1060,7 +1019,7 @@ footer {
 
 <script>
 // ── State ─────────────────────────────────────────────
-const N8N_WEBHOOK = 'https://dimithra.app.n8n.cloud/webhook/shi-consent-form';
+const N8N_WEBHOOK = 'https://dimithra.app.n8n.cloud/webhook/consent-submit';
 const TOTAL_STEPS = 7;
 
 let currentScreen = 0;
@@ -1069,7 +1028,7 @@ const formData = {};
 // ── Navigation ────────────────────────────────────────
 function goTo(n) {
   document.getElementById('screen-' + currentScreen)?.classList.remove('active');
-  const next = document.getElementById('screen-' + n) || document.getElementById('screen-' + n);
+  const next = document.getElementById('screen-' + n);
   if (!next) return;
   currentScreen = n;
   next.classList.add('active');
@@ -1247,6 +1206,7 @@ async function submitForm() {
     consent_whatsapp_delivery:       formData.consent_whatsapp_delivery || '',
     consent_pdpa_rights:             formData.consent_pdpa_rights || '',
     declaration_confirmed:           'true',
+    signature:                       sig,
     electronic_signature:            sig,
     submitted_at:                    formData.submitted_at,
     form_version:                    formData.form_version,
@@ -1274,6 +1234,19 @@ async function submitForm() {
     document.getElementById('successRef').textContent =
       'Reference: ' + ref.toUpperCase() + '  ·  Submitted: ' + ts;
     goToNamed('success');
+
+    // Redirect to PHI form with pre-filled data after 2.5 seconds
+    const pkg = formData.package_tier || '';
+    const phiBase = pkg === 'Elite'
+      ? 'https://forms.signaturehealthintel.com/elite.html'
+      : 'https://forms.signaturehealthintel.com/essential-premium.html';
+    const phiUrl = phiBase
+      + '?ghc='     + encodeURIComponent(formData.ghc_id)
+      + '&name='    + encodeURIComponent(formData.patient_name)
+      + '&phone='   + encodeURIComponent(formData.whatsapp_number)
+      + '&package=' + encodeURIComponent(pkg);
+    setTimeout(function() { window.location.href = phiUrl; }, 2500);
+
   } else {
     showErr('err-6', true);
     document.getElementById('err-6').textContent =
