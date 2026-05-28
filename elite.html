@@ -246,9 +246,8 @@
         <div class="clinical-note"><strong>Important:</strong> South Asian individuals carry a 1.4&times; higher cardiovascular risk at identical risk factor levels.</div>
         <div class="field-row" style="margin-top:16px">
           <div class="field">
-            <label class="field-label" for="bp_reading">Most recent BP reading <span class="req">*</span></label>
+            <label class="field-label" for="bp_reading">Most recent BP reading</label>
             <input type="text" id="bp_reading" name="bp_reading" placeholder="e.g. 138 / 86 mmHg">
-            <div class="field-error" id="err-bp_reading">BP reading is required.</div>
           </div>
           <div class="field">
             <label class="field-label" for="bp_medication">On BP medication?</label>
@@ -546,14 +545,13 @@
 <script>
   // ── URL PARAMS — pre-fill from consent form ──────────
   (function() {
-    const p   = new URLSearchParams(window.location.search);
-    const ghc = p.get('ghc')   || '';
+    const p     = new URLSearchParams(window.location.search);
+    const ghc   = p.get('ghc')   || '';
     const name  = p.get('name')  || '';
     const dob   = p.get('dob')   || '';
     const sex   = p.get('sex')   || '';
     const phone = p.get('phone') || '';
 
-    // Calc age from DOB
     function calcAge(d) {
       if (!d) return '';
       const today = new Date(), birth = new Date(d);
@@ -562,13 +560,10 @@
       if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
       return String(age);
     }
-    // Age from URL param OR calculated from DOB
     const age = p.get('age') || calcAge(dob);
 
-    // Set GHC ID hidden field
     document.getElementById('ghc_patient_id').value = ghc;
 
-    // Helper: set value and apply green tint
     function set(id, val) {
       if (!val) return;
       const el = document.getElementById(id);
@@ -577,19 +572,16 @@
       el.classList.add('prefilled');
     }
 
-    // Pre-fill identity fields
     set('full_name',      name);
     set('date_of_birth',  dob);
     set('age',            age);
     set('contact_number', phone);
 
-    // Biological sex radio
     if (sex) {
       const radios = document.querySelectorAll('input[name="biological_sex"]');
       radios.forEach(r => { if (r.value === sex) r.checked = true; });
     }
 
-    // Show GHC tag and pre-fill notice
     if (ghc) {
       const tag = document.createElement('div');
       tag.style.cssText = 'font-family:Courier New,monospace;font-size:0.7rem;letter-spacing:0.14em;color:var(--terra);margin-bottom:28px;padding:10px 14px;background:var(--paper2);border-left:3px solid var(--terra);display:inline-block';
@@ -597,7 +589,6 @@
       document.getElementById('elite-form').insertBefore(tag, document.getElementById('elite-form').firstChild);
     }
 
-    // Show pre-fill notice if any data came in
     if (name || dob || phone) {
       document.getElementById('prefill-notice').style.display = 'block';
     }
@@ -616,9 +607,6 @@
     ageEl.classList.add('prefilled');
   }
 
-  // ── Part navigation ──────────────────────────────────
-
-  // ── Auto-calculate age when DOB changes ───────────────
   document.addEventListener('DOMContentLoaded', function() {
     var dobEl = document.getElementById('date_of_birth');
     if (dobEl) {
@@ -660,7 +648,6 @@
       { id: 'age', err: 'err-age' },
       { name: 'biological_sex', err: 'err-biological_sex', type: 'radio' },
       { name: 'smoking_status', err: 'err-smoking_status', type: 'radio' },
-      { id: 'bp_reading', err: 'err-bp_reading' },
       { name: 'diabetes_status', err: 'err-diabetes_status', type: 'radio' },
       { name: 'family_history_cvd', err: 'err-family_history_cvd', type: 'radio' },
     ];
