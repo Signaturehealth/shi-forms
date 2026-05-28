@@ -255,9 +255,8 @@
       <div class="clinical-note">Blood pressure is the single most powerful modifiable cardiovascular risk factor. Even an approximate recent reading significantly improves the accuracy of your 10-year risk calculation.</div>
       <div class="field-row">
         <div class="field">
-          <label class="field-label" for="bp_reading">Most recent BP reading <span class="req">*</span></label>
+          <label class="field-label" for="bp_reading">Most recent BP reading</label>
           <input type="text" id="bp_reading" name="bp_reading" placeholder="e.g. 138 / 86 mmHg">
-          <div class="field-error" id="err-bp_reading">Please enter your BP reading.</div>
         </div>
         <div class="field">
           <label class="field-label" for="bp_date">Date of this reading</label>
@@ -513,7 +512,6 @@
     const sex   = p.get('sex')   || '';
     const phone = p.get('phone') || '';
 
-    // Calculate age from DOB (YYYY-MM-DD)
     function calcAge(d) {
       if (!d) return '';
       const today = new Date(), birth = new Date(d);
@@ -523,13 +521,10 @@
       return String(age);
     }
 
-    // Age from URL param, or calculate from DOB
     const age = p.get('age') || calcAge(dob);
 
-    // Set GHC ID
     document.getElementById('ghc_patient_id').value = ghc;
 
-    // Helper: set value + green tint to indicate pre-filled
     function set(id, val) {
       if (!val) return;
       const el = document.getElementById(id);
@@ -539,20 +534,17 @@
       el.style.borderColor = '#b8ddb0';
     }
 
-    // Pre-fill identity fields from consent form data
     set('full_name',      name);
     set('date_of_birth',  dob);
     set('age',            age);
     set('contact_number', phone);
 
-    // Biological sex — check the matching radio
     if (sex) {
       document.querySelectorAll('input[name="biological_sex"]').forEach(r => {
         if (r.value === sex) r.checked = true;
       });
     }
 
-    // GHC ID tag at top of form
     if (ghc) {
       const tag = document.createElement('div');
       tag.style.cssText = 'font-family:Courier New,monospace;font-size:0.7rem;letter-spacing:0.14em;color:var(--terra);margin-bottom:28px;padding:10px 14px;background:var(--paper2);border-left:3px solid var(--terra);display:inline-block';
@@ -560,11 +552,10 @@
       document.getElementById('phi-form').insertBefore(tag, document.getElementById('phi-form').firstChild.nextSibling);
     }
 
-    // Pre-fill notice banner
     if (name || dob || phone) {
       const notice = document.createElement('div');
       notice.style.cssText = 'background:#f0f7f2;border:1px solid #b8ddb0;border-left:3px solid #3a6647;padding:12px 16px;margin-bottom:24px;font-size:0.88rem;color:#3a6647;font-family:Courier New,monospace;letter-spacing:0.04em;';
-      notice.textContent = '\u2713 Some fields have been pre-filled from your consent form. Please review and complete the remaining sections.';
+      notice.textContent = '✓ Some fields have been pre-filled from your consent form. Please review and complete the remaining sections.';
       const form = document.getElementById('phi-form');
       const anchor = form.firstChild;
       form.insertBefore(notice, anchor ? anchor.nextSibling : form.firstChild);
@@ -603,7 +594,6 @@
       { id: 'age', err: 'err-age' },
       { name: 'biological_sex', err: 'err-biological_sex', type: 'radio' },
       { name: 'smoking_status', err: 'err-smoking_status', type: 'radio' },
-      { id: 'bp_reading', err: 'err-bp_reading' },
       { name: 'diabetes_status', err: 'err-diabetes_status', type: 'radio' },
       { name: 'family_history_cvd', err: 'err-family_history_cvd', type: 'radio' },
     ];
@@ -625,8 +615,8 @@
 
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
-    document.getElementById('btn-text').textContent = 'Submitting\u2026';
-    document.getElementById('btn-arrow').textContent = '\u27f3';
+    document.getElementById('btn-text').textContent = 'Submitting…';
+    document.getElementById('btn-arrow').textContent = '⟳';
 
     const payload = {
       ghc_patient_id:               document.getElementById('ghc_patient_id').value,
@@ -697,7 +687,7 @@
     } catch(err) {
       btn.disabled = false;
       document.getElementById('btn-text').textContent = 'Submit Patient Information';
-      document.getElementById('btn-arrow').textContent = '\u2192';
+      document.getElementById('btn-arrow').textContent = '→';
       alert('Submission failed. Please check your connection and try again. (' + err.message + ')');
     }
   });
