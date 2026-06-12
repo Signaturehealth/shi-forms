@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: light only;">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A quick health survey · Dr. Dimithra Gamalathge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light only;
+    --ink:      #1C1917;
+    --ink2:     #44403C;
+    --ink3:     #78716C;
+    --terra:    #B85C3E;
+    --terra-lt: #F5EBE7;
+    --page:     #FFFFFF;
+    --surface:  #FAFAF9;
+    --border:   #E7E2DC;
+    --font-display: 'Cormorant Garamond', 'Palatino Linotype', Georgia, serif;
+    --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono:    'Courier New', Courier, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #FFFFFF !important;
+    color: #1C1917 !important;
+    font-family: var(--font-body);
+    font-size: clamp(16px, 2.2vw, 18px);
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    background: var(--page);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .ecg-mark { flex-shrink: 0; }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+
+  .brand-cred {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--ink3);
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ── Hero — FULL LIGHT THEME ── */
+  .hero {
+    background: var(--terra-lt);
+    border-bottom: 2px solid #E8C4B8;
+    padding: clamp(40px, 8vw, 72px) clamp(24px, 6vw, 64px);
+    text-align: center;
+  }
+
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--terra);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 6vw, 54px);
+    font-weight: 300;
+    line-height: 1.18;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    margin-bottom: 20px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terra);
+  }
+
+  .hero p {
+    font-size: clamp(15px, 2vw, 17px);
+    color: var(--ink2);
+    max-width: 540px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+  }
+
+  .hero-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--terra);
+    margin: 0 auto 28px;
+    opacity: 0.5;
+    border-radius: 1px;
+  }
+
+  .time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1.5px solid #E8C4B8;
+    color: var(--ink2);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  /* ── Form container ── */
+  .survey-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: clamp(36px, 6vw, 64px) clamp(20px, 5vw, 40px);
+  }
+
+  /* ── Section ── */
+  .section {
+    margin-bottom: 56px;
+  }
+
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--terra);
+    margin-bottom: 6px;
+    display: block;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 4.5vw, 38px);
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+  }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--ink3);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .section-rule {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 32px;
+  }
+
+  /* ── Question ── */
+  .q {
+    margin-bottom: 36px;
+  }
+
+  .q-label {
+    font-size: clamp(16px, 2.2vw, 18px);
+    color: var(--ink);
+    margin-bottom: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .q-label strong { font-weight: 700; }
+
+  .q-note {
+    font-size: 13px;
+    color: var(--ink3);
+    font-style: italic;
+    font-weight: 400;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ── Radio / Checkbox options ── */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    cursor: pointer;
+    padding: 16px 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--page);
+    transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+  }
+
+  .option:hover {
+    border-color: var(--terra);
+    background: var(--terra-lt);
+    box-shadow: 0 2px 8px rgba(184,92,62,0.08);
+  }
+
+  .option input[type="radio"],
+  .option input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+    transition: border-color 160ms ease, background 160ms ease;
+    position: relative;
+    background: var(--page);
+  }
+
+  .option input[type="checkbox"] { border-radius: 4px; }
+
+  .option input[type="radio"]:checked,
+  .option input[type="checkbox"]:checked {
+    background: var(--terra);
+    border-color: var(--terra);
+  }
+
+  .option input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: white;
+  }
+
+  .option input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .option:has(input:checked) {
+    border-color: var(--terra);
+    background: var(--terra-lt);
+    box-shadow: 0 2px 8px rgba(184,92,62,0.1);
+  }
+
+  .option-text {
+    font-size: clamp(15px, 2vw, 17px);
+    color: var(--ink);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .option-sub {
+    font-size: 13px;
+    color: var(--ink3);
+    display: block;
+    margin-top: 3px;
+    font-weight: 400;
+  }
+
+  /* ── Scale rating ── */
+  .scale-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .scale-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink3);
+    padding: 0 2px;
+    margin-top: 6px;
+  }
+
+  .scale-btns {
+    display: flex;
+    gap: 8px;
+  }
+
+  .scale-btn {
+    flex: 1;
+    height: 52px;
+    border: 1.5px solid var(--border);
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 160ms ease;
+  }
+
+  .scale-btn:hover {
+    border-color: var(--terra);
+    color: var(--terra);
+    background: var(--terra-lt);
+  }
+
+  .scale-btn.active {
+    background: var(--terra);
+    border-color: var(--terra);
+    color: white;
+    box-shadow: 0 2px 8px rgba(184,92,62,0.25);
+  }
+
+  /* ── Textarea ── */
+  textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.65;
+    padding: 14px 18px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 200ms ease;
+  }
+
+  textarea:focus { border-color: var(--terra); box-shadow: 0 0 0 3px rgba(184,92,62,0.08); }
+  textarea::placeholder { color: var(--ink3); font-style: italic; }
+
+  /* ── Select ── */
+  select {
+    width: 100%;
+    padding: 13px 40px 13px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 200ms ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2378716C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+  }
+
+  select:focus { border-color: var(--terra); }
+
+  /* ── Progress bar ── */
+  .progress-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: 3px;
+    background: var(--border);
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--terra);
+    width: 0%;
+    transition: width 400ms ease;
+  }
+
+  /* ── Submit ── */
+  .submit-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 36px;
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .submit-note {
+    font-size: 14px;
+    color: var(--ink3);
+    margin-bottom: 24px;
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  .btn-submit {
+    background: var(--terra);
+    color: white;
+    border: none;
+    padding: 17px 52px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 200ms ease, transform 150ms ease;
+  }
+
+  .btn-submit:hover { background: #9A4D32; transform: translateY(-1px); }
+  .btn-submit:active { transform: translateY(0); }
+
+  /* ── Thank you ── */
+  .thankyou {
+    display: none;
+    text-align: center;
+    padding: clamp(48px, 10vw, 96px) clamp(20px, 5vw, 40px);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .thankyou .ty-icon { width: 52px; height: 52px; margin: 0 auto 24px; }
+
+  .thankyou h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .thankyou p {
+    color: var(--ink2);
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+
+  .thankyou .ty-sign {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink2);
+    margin-top: 32px;
+    display: block;
+  }
+
+  .thankyou .ty-cred {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--ink3);
+    display: block;
+    margin-top: 6px;
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    text-align: center;
+    background: var(--surface);
+  }
+
+  .footer-text {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--ink3);
+  }
+
+  /* ── Highlight block ── */
+  .insight-block {
+    background: var(--terra-lt);
+    border-left: 3px solid var(--terra);
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    border-radius: 0 6px 6px 0;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .insight-block p {
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="progressBar">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="ecg-mark">
+    <svg width="56" height="30" viewBox="0 0 140 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 30 L32 30 C37 30 40 20 43 40 C46 22 52 30 60 30 C72 30 80 24 100 8" 
+            stroke="#2A2420" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="60" cy="30" r="3" fill="#B85C3E"/>
+    </svg>
+  </div>
+  <div>
+    <span class="brand-name">Dr. Dimithra Gamalathge</span>
+    <span class="brand-cred">MBBS · SLMC NO. 36999 · PREVENTIVE MEDICINE · COLOMBO</span>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>How well do you <em>actually</em> understand your health?</h1>
+  <div class="hero-rule"></div>
+  <p>I'm Dr. Dimithra Gamalathge — I'm designing a service to give you more than just a column of numbers from your blood test. Three minutes of your honest answers will help me build something genuinely useful.</p>
+  <div class="time-badge">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+    3 MINUTES · 12 QUESTIONS · ANONYMOUS
+  </div>
+</div>
+
+<!-- Survey form -->
+<main>
+  <div class="survey-wrap" id="surveyContent">
+    <form id="surveyForm" novalidate>
+
+      <!-- SECTION 1 -->
+      <div class="section">
+        <span class="section-num">SECTION 01 · ABOUT YOU</span>
+        <h2 class="section-title">A few quick facts</h2>
+        <p class="section-sub">Anonymous — no name or contact required unless you choose to share.</p>
+        <div class="section-rule"></div>
+
+        <div class="q">
+          <div class="q-label">How old are you?</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="age" value="under30"> <span class="option-text">Under 30</span></label>
+            <label class="option"><input type="radio" name="age" value="30-39"> <span class="option-text">30–39</span></label>
+            <label class="option"><input type="radio" name="age" value="40-49"> <span class="option-text">40–49</span></label>
+            <label class="option"><input type="radio" name="age" value="50-59"> <span class="option-text">50–59</span></label>
+            <label class="option"><input type="radio" name="age" value="60plus"> <span class="option-text">60 or older</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <div class="q-label">Where do you live?</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="location" value="colombo"> <span class="option-text">Colombo / suburbs <span class="option-sub">Nugegoda, Dehiwela, Battaramulla, Malabe, etc.</span></span></label>
+            <label class="option"><input type="radio" name="location" value="srilanka-other"> <span class="option-text">Elsewhere in Sri Lanka</span></label>
+            <label class="option"><input type="radio" name="location" value="australia"> <span class="option-text">Australia</span></label>
+            <label class="option"><input type="radio" name="location" value="uk"> <span class="option-text">United Kingdom</span></label>
+            <label class="option"><input type="radio" name="location" value="canada"> <span class="option-text">Canada</span></label>
+            <label class="option"><input type="radio" name="location" value="other-overseas"> <span class="option-text">Overseas — other country</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <div class="q-label">What best describes your work situation?</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="work" value="employed-pro"> <span class="option-text">Employed professional <span class="option-sub">Finance, tech, law, medicine, engineering, etc.</span></span></label>
+            <label class="option"><input type="radio" name="work" value="business-owner"> <span class="option-text">Business owner or entrepreneur</span></label>
+            <label class="option"><input type="radio" name="work" value="executive"> <span class="option-text">Senior executive or C-suite</span></label>
+            <label class="option"><input type="radio" name="work" value="other"> <span class="option-text">Other</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="section">
+        <span class="section-num">SECTION 02 · YOUR HEALTH HABITS</span>
+        <h2 class="section-title">The honest part</h2>
+        <p class="section-sub">No judgement — this is exactly the kind of gap I'm trying to close.</p>
+        <div class="section-rule"></div>
+
+        <div class="q">
+          <div class="q-label">When did you last have a blood test?</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="lastTest" value="within6m"> <span class="option-text">Within the last 6 months</span></label>
+            <label class="option"><input type="radio" name="lastTest" value="within1y"> <span class="option-text">6–12 months ago</span></label>
+            <label class="option"><input type="radio" name="lastTest" value="1-3y"> <span class="option-text">1–3 years ago</span></label>
+            <label class="option"><input type="radio" name="lastTest" value="3yplus"> <span class="option-text">More than 3 years ago</span></label>
+            <label class="option"><input type="radio" name="lastTest" value="never"> <span class="option-text">I've never had one</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <div class="q-label">After that blood test, how well did you understand what your results actually meant for your long-term health?</div>
+          <div class="scale-wrap">
+            <div class="scale-btns" id="scale-understanding">
+              <button type="button" class="scale-btn" data-scale="understanding" data-val="1">1</button>
+              <button type="button" class="scale-btn" data-scale="understanding" data-val="2">2</button>
+              <button type="button" class="scale-btn" data-scale="understanding" data-val="3">3</button>
+              <button type="button" class="scale-btn" data-scale="understanding" data-val="4">4</button>
+              <button type="button" class="scale-btn" data-scale="understanding" data-val="5">5</button>
+            </div>
+            <div class="scale-labels">
+              <span>Not at all — just numbers</span>
+              <span>Completely clear</span>
+            </div>
+          </div>
+          <input type="hidden" name="understanding" id="val-understanding">
+        </div>
+
+        <div class="q">
+          <div class="q-label">Did anyone explain your <strong>10-year cardiovascular risk</strong> to you — i.e. your personal probability of heart attack or stroke in the next decade?</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="cvdRisk" value="yes-explained"> <span class="option-text">Yes — it was explained clearly</span></label>
+            <label class="option"><input type="radio" name="cvdRisk" value="mentioned"> <span class="option-text">It was mentioned, but not really explained</span></label>
+            <label class="option"><input type="radio" name="cvdRisk" value="no"> <span class="option-text">No — I've never been told this</span></label>
+            <label class="option"><input type="radio" name="cvdRisk" value="dontknow"> <span class="option-text">I don't know what that is</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <div class="q-label">Do you have a family history of heart disease, diabetes, or stroke?</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="famHistory" value="yes"> <span class="option-text">Yes</span></label>
+            <label class="option"><input type="radio" name="famHistory" value="no"> <span class="option-text">No</span></label>
+            <label class="option"><input type="radio" name="famHistory" value="unsure"> <span class="option-text">Not sure</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3 — THE REAL TEST -->
+      <div class="section">
+        <span class="section-num">SECTION 03 · THE SERVICE</span>
+        <h2 class="section-title">What would actually help you</h2>
+        <p class="section-sub">This is the core of what I'm building — your reaction matters.</p>
+        <div class="section-rule"></div>
+
+        <div class="insight-block">
+          <p>Imagine: a qualified phlebotomist comes to your home, collects your blood. Your results are analysed by a registered physician who calculates your personal 10-year risk of heart disease, explains every result, and gives you a written action plan — delivered to you within 24 hours.</p>
+        </div>
+
+        <div class="q">
+          <div class="q-label">How valuable would this be to you personally?</div>
+          <div class="scale-wrap">
+            <div class="scale-btns" id="scale-value">
+              <button type="button" class="scale-btn" data-scale="value" data-val="1">1</button>
+              <button type="button" class="scale-btn" data-scale="value" data-val="2">2</button>
+              <button type="button" class="scale-btn" data-scale="value" data-val="3">3</button>
+              <button type="button" class="scale-btn" data-scale="value" data-val="4">4</button>
+              <button type="button" class="scale-btn" data-scale="value" data-val="5">5</button>
+            </div>
+            <div class="scale-labels">
+              <span>Not at all valuable</span>
+              <span>Extremely valuable</span>
+            </div>
+          </div>
+          <input type="hidden" name="value" id="val-value">
+        </div>
+
+        <div class="q">
+          <div class="q-label">What would hold you back from using a service like this? <span class="q-note">Select all that apply.</span></div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="barriers" value="price"> <span class="option-text">Price — it would need to fit my budget</span></label>
+            <label class="option"><input type="checkbox" name="barriers" value="trust"> <span class="option-text">Trust — I'd want to know the doctor personally or by reputation</span></label>
+            <label class="option"><input type="checkbox" name="barriers" value="need"> <span class="option-text">I don't feel I need it right now</span></label>
+            <label class="option"><input type="checkbox" name="barriers" value="gp"> <span class="option-text">I already have a GP who does this for me</span></label>
+            <label class="option"><input type="checkbox" name="barriers" value="time"> <span class="option-text">Time — I'm too busy to organise it</span></label>
+            <label class="option"><input type="checkbox" name="barriers" value="privacy"> <span class="option-text">Privacy — I'm cautious about sharing health data</span></label>
+            <label class="option"><input type="checkbox" name="barriers" value="nothing"> <span class="option-text">Nothing — I'd want to sign up today</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <div class="q-label">For a complete, physician-authored health report with at-home blood collection and 10-year cardiovascular risk assessment — what would you consider a fair price?</div>
+          <p class="section-sub" style="margin-bottom:14px;">This is the <em>most important</em> question. Please be honest — there's no right answer.</p>
+          <div class="options">
+            <label class="option"><input type="radio" name="price" value="under30k"> <span class="option-text">Under LKR 30,000 <span class="option-sub">~USD 95</span></span></label>
+            <label class="option"><input type="radio" name="price" value="30-50k"> <span class="option-text">LKR 30,000 – 50,000 <span class="option-sub">~USD 95–155</span></span></label>
+            <label class="option"><input type="radio" name="price" value="50-75k"> <span class="option-text">LKR 50,000 – 75,000 <span class="option-sub">~USD 155–235 — this is roughly our mid-tier</span></span></label>
+            <label class="option"><input type="radio" name="price" value="75-100k"> <span class="option-text">LKR 75,000 – 100,000 <span class="option-sub">~USD 235–310</span></span></label>
+            <label class="option"><input type="radio" name="price" value="over100k"> <span class="option-text">Over LKR 100,000 <span class="option-sub">If the quality warrants it</span></span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <div class="q-label">Would you prefer to arrange this for your entire family (spouse + yourself) at a combined rate?</div>
+          <div class="options">
+            <label class="option"><input type="radio" name="family" value="yes"> <span class="option-text">Yes — that's more appealing</span></label>
+            <label class="option"><input type="radio" name="family" value="no"> <span class="option-text">No — I'd start with just myself</span></label>
+            <label class="option"><input type="radio" name="family" value="maybe"> <span class="option-text">Maybe — depends on the price difference</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <div class="q-label">How do you currently find private healthcare services you trust? <span class="q-note">Select all that apply.</span></div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="discovery" value="word-of-mouth"> <span class="option-text">Word of mouth — a friend or family member recommends</span></label>
+            <label class="option"><input type="checkbox" name="discovery" value="doctor-referral"> <span class="option-text">My GP or another doctor refers me</span></label>
+            <label class="option"><input type="checkbox" name="discovery" value="instagram"> <span class="option-text">Instagram or social media</span></label>
+            <label class="option"><input type="checkbox" name="discovery" value="google"> <span class="option-text">Google search</span></label>
+            <label class="option"><input type="checkbox" name="discovery" value="hospital-brand"> <span class="option-text">I go to a hospital I already trust (Asiri, Durdans, Lanka)</span></label>
+            <label class="option"><input type="checkbox" name="discovery" value="workplace"> <span class="option-text">Through my employer or workplace</span></label>
+            <label class="option"><input type="checkbox" name="discovery" value="dont-seek"> <span class="option-text">I don't actively seek private healthcare</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="section">
+        <span class="section-num">SECTION 04 · FINAL THOUGHTS</span>
+        <h2 class="section-title">Your honest opinion</h2>
+        <p class="section-sub">Optional — but this is what shapes the service most.</p>
+        <div class="section-rule"></div>
+
+        <div class="q">
+          <div class="q-label">Is there something about your health you genuinely worry about but haven't properly investigated?</div>
+          <textarea name="worry" placeholder="e.g. Family history of heart disease, unexplained fatigue, weight that won't shift — anything you've been putting off…"></textarea>
+        </div>
+
+        <div class="q">
+          <div class="q-label">What would make you trust a private health service enough to actually use it?</div>
+          <textarea name="trust" placeholder="A named doctor? Word of mouth? Clinical credentials? Something else?"></textarea>
+        </div>
+
+        <div class="q">
+          <div class="q-label">If you'd like to hear when this service launches — or if you want to be one of the first to try it — leave your WhatsApp number or email below. <span class="q-note">Completely optional. No spam — I'll send one message when we're ready.</span></div>
+          <textarea name="contact" style="min-height: 60px;" placeholder="+94 77 000 0000 or your email address"></textarea>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="submit-section">
+        <p class="submit-note">Your answers go directly to me. This survey is anonymous unless you choose to share your contact. No data is sold or shared.</p>
+        <button type="submit" class="btn-submit">Submit my answers →</button>
+      </div>
+
+    </form>
+
+    <!-- Thank you -->
+    <div class="thankyou" id="thankyouMsg">
+      <svg class="ty-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" stroke="#B85C3E" stroke-width="1.5"/>
+        <path d="M14 24l7 7 13-13" stroke="#B85C3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h2>Thank you.</h2>
+      <p>Your answers are exactly the kind of feedback that shapes this service into something genuinely useful — not just another health product.</p>
+      <p>If you left your contact, I'll be in touch personally when we open for our first intake. I appreciate your time.</p>
+      <span class="ty-sign">Dr. Dimithra Gamalathge</span>
+      <span class="ty-cred">MBBS · SLMC NO. 36999 · PREVENTIVE MEDICINE · COLOMBO</span>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="footer-text">DR. D. R. GAMALATHGE · MBBS · SLMC NO. 36999 · PREVENTIVE MEDICINE · COLOMBO, SRI LANKA</p>
+</footer>
+
+<script>
+  // Progress bar
+  function updateProgress() {
+    const total = document.querySelectorAll('.q').length;
+    const answered = document.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked, input[type="hidden"][value]:not([value=""])').length;
+    const textAnswered = Array.from(document.querySelectorAll('textarea')).filter(t => t.value.trim().length > 0).length;
+    const pct = Math.min(((answered + textAnswered) / (total * 1.2)) * 100, 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+  }
+
+  document.querySelectorAll('input').forEach(i => i.addEventListener('change', updateProgress));
+  document.querySelectorAll('textarea').forEach(t => t.addEventListener('input', updateProgress));
+
+  // Scale buttons
+  document.querySelectorAll('.scale-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const scale = this.dataset.scale;
+      document.querySelectorAll(`.scale-btn[data-scale="${scale}"]`).forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      document.getElementById('val-' + scale).value = this.dataset.val;
+      updateProgress();
+    });
+  });
+
+  // ── STEP 1: Paste your Apps Script Web App URL here after deploying ──
+  const APPS_SCRIPT_URL = 'https://dimithra.app.n8n.cloud/webhook/shi-survey';
+
+  document.getElementById('surveyForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = this.querySelector('.btn-submit');
+    btn.textContent = 'Submitting…';
+    btn.disabled = true;
+
+    // Collect all field values
+    const fd = new FormData(this);
+    const data = { timestamp: new Date().toISOString() };
+
+    fd.forEach((v, k) => {
+      if (data[k]) {
+        // Multi-select checkboxes: append with comma
+        data[k] = data[k] + ', ' + v;
+      } else {
+        data[k] = v;
+      }
+    });
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      // no-cors means response is opaque — submission still reaches the sheet
+      console.log('Submitted:', err);
+    }
+
+    // Show thank you
+    document.getElementById('progressFill').style.width = '100%';
+    document.getElementById('surveyForm').style.display = 'none';
+    document.getElementById('thankyouMsg').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
