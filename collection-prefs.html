@@ -572,7 +572,7 @@
 <div class="intro-band">
   <div class="intro-eyebrow">Sample Collection</div>
   <div class="intro-title">Arrange your home collection</div>
-  <div class="intro-sub">Your physician-ordered laboratory panel is ready. Please confirm your preferred dates, time window, and collection address so Dr. Gamalathge can coordinate with Asiri Laboratories on your behalf.</div>
+  <div class="intro-sub">Your physician-ordered laboratory panel is ready. Please confirm your preferred dates, time window, and collection address so Dr. Gamalathge can coordinate with our partner laboratory on your behalf.</div>
 </div>
 
 <!-- MAIN FORM -->
@@ -602,7 +602,7 @@
     <!-- HOME COLLECTION NOTICE -->
     <div class="home-collection-notice">
       <span class="hcn-icon">⌂</span>
-      <div class="hcn-text"><strong>Home collection included.</strong> A qualified Asiri phlebotomist will attend your chosen location. This is included as standard across all three packages — Essential, Premium, and Elite.</div>
+      <div class="hcn-text"><strong>Home collection included.</strong> A qualified phlebotomist from our partner laboratory will attend your chosen location. This is included as standard across all three packages — Essential, Premium, and Elite.</div>
     </div>
 
     <!-- SECTION 1 — PREFERRED DATES -->
@@ -727,7 +727,7 @@
 
     <!-- SUBMIT -->
     <div class="submit-section">
-      <p class="consent-text">By submitting this form, I confirm the information is accurate and consent to these collection logistics being shared with Asiri Laboratories solely for the purpose of arranging my physician-ordered sample collection under the care of Dr. D. R. Gamalathge (MBBS), SLMC No. 36999.</p>
+      <p class="consent-text">By submitting this form, I confirm the information is accurate and consent to these collection logistics being shared with our partner laboratory solely for the purpose of arranging my physician-ordered sample collection under the care of Dr. D. R. Gamalathge (MBBS), SLMC No. 36999.</p>
       <button type="submit" class="submit-btn" id="submit-btn">
         <span id="btn-text">Confirm collection preferences</span>
         <span>→</span>
@@ -761,16 +761,26 @@
   // ── URL PARAMS ──
   (function() {
     const p = new URLSearchParams(window.location.search);
-    const ghc  = p.get('ghc')  || '';
+    const GHC_RE = /^GHC-[0-9ABCDEFGHJKMNPQRSTVWXYZ]{6}$/;
+    const ghc  = (p.get('ghc') || '').trim().toUpperCase();
     const name = p.get('name') || '';
     const pkg  = p.get('pkg')  || '';
     document.getElementById('f-ghc-id').value      = ghc;
     document.getElementById('f-patient-name').value = name;
     document.getElementById('f-package').value      = pkg;
-    document.getElementById('card-ghc-id').textContent      = ghc  || 'GHC-2026-XXXX';
+    document.getElementById('card-ghc-id').textContent      = ghc  || 'GHC-XXXXXX';
     document.getElementById('card-patient-name').textContent = name || 'Patient';
     document.getElementById('card-package').textContent      = pkg  || '—';
     document.getElementById('header-ghc-id').textContent    = ghc;
+
+    if (!GHC_RE.test(ghc)) {
+      const warn = document.createElement('div');
+      warn.style.cssText = 'background:#fff8f6;border:1px solid #f0c0b0;border-left:3px solid var(--terra);padding:12px 16px;margin-bottom:24px;font-size:0.88rem;color:var(--terra2);font-family:Courier New,monospace;letter-spacing:0.05em;';
+      warn.textContent = '⚠ This link is missing a valid GHC Patient ID. Please open the form using the exact link sent to you by Dr. Gamalathge, or contact the clinic on WhatsApp.';
+      const form = document.getElementById('prefs-form');
+      form.insertBefore(warn, form.firstChild.nextSibling);
+      document.getElementById('submit-btn').disabled = true;
+    }
   })();
 
   // ── DATE CARDS ──
